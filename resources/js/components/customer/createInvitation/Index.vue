@@ -1,0 +1,260 @@
+<template>
+  <div id="App">
+    <div class="main-screen padding padding-top-15px padding-bottom-15px">
+      <h2 class="fonts fonts-22 semibold black align-center">Buat Undangan</h2>
+      <p class="fonts fonts-10 normal black align-center">
+        Isi informasi berikut untuk membuat undangan.
+      </p>
+      <p class="fonts fonts-10 normal black align-center">
+        Setelah undangan dibuat masuk ke menu "Kelola Undangan" untuk mengisi
+        data pengantin, acara dll.
+      </p>
+      <div
+        class="width width-60 width-mobile width-center padding padding-bottom-65px"
+      >
+        <div
+          class="width width-100 width-center padding padding-top-30px padding-bottom-30px"
+        >
+          <el-steps :active="activeIndex" finish-status="success" align-center>
+            <el-step>
+              <div slot="title" style="font-size: 13px">Informasi</div>
+            </el-step>
+            <el-step>
+              <div slot="title" style="font-size: 13px">Paket</div>
+            </el-step>
+            <el-step>
+              <div slot="title" style="font-size: 13px">Tema</div>
+            </el-step>
+            <el-step>
+              <div slot="title" style="font-size: 13px">Lagu Latar</div>
+            </el-step>
+          </el-steps>
+        </div>
+
+        <div class="padding padding-left-15px padding-right-15px">
+          <FormInformation v-if="activeIndex === 0" />
+          <FormPacket v-if="activeIndex === 1" />
+          <FormTheme v-if="activeIndex === 2" />
+          <FormSong v-if="activeIndex === 3" />
+          <FormReview v-if="activeIndex === 4" />
+        </div>
+      </div>
+    </div>
+
+    <div id="floating-footer">
+      <div class="main-screen">
+        <div class="padding padding-left-15px padding-right-15px">
+          <div
+            class="width width-60 width-mobile width-center bg-white box-shadow border-radius"
+          >
+            <div
+              class="display-flex flex-end align-center padding padding-15px"
+            >
+              <button class="btn btn-white" @click="goBack">
+                {{ activeIndex === 0 ? 'Batalkan' : 'Kembali' }}
+              </button>
+              <button
+                class="btn btn-main margin margin-left-5px"
+                :disabled="disabledNextButton"
+                @click="onNext"
+              >
+                {{
+                  activeIndex === totalIndex ? 'Buat Undangan' : 'Selanjutnya'
+                }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <AppPopupConfirmed
+      v-if="visibleConfirmed"
+      :title="titleConfirmed"
+      @onClickNo="onClickNo"
+      @onClickYes="onClickYes"
+    />
+
+    <AppPopupAlert
+      v-if="visibleAlert"
+      :title="titleAlert"
+      :icon="iconAlert"
+      @onClickOk="onClickOk"
+    />
+
+    <AppPopupLoader v-if="visibleLoader" title="Mohon Tunggu ..." />
+  </div>
+</template>
+<script>
+import { mapState, mapActions } from 'vuex'
+import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
+import AppPopupAlert from '../../modules/AppPopupAlert'
+import AppPopupLoader from '../../modules/AppPopupLoader'
+import FormInformation from './FormInformation'
+import FormPacket from './FormPacket'
+import FormTheme from './FormTheme'
+import FormSong from './FormSong'
+import FormReview from './FormReview'
+
+export default {
+  name: 'App',
+  metaInfo: {
+    title: 'UndangAbi',
+    titleTemplate: '%s | Buat Undangan',
+    htmlAttrs: {
+      lang: 'en',
+      amp: true,
+    },
+  },
+  data() {
+    return {
+      visibleUpdateCover: false,
+      visibleConfirmed: false,
+      visibleAlert: false,
+      visibleLoader: false,
+      titleConfirmed: 'Simpan data undangan ?',
+      titleAlert: 'Data undangan berhasil di simpan !',
+      iconAlert: 'far fa-4x fa-check-circle',
+      totalIndex: 4,
+      formSatus: false,
+    }
+  },
+  mounted() {
+    this.getDataCategory()
+    this.resetForm()
+    this.setFormData()
+  },
+  computed: {
+    ...mapState({
+      activeIndex: (state) => state.customerInvitation.activeIndex,
+      form: (state) => state.customerInvitation.form,
+      errorMessage: (state) => state.customerInvitation.errorMessage,
+    }),
+    requeiredFullInformation() {
+      let status = true
+      if (
+        this.form.invitation_id &&
+        this.form.short_link &&
+        this.form.title &&
+        this.form.date &&
+        this.form.description
+      )
+        status = false
+      return status
+    },
+    requeiredPacket() {
+      let status = true
+      if (this.form.type) status = false
+      return status
+    },
+    requeiredTheme() {
+      let status = true
+      if (this.form.theme_id) status = false
+      return status
+    },
+    requeiredSong() {
+      let status = true
+      if (this.form.song_id) status = false
+      return status
+    },
+    disabledNextButton() {
+      let status = false
+      if (this.activeIndex === 0) {
+        status = this.requeiredFullInformation
+      }
+      if (this.activeIndex === 1) {
+        status = this.requeiredPacket
+      }
+      if (this.activeIndex === 2) {
+        status = this.requeiredTheme
+      }
+      if (this.activeIndex === 3) {
+        status = this.requeiredSong
+      }
+      return status
+    },
+  },
+  components: {
+    AppPopupConfirmed,
+    AppPopupAlert,
+    AppPopupLoader,
+    FormInformation,
+    FormPacket,
+    FormTheme,
+    FormSong,
+    FormReview,
+  },
+  methods: {
+    ...mapActions({
+      onChangeActiveIndex: 'customerInvitation/onChangeActiveIndex',
+      setFormData: 'customerInvitation/setFormData',
+      resetForm: 'customerInvitation/resetForm',
+      createData: 'customerInvitation/createData',
+      getCategory: 'customerCategory/getData',
+    }),
+    onChangeTabs(data) {
+      this.selectedIndex = data
+    },
+    onClickNo() {
+      this.visibleConfirmed = false
+    },
+    onClickYes() {
+      this.visibleConfirmed = false
+      this.createDataCustomerInvitation()
+    },
+    onClickOk() {
+      this.visibleAlert = false
+      if (this.formSatus) {
+        this.$router.replace({ name: 'customer-dashboard' })
+      }
+    },
+    submitData() {
+      this.visibleConfirmed = true
+      this.titleConfirmed = 'Simpan data undangan ?'
+    },
+    goBack() {
+      if (this.activeIndex === 0) {
+        this.$router.replace({ name: 'customer-dashboard' })
+      } else {
+        const data = this.activeIndex - 1
+        this.onChangeActiveIndex(data)
+      }
+    },
+    onNext() {
+      if (this.activeIndex === this.totalIndex) {
+        this.submitData()
+      } else {
+        const data = this.activeIndex + 1
+        this.onChangeActiveIndex(data)
+      }
+    },
+    createDataCustomerInvitation() {
+      this.visibleLoader = true
+      const token = `Bearer ${this.$cookies.get('token')}`
+      this.createData({ token })
+        .then((res) => {
+          if (res.data.status === 'ok') {
+            this.formSatus = true
+            this.visibleAlert = true
+            this.titleAlert = 'Data undangan berhasil di buat !'
+            this.iconAlert = 'far fa-4x fa-check-circle'
+          } else {
+            this.formSatus = false
+            this.visibleAlert = true
+            this.titleAlert = 'Data undangan gagal di buat !'
+            this.iconAlert = 'far fa-4x fa-times-circle'
+          }
+        })
+        .finally(() => {
+          this.visibleLoader = false
+        })
+    },
+    getDataCategory() {
+      const token = `Bearer ${this.$cookies.get('token')}`
+      this.getCategory({ token: token, status: 'active' }).then((res) => {
+        this.form.category_id = 1
+      })
+    },
+  },
+}
+</script>

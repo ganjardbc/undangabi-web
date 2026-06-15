@@ -1,0 +1,432 @@
+import axios from 'axios'
+
+const defaultPayload = {
+  id: '',
+  guest_book_id: '',
+  name: '',
+  phone: '',
+  address: '',
+  comments: '',
+  present_type: 'present',
+  attendance: 0,
+  status: 'active',
+  is_available: 0,
+  invitation_id: '',
+}
+
+const defaultPayloadMessage = {
+  id: '',
+  guest_book_id: '',
+  name: '',
+  phone: '',
+  address: '',
+  comments: '',
+  attendance: '',
+  present_type: '',
+  status: '',
+  is_available: '',
+  invitation_id: '',
+}
+
+export default {
+  namespaced: true,
+  state: {
+    form: defaultPayload,
+    message: defaultPayloadMessage,
+    limit: 5,
+    offset: 0,
+    totalRecord: 0,
+    loading: false,
+    loadMore: false,
+    data: [],
+    selectedData: null,
+    isGridView: false,
+    filter: {
+      search: '',
+    },
+    dataPresentGuestBook: [
+      {
+        value: 'present',
+        label: 'Hadir',
+      },
+      {
+        value: 'not-present',
+        label: 'Tidak Hadir',
+      },
+    ],
+    dataGuestMetrics: {
+      totalPresent: 0,
+      totalWillPresent: 0,
+      totalNotPresent: 0,
+      totalWaitingResponse: 0,
+    },
+    bride: {
+      limit: 5,
+      offset: 0,
+      totalRecord: 0,
+      loading: false,
+      loadMore: false,
+      data: [],
+      filter: {
+        search: '',
+      },
+    },
+    reservation: {
+      loading: false,
+      data: null,
+    },
+  },
+  getters: {
+    loading(state) {
+      return state.loading
+    },
+  },
+  mutations: {
+    SET_LOADING(state, value) {
+      state.loading = value
+    },
+    SET_LOAD_MORE(state, value) {
+      state.loadMore = value
+    },
+    SET_OFFSET(state, value) {
+      state.offset += value
+    },
+    SET_DATA(state, value) {
+      state.data = value
+    },
+    SET_SELECTED_DATA(state, value) {
+      state.selectedData = value
+    },
+    SET_MESSAGE_DATA(state, value) {
+      if (value) {
+        state.message = value
+      } else {
+        state.message = defaultPayloadMessage
+      }
+    },
+    SET_FORM_DATA(state, value) {
+      if (value) {
+        state.form = value
+      } else {
+        const time = new Date().getTime()
+        state.form = {
+          ...defaultPayload,
+          guest_book_id: `GB-${time}`,
+          status: 'active',
+        }
+      }
+    },
+    SET_TOTAL_RECORD(state, value) {
+      state.totalRecord = value
+    },
+    SET_GUEST_METRICS(state, value) {
+      state.dataGuestMetrics.totalPresent = value.total_present
+      state.dataGuestMetrics.totalWillPresent = value.total_will_present
+      state.dataGuestMetrics.totalNotPresent = value.total_not_present
+      state.dataGuestMetrics.totalWaitingResponse = value.total_waiting_response
+    },
+
+    // BRIDE
+    SET_BRIDE_LOADING(state, value) {
+      state.bride.loading = value
+    },
+    SET_BRIDE_LOAD_MORE(state, value) {
+      state.bride.loadMore = value
+    },
+    SET_BRIDE_OFFSET(state, value) {
+      state.bride.offset += value
+    },
+    SET_BRIDE_DATA(state, value) {
+      state.bride.data = value
+    },
+    SET_BRIDE_TOTAL_RECORD(state, value) {
+      state.bride.totalRecord = value
+    },
+
+    // RESERVATION
+    SET_RESERVATION_LOADING(state, value) {
+      state.reservation.loading = value
+    },
+    SET_RESERVATION_DATA(state, value) {
+      const reservation = value.reservation
+      const payload = {
+        ...state.form,
+        reservation_list_id: reservation.reservation_list_id,
+        name: reservation.name,
+        phone: reservation.phone,
+        address: reservation.address,
+        comments: reservation.comments,
+        attendance: reservation.attendance,
+        present_type: reservation.present_type,
+        invitation_id: reservation.invitation_id,
+      }
+      state.form = payload
+      state.reservation.data = reservation
+    },
+  },
+  actions: {
+    onChangeGridView({ commit, state }, value) {
+      state.isGridView = value
+    },
+    setPagination({ commit, state }, data) {
+      state.offset = (data - 1) * state.limit
+    },
+    setFormData({ commit, state }, data) {
+      commit('SET_FORM_DATA', data)
+    },
+    resetFormData({ commit, state }) {
+      commit('SET_FORM_DATA', null)
+      commit('SET_MESSAGE_DATA', null)
+    },
+    resetFilter({ commit, state }) {
+      state.limit = 5
+      state.offset = 0
+    },
+    resetSelectedData({ commit, state }) {
+      state.reservation.data = null
+    },
+    getData({ commit, state }, data) {
+      commit('SET_LOADING', true)
+      commit('SET_LOAD_MORE', false)
+
+      let dataPrev = []
+
+      const params = {
+        limit: state.limit,
+        offset: state.offset,
+        search: state.filter.search,
+        invitation_id: data.id,
+        bride_id: data.bride_id,
+        present_type: data.present_type,
+      }
+
+      return axios
+        .post('/api/guestBooks/getAll', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const payload = res.data.data
+
+          payload &&
+            payload.map((dt) => {
+              dataPrev.push({ ...dt })
+            })
+
+          commit('SET_DATA', dataPrev)
+          commit('SET_TOTAL_RECORD', res.data.total_record)
+
+          if (payload.length < state.limit) {
+            commit('SET_LOAD_MORE', false)
+          } else {
+            commit('SET_LOAD_MORE', true)
+          }
+
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+    getByID({ commit, state }, data) {
+      commit('SET_LOADING', true)
+
+      const params = {
+        guest_book_id: data.guest_book_id,
+      }
+
+      return axios
+        .post('/api/guestBooks/getByID', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const payload = res.data.data
+
+          commit('SET_SELECTED_DATA', payload)
+
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+    getQuantity({ commit, state }, data) {
+      commit('SET_LOADING', true)
+
+      const params = {
+        limit: state.limit,
+        offset: state.offset,
+        invitation_id: data.id,
+      }
+
+      return axios
+        .post('/api/guestBooks/getQuantity', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const payload = res.data.data
+
+          commit('SET_GUEST_METRICS', payload)
+
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+    createData({ commit, state }, data) {
+      commit('SET_LOADING', true)
+
+      const params = {
+        ...data,
+      }
+
+      return axios
+        .post('/api/guestBooks/post', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const data = res.data
+          if (data.status === 'ok') {
+            commit('SET_MESSAGE_DATA', data.message)
+          } else {
+            commit('SET_MESSAGE_DATA', data.message)
+          }
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+    updateData({ commit, state }, data) {
+      commit('SET_LOADING', true)
+
+      const params = {
+        ...data,
+      }
+
+      return axios
+        .post('/api/guestBooks/update', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const data = res.data
+          if (data.status === 'ok') {
+            commit('SET_MESSAGE_DATA', data.message)
+          } else {
+            commit('SET_MESSAGE_DATA', data.message)
+          }
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+    deleteData({ commit, state }, data) {
+      commit('SET_LOADING', true)
+
+      const params = {
+        ...data,
+      }
+
+      return axios
+        .post('/api/guestBooks/delete', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_LOADING', false)
+        })
+    },
+
+    // BRIDE
+    getDataBride({ commit, state }, data) {
+      commit('SET_BRIDE_LOADING', true)
+      commit('SET_BRIDE_LOAD_MORE', false)
+
+      let dataPrev = []
+      const params = {
+        limit: state.bride.limit,
+        offset: state.bride.offset,
+        search: state.bride.filter.search,
+        invitation_id: data.id,
+      }
+
+      return axios
+        .post('/api/bride/getAll', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const payload = res.data.data
+
+          payload &&
+            payload.map((dt) => {
+              dataPrev.push({ ...dt })
+            })
+
+          commit('SET_BRIDE_DATA', dataPrev)
+          commit('SET_BRIDE_TOTAL_RECORD', res.data.total_record)
+
+          if (payload.length < state.bride.limit) {
+            commit('SET_BRIDE_LOAD_MORE', false)
+          } else {
+            commit('SET_BRIDE_LOAD_MORE', true)
+          }
+
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_BRIDE_LOADING', false)
+        })
+    },
+
+    // RESERVATION
+    getReservationByID({ commit, state }, data) {
+      commit('SET_RESERVATION_LOADING', true)
+
+      const params = {
+        reservation_list_id: data.reservation_list_id,
+      }
+
+      return axios
+        .post('/api/reservationLists/getByID', params, {
+          headers: { Authorization: data.token },
+        })
+        .then((res) => {
+          const payload = res.data.data
+          commit('SET_FORM_DATA', null)
+          commit('SET_MESSAGE_DATA', null)
+          commit('SET_RESERVATION_DATA', payload)
+          return res
+        })
+        .catch((e) => {
+          console.log('error', e)
+        })
+        .finally(() => {
+          commit('SET_RESERVATION_LOADING', false)
+        })
+    },
+  },
+}

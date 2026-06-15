@@ -1,0 +1,360 @@
+.fonts {
+  line-height: 1.5;
+  font-size: 16px;
+  color: $black;
+  font-family: 'Graphik', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  a {
+    color: $blue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.hover-underline {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.thin {
+    font-family: 'GraphikThin', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.bold {
+    font-weight: bolder;
+    font-family: 'GraphikBold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.semibold {
+    font-family: 'GraphikSemibold', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.ViaodaLibre,
+  &.ViaodaLibre *:not(i) {
+    font-family: 'ViaodaLibre', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.ShadowIntoLigth,
+  &.ShadowIntoLigth *:not(i) {
+    font-family: 'ShadowIntoLigth', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.Satisfy,
+  &.Satisfy *:not(i) {
+    font-family: 'Satisfy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.Parisienne,
+  &.Parisienne *:not(i) {
+    font-family: 'Parisienne', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.PoiretOne,
+  &.PoiretOne *:not(i) {
+    font-family: 'PoiretOne', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.Sacramento,
+  &.Sacramento *:not(i) {
+    font-family: 'Sacramento', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.RoxboroughCF,
+  &.RoxboroughCF *:not(i) {
+    font-family: 'RoxboroughCF', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.DancingScript,
+  &.DancingScript *:not(i) {
+    font-family: 'DancingScript', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.Bodoni,
+  &.Bodoni *:not(i) {
+    font-family: 'Bodoni', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.DynaPuff,
+  &.DynaPuff *:not(i) {
+    font-family: 'DynaPuff', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.CreattionDemo,
+  &.CreattionDemo *:not(i) {
+    font-family: 'CreattionDemo', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.VisiaPro,
+  &.VisiaPro *:not(i) {
+    font-family: 'VisiaPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.VisiaProLigth,
+  &.VisiaProLigth *:not(i) {
+    font-family: 'VisiaProLigth', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.VisiaProSemiBold,
+  &.VisiaProSemiBold *:not(i) {
+    font-family: 'VisiaProSemiBold', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.VisiaProBold,
+  &.VisiaProBold *:not(i) {
+    font-family: 'VisiaProBold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.GreatVibes,
+  &.GreatVibes *:not(i) {
+    font-family: 'GreatVibes', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.WeddingScript,
+  &.WeddingScript *:not(i) {
+    font-family: 'WeddingScript', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.Gistesy,
+  &.Gistesy *:not(i) {
+    font-family: 'Gistesy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.Lora,
+  &.Lora *:not(i) {
+    font-family: 'Lora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.LoraSemibold,
+  &.LoraSemibold *:not(i) {
+    font-family: 'LoraSemibold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.LoraBold,
+  &.LoraBold *:not(i) {
+    font-family: 'LoraBold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.FeelingPassionate,
+  &.FeelingPassionate *:not(i) {
+    font-family: 'FeelingPassionate', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.Ovo,
+  &.Ovo *:not(i) {
+    font-family: 'Ovo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.Simonetta,
+  &.Simonetta *:not(i) {
+    font-family: 'Simonetta', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.SimonettaBlack,
+  &.SimonettaBlack *:not(i) {
+    font-family: 'SimonettaBlack', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.Quicksand,
+  &.Quicksand *:not(i) {
+    font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.QuicksandRegular,
+  &.QuicksandRegular *:not(i) {
+    font-family: 'QuicksandRegular', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.QuicksandMedium,
+  &.QuicksandMedium *:not(i) {
+    font-family: 'QuicksandMedium', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.QuicksandBold,
+  &.QuicksandBold *:not(i) {
+    font-family: 'QuicksandBold', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.CormorantGaramond,
+  &.CormorantGaramond *:not(i) {
+    font-family: 'CormorantGaramond', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.CormorantGaramondRegular,
+  &.CormorantGaramondRegular *:not(i) {
+    font-family: 'CormorantGaramondRegular', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.CormorantGaramondMedium,
+  &.CormorantGaramondMedium *:not(i) {
+    font-family: 'CormorantGaramondMedium', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.CormorantGaramondSemiBold,
+  &.CormorantGaramondSemiBold *:not(i) {
+    font-family: 'CormorantGaramondSemiBold', 'Segoe UI', Tahoma, Geneva,
+      Verdana, sans-serif;
+  }
+  &.CormorantGaramondBold,
+  &.CormorantGaramondBold *:not(i) {
+    font-family: 'CormorantGaramondBold', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+  }
+  &.link {
+    color: $blue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.capitalize {
+    text-transform: capitalize;
+  }
+  &.uppercase {
+    text-transform: uppercase;
+  }
+  &.lowercase {
+    text-transform: lowercase;
+  }
+  &.micro {
+    font-size: 13px;
+  }
+  &.normal {
+    font-size: 16px;
+  }
+  &.small {
+    font-size: 16px;
+  }
+  &.medium {
+    font-size: 24px;
+  }
+  &.big {
+    font-size: 32px;
+  }
+  &.extra-big {
+    font-size: 48px;
+  }
+  &.no-line-height {
+    line-height: 1.2;
+  }
+  &.text-shadow {
+    text-shadow: $shadow-bold;
+  }
+  &.align-center {
+    text-align: center;
+  }
+  &.align-left {
+    text-align: left;
+  }
+  &.align-right {
+    text-align: right;
+  }
+  &.text-shadow-mobile {
+    @media (max-width: $min-width) {
+      text-shadow: $shadow-bold;
+    }
+  }
+  &.align-center-mobile {
+    @media (max-width: $min-width) {
+      text-align: center;
+    }
+  }
+  &.align-left-mobile {
+    @media (max-width: $min-width) {
+      text-align: left;
+    }
+  }
+  &.align-right-mobile {
+    @media (max-width: $min-width) {
+      text-align: right;
+    }
+  }
+  &.weight-lighter {
+    font-weight: lighter;
+  }
+  &.weight-normal {
+    font-weight: normal;
+  }
+  &.weight-bold {
+    font-weight: bold;
+  }
+  &.weight-bolder {
+    font-weight: bolder;
+  }
+  &.overflow-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &.break-space {
+    white-space: break-space;
+  }
+  &.pre-wrap {
+    white-space: pre-wrap;
+  }
+  &.main {
+    color: $main-color;
+  }
+  &.primary {
+    color: $main-color;
+  }
+  &.black {
+    color: $black;
+  }
+  &.grey {
+    color: $grey;
+  }
+  &.white {
+    color: #fff;
+  }
+  &.light-grey {
+    color: $light-grey;
+  }
+  &.green {
+    color: $green;
+  }
+  &.red {
+    color: $red;
+  }
+  &.main-mobile {
+    @media (max-width: $min-width) {
+      color: $main-color !important;
+    }
+  }
+  &.primary-mobile {
+    @media (max-width: $min-width) {
+      color: $main-color !important;
+    }
+  }
+  &.black-mobile {
+    @media (max-width: $min-width) {
+      color: $black !important;
+    }
+  }
+  &.grey-mobile {
+    @media (max-width: $min-width) {
+      color: $grey !important;
+    }
+  }
+  &.white-mobile {
+    @media (max-width: $min-width) {
+      color: #fff !important;
+    }
+  }
+  &.light-grey-mobile {
+    @media (max-width: $min-width) {
+      color: $light-grey !important;
+    }
+  }
+  &.green-mobile {
+    @media (max-width: $min-width) {
+      color: $green !important;
+    }
+  }
+  &.red-mobile {
+    @media (max-width: $min-width) {
+      color: $red !important;
+    }
+  }
+  @for $var from 0 to 255 {
+    &.fonts-#{$var} {
+      font-size: #{$var} + 'pt';
+    }
+    &.fonts-#{$var}px {
+      font-size: #{$var} + 'px';
+    }
+    @media (max-width: $min-width) {
+      &.fonts-mobile-#{$var} {
+        font-size: #{$var} + 'pt' !important;
+      }
+      &.fonts-mobile-#{$var}px {
+        font-size: #{$var} + 'px' !important;
+      }
+    }
+  }
+}
+
+.text-align-right {
+  text-align: right;
+}
+.text-mobile {
+  @media (max-width: $min-width) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,110 @@
+import Vue from 'vue'
+
+export default {
+  namespaced: true,
+  state: {
+    limit: 5,
+    offset: 0,
+    totalRecord: 0,
+    loading: false,
+    loadMore: false,
+    data: [
+      {
+        icon: 'fa fa-lg fa-circle',
+        price:
+          Vue.prototype.discountType === 'promo-1'
+            ? 'Rp 110.000,-'
+            : 'Rp 80.000,-',
+        secondPrice: 'Rp 150.000,-',
+        title: 'Paket Bronze',
+        value: 'bronze',
+        isRecomended: false,
+        type: 'reguler',
+        data: [
+          { title: 'Masa Aktif 1 Bulan', status: true },
+          { title: 'Hitung Mundur Acara', status: true },
+          { title: 'Nama Tamu', status: true },
+          { title: 'Ucapan & Doa', status: true },
+          { title: 'Catat Kehadiran dg QR-Code', status: true },
+          { title: 'Daftar Acara', note: '(1 acara)', status: true },
+          { title: 'Background Music', status: true },
+          { title: 'Reservasi', status: true },
+          { title: 'Buku Tamu', status: false },
+          { title: 'Slider Cover', status: false },
+          { title: 'Galeri Foto', status: false },
+          { title: 'Love Story', status: false },
+          { title: 'Google Maps', status: false },
+          { title: 'Menampilkan Video Youtube', status: false },
+          { title: 'Special Thanks', status: false },
+          { title: 'Digital Gifts', status: false },
+          { title: 'Info Prokes', status: false },
+        ],
+      },
+      {
+        icon: 'fa fa-lg fa-circle',
+        price:
+          Vue.prototype.discountType === 'promo-1'
+            ? 'Rp 230.000,-'
+            : 'Rp 140.000,-',
+        secondPrice: 'Rp 350.000,-',
+        title: 'Paket Silver',
+        value: 'silver',
+        isRecomended: false,
+        type: 'reguler',
+        data: [
+          { title: 'Masa Aktif 2 Bulan', status: true },
+          { title: 'Hitung Mundur Acara', status: true },
+          { title: 'Nama Tamu', status: true },
+          { title: 'Ucapan & Doa', status: true },
+          { title: 'Catat Kehadiran dg QR-Code', status: true },
+          { title: 'Daftar Acara', note: '(6 acara)', status: true },
+          { title: 'Background Music', status: true },
+          { title: 'Reservasi', status: true },
+          { title: 'Buku Tamu', status: true },
+          { title: 'Slider Cover', note: '(3 foto)', status: true },
+          { title: 'Galeri Foto', note: '(6 foto)', status: true },
+          { title: 'Love Story', status: true },
+          { title: 'Google Maps', status: true },
+          { title: 'Menampilkan Video Youtube', status: false },
+          { title: 'Special Thanks', status: false },
+          { title: 'Digital Gifts', status: false },
+          { title: 'Info Prokes', status: false },
+        ],
+      },
+      {
+        icon: 'fa fa-lg fa-circle',
+        price:
+          Vue.prototype.discountType === 'promo-1'
+            ? 'Rp 350.000,-'
+            : 'Rp 200.000,-',
+        secondPrice: 'Rp 500.000,-',
+        title: 'Paket Gold',
+        value: 'diamond',
+        isRecomended: true,
+        type: 'pro',
+        data: [
+          { title: 'Masa Aktif 3 Bulan', status: true },
+          { title: 'Hitung Mundur Acara', status: true },
+          { title: 'Nama Tamu', status: true },
+          { title: 'Ucapan & Doa', status: true },
+          { title: 'Catat Kehadiran dg QR-Code', status: true },
+          { title: 'Daftar Acara', note: '(unlimited)', status: true },
+          { title: 'Background Music', status: true },
+          { title: 'Reservasi', status: true },
+          { title: 'Buku Tamu', status: true },
+          { title: 'Slider Cover', note: '(12 foto)', status: true },
+          { title: 'Galeri Foto', note: '(unlimited)', status: true },
+          { title: 'Love Story', status: true },
+          { title: 'Google Maps', status: true },
+          { title: 'Menampilkan Video Youtube', status: true },
+          { title: 'Special Thanks', status: true },
+          { title: 'Digital Gifts', status: true },
+          { title: 'Info Prokes', status: true },
+        ],
+      },
+    ],
+  },
+  getters: {},
+  mutations: {},
+  actions: {},
+}

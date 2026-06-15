@@ -1,0 +1,179 @@
+// INFINITY
+@keyframes infinityLeft {
+  0% {
+    transform: rotate(-35deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animation-infinity-left {
+  animation: infinityLeft 2.8s ease-in-out 0s infinite alternate !important;
+  -webkit-animation: infinityLeft 2.8s ease-in-out 0s infinite alternate !important;
+  -moz-animation: infinityLeft 2.8s ease-in-out 0s infinite alternate !important;
+  -o-animation: infinityLeft 2.8s ease-in-out 0s infinite alternate !important;
+}
+
+@keyframes infinityRight {
+  0% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.animation-infinity-right {
+  animation: infinityRight 2.8s ease-in-out 0s infinite alternate !important;
+  -webkit-animation: infinityRight 2.8s ease-in-out 0s infinite alternate !important;
+  -moz-animation: infinityRight 2.8s ease-in-out 0s infinite alternate !important;
+  -o-animation: infinityRight 2.8s ease-in-out 0s infinite alternate !important;
+}
+
+@keyframes infinityRotate {
+  0% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(-25deg);
+  }
+}
+.animation-infinity-rotate {
+  animation: infinityRotate 2.8s ease-in-out 0s infinite alternate !important;
+  -webkit-animation: infinityRotate 2.8s ease-in-out 0s infinite alternate !important;
+  -moz-animation: infinityRotate 2.8s ease-in-out 0s infinite alternate !important;
+  -o-animation: infinityRotate 2.8s ease-in-out 0s infinite alternate !important;
+}
+
+@keyframes infinityUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+.animation-infinity-up-down {
+  animation: infinityUpDown 2.8s ease-in-out 0s infinite alternate !important;
+  -webkit-animation: infinityUpDown 2.8s ease-in-out 0s infinite alternate !important;
+  -moz-animation: infinityUpDown 2.8s ease-in-out 0s infinite alternate !important;
+  -o-animation: infinityUpDown 2.8s ease-in-out 0s infinite alternate !important;
+}
+
+@keyframes infinityLeftRight {
+  0% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+.animation-infinity-left-right {
+  animation: infinityLeftRight 2.8s ease-in-out 0s infinite alternate !important;
+  -webkit-animation: infinityLeftRight 2.8s ease-in-out 0s infinite alternate !important;
+  -moz-animation: infinityLeftRight 2.8s ease-in-out 0s infinite alternate !important;
+  -o-animation: infinityLeftRight 2.8s ease-in-out 0s infinite alternate !important;
+}
+
+// PARTICLES
+.circle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.circle-infinity {
+  $particleNum: 200;
+  $particleColor: hsl(180, 100%, 80%);
+
+  position: absolute;
+  transform: translateY(-10vh);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    background-image: radial-gradient(
+      hsl(304, 100%, 75%),
+      hsl(304, 100%, 80%) 10%,
+      hsla(304, 100%, 80%, 0) 56%
+    );
+
+    animation:
+      fadein-frames 200ms infinite,
+      scale-frames 2s infinite;
+
+    @keyframes fade-frames {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scale-frames {
+      0% {
+        transform: scale3d(0.4, 0.4, 1);
+      }
+
+      50% {
+        transform: scale3d(2.2, 2.2, 1);
+      }
+
+      100% {
+        transform: scale3d(0.4, 0.4, 1);
+      }
+    }
+  }
+
+  $particleBaseSize: 8;
+
+  @for $i from 1 through $particleNum {
+    &:nth-child(#{$i}) {
+      $circleSize: random($particleBaseSize);
+      width: $circleSize + px;
+      height: $circleSize + px;
+
+      $startPositionY: random(10) + 100;
+      $framesName: 'move-frames-' + $i;
+      $moveDuration: 28000 + random(9000) + ms;
+
+      animation-name: #{$framesName};
+      animation-duration: $moveDuration;
+      animation-delay: random(37000) + ms;
+
+      @keyframes #{$framesName} {
+        from {
+          transform: translate3d(
+            #{random(100) + vw},
+            #{$startPositionY + vh},
+            0
+          );
+        }
+
+        to {
+          transform: translate3d(
+            #{random(100) + vw},
+            #{- $startPositionY - random(30) + vh},
+            0
+          );
+        }
+      }
+
+      .circle {
+        animation-delay: random(4000) + ms;
+      }
+    }
+  }
+}
