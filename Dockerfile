@@ -1,52 +1,38 @@
-# Stage 1: build frontend assets
-FROM node:18-alpine AS frontend
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY resources/ resources/
-COPY webpack.mix.js ./
-COPY public/css public/css
-COPY public/js public/js
-RUN npm run prod
+FROM php:8.1-apache
 
-# Stage 2: PHP-FPM app
-FROM php:8.1-fpm-alpine
+# PHP / Apache extensions
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+       git unzip zip libzip-dev libpng-dev libjpeg62-turbo-dev libfreetype6-dev \
+       libicu-dev libxml2-dev \
+    && docker-php-ext-install -j"$(nproc)" pdo_mysql zip intl soap gd \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && rm -rf /var/lib/apt/lists/*
 
-# system deps for PHP extensions
-RUN apk add --no-cache \
-    libpng-dev freetype-dev libjpeg-turbo-dev \
-    libzip-dev libxml2-dev oniguruma-dev \
-    && docker-php-ext-configure gd \
-        --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-        pdo_mysql gd zip mbstring xml bcmath exif fileinfo
+# Apache rewrite
+RUN a2enmod rewrite headers env
 
-# install composer
+COPY docker/vhost.conf /etc/apache2/sites-available/laravel.conf
+RUN a2dissite 000-default.conf && a2ensite laravel.conf
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www/html
+WORKDIR /var/www
 
-# install PHP dependencies (production only)
+# PHP deps
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-interaction --optimize-autoloader --no-scripts
+RUN composer install --no-dev --no-interaction --optimize-autoloader --no-scripts --prefer-dist --no-progress
 
-# copy app source
+# App source
 COPY . .
 
-# copy compiled frontend assets from stage 1
-COPY --from=frontend /app/public/js public/js
-COPY --from=frontend /app/public/css public/css
-COPY --from=frontend /app/public/mix-manifest.json public/mix-manifest.json
-
-# run post-install scripts now that full app is present
-RUN composer run-script post-autoload-dump
-
-# fix permissions
-RUN chown -R www-data:www-data storage bootstrap/cache public/contents \
+RUN composer run-script post-autoload-dump \
+    && chown -R www-data:www-data storage bootstrap/cache public/contents \
     && chmod -R 775 storage bootstrap/cache public/contents
 
+EXPOSE 80
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-EXPOSE 9000
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/entrypoint.sh"]
