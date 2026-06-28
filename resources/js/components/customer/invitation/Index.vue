@@ -14,9 +14,10 @@
           <div
             class="display-flex align-center justify-center-mobile display-mobile-column padding padding-mobile-bottom-15px"
           >
-            <div class="fonts big black semibold margin margin-right-10px">
-              {{ invitationData.title }}
-            </div>
+            <div
+              class="fonts big black semibold margin margin-right-10px"
+              v-html="invitationData.title"
+            />
             <div
               :class="`card-capsule ${invitationData.status === 'active' ? 'active' : ''}`"
               style="text-transform: capitalize; display: inline-block"

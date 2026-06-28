@@ -72,9 +72,10 @@
                   </div>
                 </div>
                 <div class="width width-100 padding padding-top-15px">
-                  <h2 class="fonts fonts-12 semibold black align-center">
-                    {{ invitationData && invitationData.title }}
-                  </h2>
+                  <h2
+                    class="fonts fonts-12 semibold black align-center"
+                    v-html="invitationData && invitationData.title"
+                  />
                   <div class="fonts fonts-10 black capitalize align-center">
                     {{ invitationCategory }} | {{ invitationType }}
                   </div>

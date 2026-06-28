@@ -30,8 +30,8 @@ import VueZoomer from 'vue-zoomer'
 import '../icons/fontawesome/css/all.min.css'
 import '../animations/app.css'
 
-// const api = 'http://localhost:8000'
-const api = 'https://undangabi.com'
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.endsWith('.test')
+const api = isLocal ? 'http://localhost:8000' : 'https://undangabi.com'
 
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = api

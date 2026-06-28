@@ -25,9 +25,10 @@
           <div
             class="width width-100 padding padding-top-15px padding-bottom-15px"
           >
-            <h2 class="fonts fonts-12 semibold black margin margin-bottom-5px">
-              {{ dt.invitation.title }}
-            </h2>
+            <h2
+              class="fonts fonts-12 semibold black margin margin-bottom-5px"
+              v-html="dt.invitation.title"
+            />
             <div class="display-flex">
               <div class="width width-30">
                 <div class="fonts fonts-10 black">Tema</div>
