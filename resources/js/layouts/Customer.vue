@@ -19,7 +19,7 @@
             v-if="$route.name !== 'customer-create-invitation'"
             :to="{ name: 'customer-create-invitation' }" 
           >
-            <el-button type="primary" class="inline-flex items-center">
+            <el-button size="small" type="primary" class="inline-flex items-center">
               <i class="el-icon-plus" /> Buat Undangan
             </el-button>
           </router-link>

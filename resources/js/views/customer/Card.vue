@@ -93,7 +93,7 @@
               }"
               target="_blank"
             >
-              <el-button icon="el-icon-message-solid" plain circle></el-button>
+              <el-button icon="el-icon-link" plain circle></el-button>
             </router-link>
           </div>
         </div>
