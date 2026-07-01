@@ -1,66 +1,57 @@
 <template>
-  <div id="App">
-    <div class="bg-white margin margin-bottom-20px">
-      <div v-loading="visibleLoading" class="width w-full">
-        <div class="flex justify-between items-center">
-          <div>
-            <div class="fonts-14 font-semibold text-black">
-              Pilih Paket Undangan
-            </div>
-            <div class="text-[11px] normal text-black">
-              Perubahan paket akan merubah harga dan fitur dari undangan.
-            </div>
-            <div
-              v-if="errorMessage.type"
-              class="fonts-12px red margin mb-[5px]"
-            >
-              {{ errorMessage.type[0] }}
-            </div>
-          </div>
+  <div id="App" class="space-y-6">
+    <div class="bg-[#faf9f5] rounded-xl p-6 border border-[#e6dfd8] space-y-4">
+      <div class="border-b border-[#e6dfd8] pb-3 flex justify-between items-center">
+        <div>
+          <h2 class="text-xl font-serif text-[#141413]">Pilih Paket Undangan</h2>
+          <p class="text-xs text-[#6c6a64] mt-1">Perubahan paket akan merubah harga dan fitur dari undangan.</p>
         </div>
+      </div>
+
+      <div v-if="errorMessage.type" class="text-xs text-[#c64545]">
+        {{ errorMessage.type[0] }}
+      </div>
+
+      <div v-loading="visibleLoading" class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
         <div
           v-for="(dt, i) in data"
           :key="i"
-          class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
+          :class="[
+            'bg-[#efe9de] rounded-xl p-5 border transition-all duration-200 cursor-pointer flex flex-col justify-between',
+            form.type === dt.value ? 'border-[#cc785c] ring-2 ring-[#cc785c]/10' : 'border-[#e6dfd8] hover:border-[#6c6a64]'
+          ]"
+          @click="onSelectData(dt)"
         >
-          <div
-            class="flex justify-between items-center margin mb-[15px]"
-          >
-            <div class="width width-55px">
+          <div class="flex justify-between items-start space-x-4">
+            <div class="h-16 w-16 rounded-lg overflow-hidden bg-[#faf9f5] border border-[#e6dfd8] flex-shrink-0 flex items-center justify-center">
               <div
-                class="image image-padding bg-grey"
+                v-if="dt.image"
+                class="w-full h-full bg-cover bg-center"
                 :style="`background-image: url(${themeImageThumbnailUrl + dt.image});`"
-              >
-                <i
-                  v-if="!dt.image"
-                  class="post-middle-absolute fa fa-lg fa-image"
-                ></i>
-              </div>
+              ></div>
+              <i v-else class="far fa-image text-[#8e8b82] text-xl"></i>
             </div>
-            <div class="flex justify-end">
-              <button
-                v-if="form.type === dt.value"
-                class="btn btn-main btn-icon"
-              >
-                <i class="fa fa-lg fa-check-circle"></i>
-              </button>
-              <button
-                v-else
-                class="btn btn-sekunder btn-icon"
-                @click="onSelectData(dt)"
-              >
-                <i class="fa fa-lg fa-check-circle"></i>
-              </button>
+            
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-bold text-[#141413] truncate capitalize">{{ dt.title }}</h3>
+              <p class="text-sm font-serif text-[#cc785c] mt-1">{{ dt.price }}</p>
             </div>
-          </div>
-          <div class="width w-full">
-            <div class="text-[11px] font-semibold text-black">{{ dt.title }}</div>
-            <div class="text-[10px] normal text-gray-500">{{ dt.price }}</div>
+
+            <div>
+              <el-button
+                :type="form.type === dt.value ? 'primary' : 'default'"
+                icon="el-icon-check"
+                circle
+                size="small"
+                class="pointer-events-none"
+              ></el-button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="width w-full flex justify-end items-center">
-        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-[#e6dfd8]">
+        <div class="text-xs text-[#6c6a64]">Total {{ totalRecord }} Paket</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -69,6 +60,7 @@
           :pager-count="5"
           layout="prev, pager, next"
           :total="totalRecord"
+          class="custom-pagination"
         >
         </el-pagination>
       </div>

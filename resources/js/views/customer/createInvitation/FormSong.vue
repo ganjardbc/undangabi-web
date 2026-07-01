@@ -1,62 +1,62 @@
 <template>
-  <div id="App">
-    <div class="bg-white margin margin-bottom-20px">
-      <div v-loading="visibleLoading" class="width w-full">
-        <div class="flex justify-between items-center">
-          <div class="fonts-14 font-semibold text-black">Pilih Lagu Latar</div>
-          <div
-            v-if="errorMessage.song_id"
-            class="fonts-12px red margin mb-[5px]"
-          >
-            {{ errorMessage.song_id[0] }}
-          </div>
+  <div id="App" class="space-y-6">
+    <div class="bg-[#faf9f5] rounded-xl p-6 border border-[#e6dfd8] space-y-4">
+      <div class="border-b border-[#e6dfd8] pb-3 flex justify-between items-center">
+        <div>
+          <h2 class="text-xl font-serif text-[#141413]">Pilih Lagu Latar</h2>
+          <p class="text-xs text-[#6c6a64] mt-1">Pilih alunan musik yang menemani tamu saat membuka undangan Anda.</p>
         </div>
+      </div>
+
+      <div v-if="errorMessage.song_id" class="text-xs text-[#c64545]">
+        {{ errorMessage.song_id[0] }}
+      </div>
+
+      <div v-loading="visibleLoading" class="space-y-3 pt-2">
         <div
           v-for="(dt, i) in data"
           :key="i"
-          class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
+          :class="[
+            'bg-[#efe9de] rounded-xl p-4 border flex items-center justify-between transition-all duration-200 cursor-pointer',
+            form.song_id === dt.id ? 'border-[#cc785c] ring-2 ring-[#cc785c]/10' : 'border-[#e6dfd8] hover:border-[#6c6a64]'
+          ]"
+          @click="onSelectData(dt)"
         >
-          <div
-            class="flex justify-between items-center margin mb-[15px]"
-          >
-            <div class="width width-55px">
-              <div class="image image-padding bg-grey">
-                <i class="post-middle-absolute fa fa-lg fa-microphone"></i>
-              </div>
+          <!-- Left side icon and text -->
+          <div class="flex items-center space-x-4">
+            <div class="h-12 w-12 rounded-full bg-[#faf9f5] border border-[#e6dfd8] flex items-center justify-center text-[#cc785c]">
+              <i class="fa fa-lg fa-microphone"></i>
             </div>
-            <div class="width width-100px flex justify-end">
-              <button
-                :class="`margin margin-right-10px btn ${selectedSong.id === dt.id ? 'btn-sekunder' : 'btn-sekunder'}`"
-                :disabled="selectedSong.id === dt.id ? false : isPlayed"
-                @click="onSelectedSong(dt)"
-              >
-                <i
-                  :class="`fa fa-lg ${selectedSong.id === dt.id ? 'fa-stop' : 'fa-play'}`"
-                ></i>
-              </button>
-              <button
-                v-if="form.song_id === dt.id"
-                class="btn btn-main btn-icon"
-              >
-                <i class="fa fa-lg fa-check-circle"></i>
-              </button>
-              <button
-                v-else
-                class="btn btn-sekunder btn-icon"
-                @click="onSelectData(dt)"
-              >
-                <i class="fa fa-lg fa-check-circle"></i>
-              </button>
+            <div>
+              <h3 class="text-sm font-semibold text-[#141413] capitalize">{{ dt.name }}</h3>
+              <p class="text-xs text-[#6c6a64] mt-0.5">{{ dt.description || 'Tanpa deskripsi.' }}</p>
             </div>
           </div>
-          <div class="width w-full">
-            <div class="text-[11px] font-semibold text-black">{{ dt.name }}</div>
-            <div class="text-[10px] normal text-gray-500">{{ dt.description }}</div>
+
+          <!-- Action buttons right side -->
+          <div class="flex items-center space-x-2" @click.stop>
+            <el-button
+              :type="selectedSong.id === dt.id ? 'danger' : 'default'"
+              :icon="selectedSong.id === dt.id ? 'el-icon-video-pause' : 'el-icon-video-play'"
+              circle
+              size="small"
+              :disabled="selectedSong.id === dt.id ? false : isPlayed"
+              @click="onSelectedSong(dt)"
+            ></el-button>
+
+            <el-button
+              :type="form.song_id === dt.id ? 'primary' : 'default'"
+              icon="el-icon-check"
+              circle
+              size="small"
+              @click="onSelectData(dt)"
+            ></el-button>
           </div>
         </div>
       </div>
-      <div class="width w-full flex justify-end items-center">
-        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-[#e6dfd8]">
+        <div class="text-xs text-[#6c6a64]">Total {{ totalRecord }} Lagu</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -65,6 +65,7 @@
           :pager-count="5"
           layout="prev, pager, next"
           :total="totalRecord"
+          class="custom-pagination"
         >
         </el-pagination>
       </div>

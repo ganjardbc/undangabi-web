@@ -1,73 +1,51 @@
 <template>
-  <div id="App">
-    <div class="main-screen p-4 pt-[15px] pb-[15px]">
-      <h2 class="text-[22px] font-semibold text-black items-center">Buat Undangan</h2>
-      <p class="text-[10px] normal text-black items-center">
-        Isi informasi berikut untuk membuat undangan.
-      </p>
-      <p class="text-[10px] normal text-black items-center">
-        Setelah undangan dibuat masuk ke menu "Kelola Undangan" untuk mengisi
-        data pengantin, acara dll.
-      </p>
-      <div
-        class="width width-60 width-mobile width-center p-4 padding-bottom-65px"
-      >
-        <div
-          class="width w-full width-center p-4 padding-top-30px padding-bottom-30px"
+  <div id="App" class="w-full bg-[#faf9f5] min-h-screen p-6 rounded-xl">
+    <div class="max-w-4xl mx-auto space-y-6">
+      <!-- Title Block -->
+      <div class="border-b border-canvas pb-6">
+        <h1 class="text-3xl font-serif text-[#141413] tracking-tight">Buat Undangan</h1>
+        <p class="text-sm text-[#6c6a64] mt-2">
+          Isi informasi berikut untuk membuat undangan. Setelah undangan dibuat, masuk ke menu "Kelola Undangan" untuk mengisi data pengantin, acara, dll.
+        </p>
+      </div>
+
+      <!-- Form Wizard Step Header -->
+      <div class="bg-[#efe9de] rounded-xl p-6 border border-canvas">
+        <el-steps :active="activeIndex" finish-status="success" align-center class="custom-wizard-steps">
+          <el-step title="Informasi"></el-step>
+          <el-step title="Paket"></el-step>
+          <el-step title="Tema"></el-step>
+          <el-step title="Lagu Latar"></el-step>
+          <el-step title="Review"></el-step>
+        </el-steps>
+      </div>
+
+      <!-- Step Content Area -->
+      <div class="bg-white rounded-xl p-8 border border-canvas min-h-[300px]">
+        <FormInformation v-if="activeIndex === 0" />
+        <FormPacket v-if="activeIndex === 1" />
+        <FormTheme v-if="activeIndex === 2" />
+        <FormSong v-if="activeIndex === 3" />
+        <FormReview v-if="activeIndex === 4" />
+      </div>
+
+      <!-- Step Navigation (Footer Actions) -->
+      <div class="flex justify-end items-center bg-[#efe9de] rounded-xl p-4 border border-canvas">
+        <el-button @click="goBack" class="font-medium">
+          {{ activeIndex === 0 ? 'Batalkan' : 'Kembali' }}
+        </el-button>
+        <el-button
+          type="primary"
+          :disabled="disabledNextButton"
+          @click="onNext"
+          class="font-medium"
         >
-          <el-steps :active="activeIndex" finish-status="success" align-center>
-            <el-step>
-              <div slot="title" style="font-size: 13px">Informasi</div>
-            </el-step>
-            <el-step>
-              <div slot="title" style="font-size: 13px">Paket</div>
-            </el-step>
-            <el-step>
-              <div slot="title" style="font-size: 13px">Tema</div>
-            </el-step>
-            <el-step>
-              <div slot="title" style="font-size: 13px">Lagu Latar</div>
-            </el-step>
-          </el-steps>
-        </div>
-
-        <div class="p-4 pl-[15px] pr-[15px]">
-          <FormInformation v-if="activeIndex === 0" />
-          <FormPacket v-if="activeIndex === 1" />
-          <FormTheme v-if="activeIndex === 2" />
-          <FormSong v-if="activeIndex === 3" />
-          <FormReview v-if="activeIndex === 4" />
-        </div>
+          {{ activeIndex === totalIndex ? 'Buat Undangan' : 'Selanjutnya' }}
+        </el-button>
       </div>
     </div>
 
-    <div id="floating-footer">
-      <div class="main-screen">
-        <div class="p-4 pl-[15px] pr-[15px]">
-          <div
-            class="width width-60 width-mobile width-center bg-white shadow-sm border-radius"
-          >
-            <div
-              class="flex justify-end items-center p-4 p-[15px]"
-            >
-              <button class="btn btn-white" @click="goBack">
-                {{ activeIndex === 0 ? 'Batalkan' : 'Kembali' }}
-              </button>
-              <button
-                class="btn btn-main margin margin-left-5px"
-                :disabled="disabledNextButton"
-                @click="onNext"
-              >
-                {{
-                  activeIndex === totalIndex ? 'Buat Undangan' : 'Selanjutnya'
-                }}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Modals & Alert Popups -->
     <AppPopupConfirmed
       v-if="visibleConfirmed"
       :title="titleConfirmed"

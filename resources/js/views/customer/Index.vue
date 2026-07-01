@@ -1,32 +1,45 @@
 <template>
-  <div id="App" class="w-full space-y-6">
-    <div class="bg-white rounded-xl border border-gray-200/80 p-5 shadow-sm space-y-4">
-      <div class="flex justify-between items-center">
-        <div class="text-xl font-bold text-gray-900">Daftar Undangan</div>
+  <div id="App" class="w-full space-y-6 bg-[#faf9f5]">
+    <!-- Header Area -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#e6dfd8] space-y-4 md:space-y-0">
+      <div>
+        <h1 class="text-3xl font-serif text-[#141413] tracking-tight">Daftar Undangan</h1>
+        <p class="text-sm text-[#6c6a64] mt-1">Kelola dan lihat daftar undangan digital Anda di sini.</p>
       </div>
-      <div class="w-full">
-        <el-input
-          placeholder="Cari undangan"
-          v-model="formFilter.search"
-          class="subject-input-with-select"
-          @input="handleFilterSearch"
-          clearable
-        >
-          <el-button
-            slot="append"
-            icon="el-icon-search"
-            @click="getData"
-          ></el-button>
-        </el-input>
-      </div>
+      <router-link
+        :to="{ name: 'customer-create-invitation' }"
+        class="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition duration-150 no-underline text-sm"
+      >
+        <i class="fa fa-plus mr-2"></i> Buat Undangan Baru
+      </router-link>
     </div>
 
+    <!-- Filter & Search Panel -->
+    <div class="w-full">
+      <el-input
+        placeholder="Cari undangan..."
+        v-model="formFilter.search"
+        @input="handleFilterSearch"
+        clearable
+        class="custom-search-input"
+      >
+        <el-button
+          slot="append"
+          icon="el-icon-search"
+          @click="getData"
+          class="bg-[#cc785c] text-white border-none"
+        ></el-button>
+      </el-input>
+    </div>
+
+    <!-- Cards List -->
     <div v-loading="visibleLoading">
       <Card :data.sync="data" />
     </div>
 
-    <div class="w-full flex justify-between items-center pt-4 border-t border-gray-150">
-      <div class="text-xs text-gray-500 font-medium">Total {{ totalRecord }}</div>
+    <!-- Pagination -->
+    <div class="w-full flex flex-col sm:flex-row justify-between items-center border-t border-[#e6dfd8] space-y-4 sm:space-y-0">
+      <div class="text-sm text-[#6c6a64]">Menampilkan <span class="font-semibold text-[#141413]">{{ totalRecord }}</span> undangan</div>
       <el-pagination
         background
         @current-change="handleCurrentChange"
@@ -35,24 +48,9 @@
         :pager-count="5"
         layout="prev, pager, next"
         :total="totalRecord"
+        class="custom-pagination"
       >
       </el-pagination>
-    </div>
-
-    <div class="relative w-full h-[70px]">
-      <div class="fixed max-w-7xl w-[calc(100%-32px)] bottom-4 left-1/2 -translate-x-1/2 z-40">
-        <div
-          class="bg-white/95 backdrop-blur-md border border-gray-200/80 shadow-md rounded-xl flex items-center p-3"
-        >
-          <!-- <Create class="width w-full" /> -->
-          <router-link
-            :to="{ name: 'customer-create-invitation' }"
-            class="w-full inline-flex items-center justify-center bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold py-2.5 px-6 rounded-full shadow-sm transition duration-150 no-underline"
-          >
-            <i class="fa fa-lg fa-plus-circle mr-2"></i> Buat Undangan
-          </router-link>
-        </div>
-      </div>
     </div>
   </div>
 </template>

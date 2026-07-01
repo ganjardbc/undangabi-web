@@ -1,208 +1,129 @@
 <template>
-  <div id="App">
-    <div class="card bg-white shadow-sm margin margin-bottom-20px">
-      <div class="fonts-14 font-semibold text-black margin mb-[15px]">
-        Informasi
-      </div>
-      <div class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">
-          ID Undangan
+  <div id="App" class="space-y-6">
+    <!-- Informasi Review Card -->
+    <div class="bg-[#faf9f5] rounded-xl p-6 border border-[#e6dfd8] space-y-4">
+      <h2 class="text-xl font-serif text-[#141413] border-b border-[#e6dfd8] pb-3">Informasi Acara</h2>
+      
+      <div class="space-y-3">
+        <div class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">ID Undangan</span>
+          <span class="col-span-2 text-[#141413] font-semibold">: {{ form.invitation_id }}</span>
         </div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.invitation_id }}
+        <div v-if="errorMessage.invitation_id" class="text-xs text-[#c64545]">
+          {{ errorMessage.invitation_id[0] }}
         </div>
-      </div>
-      <div
-        v-if="errorMessage.invitation_id"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.invitation_id[0] }}
-      </div>
 
-      <div class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">
-          Short Link
+        <div class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">Short Link</span>
+          <span class="col-span-2 text-[#141413] font-mono">: {{ form.short_link }}</span>
         </div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.short_link }}
+        <div v-if="errorMessage.short_link" class="text-xs text-[#c64545]">
+          {{ errorMessage.short_link[0] }}
         </div>
-      </div>
-      <div
-        v-if="errorMessage.short_link"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.short_link[0] }}
-      </div>
 
-      <div class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">Judul</div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.title }}
+        <div class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">Judul Undangan</span>
+          <span class="col-span-2 text-[#141413] font-semibold">: {{ form.title }}</span>
         </div>
-      </div>
-      <div
-        v-if="errorMessage.title"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.title[0] }}
-      </div>
+        <div v-if="errorMessage.title" class="text-xs text-[#c64545]">
+          {{ errorMessage.title[0] }}
+        </div>
 
-      <div class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">
-          Tanggal Acara
+        <div class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">Tanggal Acara</span>
+          <span class="col-span-2 text-[#141413]">: {{ form.date | moment('dddd, Do MMMM YYYY') }}</span>
         </div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.date | moment('dddd, Do MMMM YYYY') }}
+        <div v-if="errorMessage.date" class="text-xs text-[#c64545]">
+          {{ errorMessage.date[0] }}
         </div>
-      </div>
-      <div
-        v-if="errorMessage.date"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.date[0] }}
-      </div>
 
-      <div v-if="form.time" class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">
-          Jam Acara
+        <div v-if="form.time" class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">Jam Acara</span>
+          <span class="col-span-2 text-[#141413]">: {{ form.time }} {{ form.time_zone }}</span>
         </div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.time }} {{ form.time_zone }}
-        </div>
-      </div>
-      <div
-        v-if="errorMessage.date"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.date[0] }}
-      </div>
 
-      <div class="p-4 padding-bottom-5px flex">
-        <div class="width width-200px text-[11px] font-semibold text-black">
-          Alamat / Deskripsi
+        <div class="grid grid-cols-3 text-sm">
+          <span class="text-[#6c6a64] font-medium">Alamat / Deskripsi</span>
+          <span class="col-span-2 text-[#141413] line-clamp-3">: {{ form.description }}</span>
         </div>
-        <div class="width w-full text-[11px] normal text-black">
-          : {{ form.description }}
-        </div>
-      </div>
-      <div
-        v-if="errorMessage.description"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.description[0] }}
-      </div>
-    </div>
-
-    <div class="card bg-white shadow-sm margin margin-bottom-20px">
-      <div class="fonts-14 font-semibold text-black">Paket</div>
-      <div
-        v-if="errorMessage.type"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.type[0] }}
-      </div>
-      <div
-        class="card bg-white border-full margin margin-top-15px mb-[15px]"
-      >
-        <div
-          class="flex justify-between items-center margin mb-[15px]"
-        >
-          <div class="width width-55px">
-            <div class="image image-padding bg-grey">
-              <i class="post-middle-absolute fa fa-lg fa-image"></i>
-            </div>
-          </div>
-          <div class="width width-100px flex justify-end">
-            <button class="btn btn-main btn-icon">
-              <i class="fa fa-lg fa-check-circle"></i>
-            </button>
-          </div>
-        </div>
-        <div class="width w-full">
-          <div class="text-[11px] font-semibold text-black">
-            {{ selectedPacket.title }}
-          </div>
-          <div class="text-[10px] normal text-gray-500">
-            {{ selectedPacket.price }}
-          </div>
+        <div v-if="errorMessage.description" class="text-xs text-[#c64545]">
+          {{ errorMessage.description[0] }}
         </div>
       </div>
     </div>
 
-    <div class="card bg-white shadow-sm margin margin-bottom-20px">
-      <div class="fonts-14 font-semibold text-black">Tema</div>
-      <div
-        v-if="errorMessage.theme_id"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.theme_id[0] }}
-      </div>
-      <div
-        class="card bg-white border-full margin margin-top-15px mb-[15px]"
-      >
-        <div
-          class="flex justify-between items-center margin mb-[15px]"
-        >
-          <div class="width width-55px">
-            <div
-              class="image image-padding bg-grey"
-              :style="`background-image: url(${themeImageThumbnailUrl + selectedTheme.image});`"
-            >
-              <i
-                v-if="!selectedTheme.image"
-                class="post-middle-absolute fa fa-lg fa-image"
-              ></i>
+    <!-- Packet, Theme, and Song Review Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Packet -->
+      <div class="bg-[#faf9f5] rounded-xl p-5 border border-[#e6dfd8] flex flex-col justify-between">
+        <div>
+          <span class="block text-xs font-semibold text-[#6c6a64] uppercase tracking-wider mb-3">Paket</span>
+          <div v-if="errorMessage.type" class="text-xs text-[#c64545] mb-2">
+            {{ errorMessage.type[0] }}
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded bg-[#efe9de] flex items-center justify-center text-[#cc785c]">
+              <i class="fa fa-lg fa-flag"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-[#141413] capitalize">{{ selectedPacket.title }}</h4>
+              <p class="text-xs text-[#cc785c] mt-0.5">{{ selectedPacket.price }}</p>
             </div>
           </div>
-          <div class="width width-100px flex justify-end">
-            <button class="btn btn-main btn-icon">
-              <i class="fa fa-lg fa-check-circle"></i>
-            </button>
-          </div>
         </div>
-        <div class="width w-full">
-          <div class="text-[11px] font-semibold text-black">
-            {{ selectedTheme.name }}
-          </div>
-          <div class="text-[10px] normal text-gray-500">
-            {{ selectedTheme.description }}
-          </div>
+        <div class="mt-4 pt-3 border-t border-[#e6dfd8] flex justify-end">
+          <el-tag type="success" size="mini" effect="dark" class="rounded-full">Terpilih</el-tag>
         </div>
       </div>
-    </div>
 
-    <div class="card bg-white shadow-sm margin margin-bottom-20px">
-      <div class="fonts-14 font-semibold text-black">Lagu Latar</div>
-      <div
-        v-if="errorMessage.song_id"
-        class="fonts-12px red margin mb-[5px]"
-      >
-        {{ errorMessage.song_id[0] }}
-      </div>
-      <div
-        class="card bg-white border-full margin margin-top-15px mb-[15px]"
-      >
-        <div
-          class="flex justify-between items-center margin mb-[15px]"
-        >
-          <div class="width width-55px">
-            <div class="image image-padding bg-grey">
-              <i class="post-middle-absolute fa fa-lg fa-microphone"></i>
+      <!-- Theme -->
+      <div class="bg-[#faf9f5] rounded-xl p-5 border border-[#e6dfd8] flex flex-col justify-between">
+        <div>
+          <span class="block text-xs font-semibold text-[#6c6a64] uppercase tracking-wider mb-3">Tema</span>
+          <div v-if="errorMessage.theme_id" class="text-xs text-[#c64545] mb-2">
+            {{ errorMessage.theme_id[0] }}
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded overflow-hidden bg-gray-100 flex-shrink-0">
+              <div
+                v-if="selectedTheme.image"
+                class="w-full h-full bg-cover bg-center"
+                :style="`background-image: url(${themeImageThumbnailUrl + selectedTheme.image});`"
+              ></div>
+              <div v-else class="w-full h-full flex items-center justify-center">
+                <i class="far fa-image text-[#8e8b82] text-sm"></i>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-[#141413] capitalize">{{ selectedTheme.name }}</h4>
+              <p class="text-xs text-[#6c6a64] mt-0.5 line-clamp-1">{{ selectedTheme.description || 'Tidak ada deskripsi.' }}</p>
             </div>
           </div>
-          <div class="width width-100px flex justify-end">
-            <button class="btn btn-main btn-icon">
-              <i class="fa fa-lg fa-check-circle"></i>
-            </button>
+        </div>
+        <div class="mt-4 pt-3 border-t border-[#e6dfd8] flex justify-end">
+          <el-tag type="success" size="mini" effect="dark" class="rounded-full">Terpilih</el-tag>
+        </div>
+      </div>
+
+      <!-- Song -->
+      <div class="bg-[#faf9f5] rounded-xl p-5 border border-[#e6dfd8] flex flex-col justify-between">
+        <div>
+          <span class="block text-xs font-semibold text-[#6c6a64] uppercase tracking-wider mb-3">Lagu Latar</span>
+          <div v-if="errorMessage.song_id" class="text-xs text-[#c64545] mb-2">
+            {{ errorMessage.song_id[0] }}
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded bg-[#efe9de] flex items-center justify-center text-[#cc785c]">
+              <i class="fa fa-lg fa-music"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-[#141413] capitalize">{{ selectedSong.name }}</h4>
+              <p class="text-xs text-[#6c6a64] mt-0.5 line-clamp-1">{{ selectedSong.description || 'Tanpa deskripsi.' }}</p>
+            </div>
           </div>
         </div>
-        <div class="width w-full">
-          <div class="text-[11px] font-semibold text-black">
-            {{ selectedSong.name }}
-          </div>
-          <div class="text-[10px] normal text-gray-500">
-            {{ selectedSong.description }}
-          </div>
+        <div class="mt-4 pt-3 border-t border-[#e6dfd8] flex justify-end">
+          <el-tag type="success" size="mini" effect="dark" class="rounded-full">Terpilih</el-tag>
         </div>
       </div>
     </div>
