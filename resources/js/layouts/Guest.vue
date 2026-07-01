@@ -16,10 +16,10 @@
           </button>
         </div>
         <div :class="visibleMenu ? 'hc-info open' : 'hc-info'">
-          <div class="display-flex display-mobile">
+          <div class="flex display-mobile">
             <div class="hc-menu-mobile">
-              <div class="display-flex space-between align-center">
-                <div class="fonts fonts-11 black semibold">Menu</div>
+              <div class="flex justify-between items-center">
+                <div class="text-[11px] text-black font-semibold">Menu</div>
                 <button class="btn btn-icon btn-white" @click="closeMenu">
                   <i class="fa fa-lg fa-times"></i>
                 </button>
@@ -58,7 +58,7 @@
     <div class="theme-footer" style="padding: 50px 0">
       <div class="theme-padding">
         <div class="theme-container content-center">
-          <div class="display-flex center">
+          <div class="flex center">
             <a href="mailto:admin@undangabi.com" style="padding: 0 5px">
               <button class="btn btn-icon btn-sekunder btn-small-radius">
                 <i class="far fa-lg fa-envelope"></i>
@@ -93,12 +93,12 @@
             </a>
           </div>
           <div style="text-align: center; padding-top: 30px">
-            <div class="fonts fonts-9 grey">
+            <div class="text-[9px] text-gray-500">
               This Site All Right Reserved @2022
             </div>
             <div>
-              <span class="fonts fonts-9 grey">Powered by</span>
-              <span class="fonts fonts-9 black semibold">UNDANGABI</span>
+              <span class="text-[9px] text-gray-500">Powered by</span>
+              <span class="text-[9px] text-black font-semibold">UNDANGABI</span>
             </div>
           </div>
         </div>
@@ -110,13 +110,13 @@
 </template>
 
 <script>
-import logo from '../../../img/logo.png'
-import logo2 from '../../../img/icon.png'
-import AppWrapper from '../modules/AppWrapper'
-import AppButton from '../modules/AppButton'
-import AppText from '../modules/AppText'
-import SearchField from '../modules/SearchField'
-import AppToast from '../modules/AppToast'
+import logo from '../../img/logo.png'
+import logo2 from '../../img/icon.png'
+import AppWrapper from '../components/modules/AppWrapper'
+import AppButton from '../components/modules/AppButton'
+import AppText from '../components/modules/AppText'
+import SearchField from '../components/modules/SearchField'
+import AppToast from '../components/modules/AppToast'
 
 const navbar = [
   { label: 'Undangan Generator', link: 'invitation-generator' },

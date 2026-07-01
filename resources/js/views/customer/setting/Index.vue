@@ -1,25 +1,25 @@
 <template>
   <div id="App">
-    <div class="width width-100">
-      <div class="fonts fonts-22 semibold black">Pengaturan</div>
+    <div class="width w-full">
+      <div class="text-[22px] font-semibold text-black">Pengaturan</div>
       <div
-        class="card bg-white box-shadow margin margin-top-20px margin margin-bottom-20px"
+        class="card bg-white shadow-sm margin margin-top-20px margin-bottom-20px"
       >
-        <div class="fonts fonts-14 semibold black">Reservasi</div>
-        <div class="padding padding-top-10px padding-bottom-5px">
+        <div class="fonts-14 font-semibold text-black">Reservasi</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
           <div
-            class="display-flex display-mobile align-center padding padding-bottom-5px"
+            class="flex display-mobile items-center p-4 padding-bottom-5px"
           >
             <div class="width width-70 width-mobile">
-              <div class="fonts fonts-11 semibold black">
+              <div class="text-[11px] font-semibold text-black">
                 Tutup atau buka reservasi tamu ?
               </div>
-              <div class="fonts fonts-10 normal grey">
+              <div class="text-[10px] normal text-gray-500">
                 Jika reservasi tamu ditutup tamu undangan tidak bisa mengisi
                 atau mengedit data mereka di buku tamu.
               </div>
             </div>
-            <div class="width width-30 width-mobile display-flex flex-end">
+            <div class="width width-30 width-mobile flex justify-end">
               <el-switch
                 v-model="form.is_reservation_enable"
                 :active-value="1"
@@ -32,26 +32,26 @@
           </div>
           <div
             v-if="errorMessage.is_reservation_enable"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ errorMessage.is_reservation_enable }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
           <div
-            class="display-flex display-mobile align-center padding padding-bottom-5px"
+            class="flex display-mobile items-center p-4 padding-bottom-5px"
           >
             <div class="width width-70 width-mobile">
-              <div class="fonts fonts-11 semibold black">
+              <div class="text-[11px] font-semibold text-black">
                 Tunjukan qrcode di undangan tamu ?
               </div>
-              <div class="fonts fonts-10 normal grey">
+              <div class="text-[10px] normal text-gray-500">
                 Jika qrcode di undangan tamu disembunyikan maka kamu tidak akan
                 bisa melakukan perubahan status kehadiran tamu yang datang ke
                 acara kamu.
               </div>
             </div>
-            <div class="width width-30 width-mobile display-flex flex-end">
+            <div class="width width-30 width-mobile flex justify-end">
               <el-switch
                 v-model="form.is_qrcode_enable"
                 :active-value="1"
@@ -64,26 +64,26 @@
           </div>
           <div
             v-if="errorMessage.is_qrcode_enable"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ errorMessage.is_qrcode_enable }}
           </div>
         </div>
       </div>
 
-      <div class="card bg-white box-shadow margin margin-bottom-20px">
-        <div class="fonts fonts-14 semibold black">Undangan</div>
-        <div class="padding padding-top-10px padding-bottom-5px">
+      <div class="card bg-white shadow-sm margin margin-bottom-20px">
+        <div class="fonts-14 font-semibold text-black">Undangan</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
           <div
-            class="display-flex display-mobile align-center padding padding-bottom-5px"
+            class="flex display-mobile items-center p-4 padding-bottom-5px"
           >
             <div class="width width-70 width-mobile">
-              <div class="fonts fonts-11 semibold black">Privasi</div>
-              <div class="fonts fonts-10 normal grey">
+              <div class="text-[11px] font-semibold text-black">Privasi</div>
+              <div class="text-[10px] normal text-gray-500">
                 Ubah pengaturan privasi undangan untuk Publik atau Private
               </div>
             </div>
-            <div class="width width-30 width-mobile display-flex flex-end">
+            <div class="width width-30 width-mobile flex justify-end">
               <el-switch
                 v-model="form.privacy"
                 active-value="private"
@@ -94,23 +94,23 @@
               </el-switch>
             </div>
           </div>
-          <div v-if="errorMessage.privacy" class="fonts fonts-12px red">
+          <div v-if="errorMessage.privacy" class="fonts-12px red">
             {{ errorMessage.privacy[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
           <div
-            class="display-flex display-mobile align-center padding padding-bottom-5px"
+            class="flex display-mobile items-center p-4 padding-bottom-5px"
           >
             <div class="width width-70 width-mobile">
-              <div class="fonts fonts-11 semibold black">
+              <div class="text-[11px] font-semibold text-black">
                 Info ProKes
               </div>
-              <div class="fonts fonts-10 normal grey">
+              <div class="text-[10px] normal text-gray-500">
                 Munculkan Info ProKes di undangan tamu ?
               </div>
             </div>
-            <div class="width width-30 width-mobile display-flex flex-end">
+            <div class="width width-30 width-mobile flex justify-end">
               <el-switch
                 v-model="form.is_prokes_enable"
                 :active-value="1"
@@ -123,7 +123,7 @@
           </div>
           <div
             v-if="errorMessage.is_prokes_enable"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ errorMessage.is_prokes_enable }}
           </div>
@@ -133,7 +133,7 @@
 
     <div class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="submitData">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Simpan Pengaturan
@@ -160,10 +160,10 @@
 </template>
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppEmpty from '../../modules/AppEmpty'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppEmpty from '../../../components/modules/AppEmpty'
 
 export default {
   name: 'App',

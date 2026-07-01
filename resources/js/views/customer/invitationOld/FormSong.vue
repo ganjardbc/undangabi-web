@@ -1,19 +1,19 @@
 <template>
   <div id="App">
     <div class="bg-white">
-      <div v-if="dataSong" class="width width-100">
-        <div class="fonts fonts-14 semibold black">Lagu Sekarang</div>
-        <div class="width width-100 padding padding-top-15px">
-          <div class="card bg-white box-shadow">
+      <div v-if="dataSong" class="width w-full">
+        <div class="fonts-14 font-semibold text-black">Lagu Sekarang</div>
+        <div class="width w-full p-4 pt-[15px]">
+          <div class="card bg-white shadow-sm">
             <div
-              class="display-flex space-between align-center margin margin-bottom-15px"
+              class="flex justify-between items-center margin mb-[15px]"
             >
               <div class="width width-55px">
                 <div class="image image-padding bg-grey">
                   <i class="post-middle-absolute fa fa-lg fa-microphone"></i>
                 </div>
               </div>
-              <div class="width width-100px display-flex flex-end">
+              <div class="width width-100px flex justify-end">
                 <button
                   :class="`btn btn-icon ${selectedSong.id === dataSong.id ? 'btn-sekunder' : 'btn-sekunder'}`"
                   :disabled="selectedSong.id === dataSong.id ? false : isPlayed"
@@ -25,11 +25,11 @@
                 </button>
               </div>
             </div>
-            <div class="width width-100">
-              <div class="fonts fonts-11 semibold black">
+            <div class="width w-full">
+              <div class="text-[11px] font-semibold text-black">
                 {{ dataSong.name }}
               </div>
-              <div class="fonts fonts-10 normal grey">
+              <div class="text-[10px] normal text-gray-500">
                 {{ dataSong.description }}
               </div>
             </div>
@@ -37,26 +37,26 @@
         </div>
       </div>
       <div
-        class="margin margin-bottom-15px padding padding-top-20px border-bottom"
+        class="margin mb-[15px] p-4 padding-top-20px border-bottom"
       ></div>
-      <div v-loading="visibleLoading" class="width width-100">
-        <div class="display-flex space-between align-center">
-          <div class="fonts fonts-14 semibold black">Daftar Lagu</div>
+      <div v-loading="visibleLoading" class="width w-full">
+        <div class="flex justify-between items-center">
+          <div class="fonts-14 font-semibold text-black">Daftar Lagu</div>
         </div>
         <div
           v-for="(dt, i) in data"
           :key="i"
-          class="card bg-white box-shadow margin margin-top-15px margin-bottom-15px"
+          class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
         >
           <div
-            class="display-flex space-between align-center margin margin-bottom-15px"
+            class="flex justify-between items-center margin mb-[15px]"
           >
             <div class="width width-55px">
               <div class="image image-padding bg-grey">
                 <i class="post-middle-absolute fa fa-lg fa-microphone"></i>
               </div>
             </div>
-            <div class="width width-100px display-flex flex-end">
+            <div class="width width-100px flex justify-end">
               <button
                 :class="`margin margin-right-10px btn btn-icon ${selectedSong.id === dt.id ? 'btn-sekunder' : 'btn-sekunder'}`"
                 :disabled="selectedSong.id === dt.id ? false : isPlayed"
@@ -81,14 +81,14 @@
               </button>
             </div>
           </div>
-          <div class="width width-100">
-            <div class="fonts fonts-11 semibold black">{{ dt.name }}</div>
-            <div class="fonts fonts-10 normal grey">{{ dt.description }}</div>
+          <div class="width w-full">
+            <div class="text-[11px] font-semibold text-black">{{ dt.name }}</div>
+            <div class="text-[10px] normal text-gray-500">{{ dt.description }}</div>
           </div>
         </div>
       </div>
-      <div class="width width-100 display-flex flex-end align-center">
-        <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+      <div class="width w-full flex justify-end items-center">
+        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -105,7 +105,7 @@
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
+import AppLoader from '../../../components/modules/AppLoader'
 
 export default {
   name: 'App',

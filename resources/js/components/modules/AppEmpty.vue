@@ -1,19 +1,19 @@
 <template>
-  <div id="AppEmpty" class="content-center padding padding-30px">
+  <div id="AppEmpty" class="content-center p-4 padding-30px">
     <div
-      class="image image-200px image-circle bg-white box-shadow"
+      class="image image-200px image-circle bg-white shadow-sm"
       style="margin: auto"
     >
       <i
         :class="`post-center fonts fonts-64 ${iconColor ? iconColor : 'primary'} ${icon ? icon : 'fa fa-3x fa-info-circle'}`"
       ></i>
     </div>
-    <div class="fonts fonts-14 semibold align-center margin margin-top-20px">
+    <div class="fonts-14 font-semibold items-center margin margin-top-20px">
       {{ title ? title : 'NO DATAS FOUND' }}
     </div>
     <div
       v-if="description"
-      class="fonts fonts-10 black normal align-center margin margin-top-10px"
+      class="text-[10px] text-black normal items-center margin margin-top-10px"
     >
       {{ description ? description : '' }}
     </div>

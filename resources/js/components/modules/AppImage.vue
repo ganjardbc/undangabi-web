@@ -1,5 +1,5 @@
 <template>
-  <div id="AppImage" class="display-flex">
+  <div id="AppImage" class="flex">
     <div style="width: 100px; margin-right: 15px">
       <input
         v-if="this.isEnable"
@@ -39,12 +39,12 @@
     <div v-if="isEnable" style="width: calc(100% - 115px); padding-top: 3px">
       <!-- <div v-if="this.isEnable" class="field-label" style="margin-bottom: 10px;">Choose / change image</div> -->
       <div
-        class="fonts fonts-10 black"
+        class="text-[10px] text-black"
         style="margin-bottom: 5px; word-wrap: break-word"
       >
         Name: {{ formImage.name }}
       </div>
-      <div class="fonts fonts-10 black">Size: {{ formImage.size }}</div>
+      <div class="text-[10px] text-black">Size: {{ formImage.size }}</div>
       <button
         v-if="!visibleUploadButton"
         :class="'btn btn-full btn-primary'"

@@ -12,7 +12,7 @@
       <div class="container__left reverse-left">
         <div v-if="dt.image" class="container__image theme-invitation-animate">
           <div
-            class="image image-padding image-center box-shadow bg-white"
+            class="image image-padding image-center shadow-sm bg-white"
             :style="`border-radius: ${customBorderRadius};`"
           >
             <img
@@ -30,7 +30,7 @@
       </div>
       <div class="container__middle">
         <div
-          class="image image-50px image-circle image-center box-shadow theme-invitation-animate"
+          class="image image-50px image-circle image-center shadow-sm theme-invitation-animate"
           :style="`background-color: ${customMainColor};`"
         >
           <i

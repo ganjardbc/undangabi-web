@@ -1,14 +1,14 @@
 <template>
   <div id="App">
-    <div v-if="!isGoldInvitation" class="width width-100">
+    <div v-if="!isGoldInvitation" class="width w-full">
       <AppEmpty
         title="Upgrade paket ke 'Gold' agar dapat menggunakan fitur ini."
       />
     </div>
 
-    <div v-if="isGoldInvitation" class="width width-100">
-      <div class="fonts fonts-22 semibold black">Jadwal</div>
-      <div class="width width-100 padding padding-top-15px padding-bottom-15px">
+    <div v-if="isGoldInvitation" class="width w-full">
+      <div class="text-[22px] font-semibold text-black">Jadwal</div>
+      <div class="width w-full p-4 pt-[15px] pb-[15px]">
         <el-input
           placeholder="Cari jadwal"
           v-model="formFilter.search"
@@ -34,9 +34,9 @@
         />
       </div>
       <div
-        class="width width-100 display-flex flex-end align-center padding padding-top-15px"
+        class="width w-full flex justify-end items-center p-4 pt-[15px]"
       >
-        <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -52,7 +52,7 @@
 
     <div v-if="isGoldInvitation" class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="openFormPopup('create')">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Tambah Jadwal
@@ -100,11 +100,11 @@
 </template>
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AppPopupConfirmed from '../../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../../modules/AppPopupAlert'
-import AppPopupLoader from '../../../modules/AppPopupLoader'
-import AppFileUpload from '../../../modules/AppFileUpload'
-import AppEmpty from '../../../modules/AppEmpty'
+import AppPopupConfirmed from '../../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../../components/modules/AppPopupLoader'
+import AppFileUpload from '../../../../components/modules/AppFileUpload'
+import AppEmpty from '../../../../components/modules/AppEmpty'
 import Form from './Form'
 import Card from './Card'
 

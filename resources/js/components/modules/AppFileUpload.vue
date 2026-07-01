@@ -1,15 +1,15 @@
 <template>
   <div id="App" class="display-popup">
     <div class="post-middle-absolute width width-400px width-mobile">
-      <div class="padding padding-15px">
-        <div class="card box-shadow bg-white">
-          <div class="display-flex space-between align-center">
-            <div class="fonts fonts-11 semibold black">Upload File</div>
+      <div class="p-4 p-[15px]">
+        <div class="card shadow-sm bg-white">
+          <div class="flex justify-between items-center">
+            <div class="text-[11px] font-semibold text-black">Upload File</div>
             <button class="btn btn-white btn-icon" @click="onClose">
               <i class="fa fa-lg fa-times"></i>
             </button>
           </div>
-          <div class="margin margin-top-15px margin-bottom-15px">
+          <div class="margin margin-top-15px mb-[15px]">
             <input
               type="file"
               placeholder=""
@@ -40,7 +40,7 @@
               </div>
             </label>
           </div>
-          <div class="width width-100">
+          <div class="width w-full">
             <button
               class="btn btn-main btn-full"
               :disabled="!visibleUploadButton"

@@ -1,5 +1,5 @@
 <template>
-  <div id="App" class="width width-100">
+  <div id="App" class="width w-full">
     <AppTabs
       v-if="tabWedding.length > 0"
       :path="`text-invitation-${guestId}`"
@@ -14,30 +14,30 @@
     <div v-if="selectedIndex === 'wedding'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <span class="fonts fonts-10 black">Bismillahirrahmanirrahiim</span>
+          <span class="text-[10px] text-black">Bismillahirrahmanirrahiim</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold"
+          <b class="text-[10px] text-black font-semibold"
             >*Assalamu’alaikum Warahmatullahi Wabarakaatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kepada Yth.</span><br />
-          <span class="fonts fonts-10 black">Bapak/Ibu/Saudara/i</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ guestName }}*</b><br />
+          <span class="text-[10px] text-black">Kepada Yth.</span><br />
+          <span class="text-[10px] text-black">Bapak/Ibu/Saudara/i</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ guestName }}*</b><br />
           <span v-if="guestAddress">
-            <span class="fonts fonts-10 black">di</span>
-            <b class="fonts fonts-10 black semibold">*{{ guestAddress }}*</b>
+            <span class="text-[10px] text-black">di</span>
+            <b class="text-[10px] text-black font-semibold">*{{ guestAddress }}*</b>
           </span>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Maha Suci Allah SWT dengan segala Kebesaran-Nya. Tanpa mengurangi
             rasa hormat, perkenankan kami menyampaikan kabar bahagia atas
             pernikahan kami :
@@ -46,29 +46,29 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ brides }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ brides }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >yang InsyaAllah akan diselenggarakan pada :
           </span>
         </div>
         <br />
 
         <div v-if="location || date">
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Hari, tanggal : {{ date | moment('dddd, Do MMMM YYYY') }}</span
           ><br />
-          <span v-if="location" class="fonts fonts-10 black"
+          <span v-if="location" class="text-[10px] text-black"
             >Tempat : {{ location }}</span
           ><br />
         </div>
         <br v-if="location || date" />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Berikut merupakan link undangan kami :
           </span>
         </div>
@@ -79,7 +79,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -88,7 +88,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -97,7 +97,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan doa restu di hari bahagia kami.
           </span>
@@ -105,30 +105,30 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Terima kasih.</span>
+          <span class="text-[10px] text-black">Terima kasih.</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black"
+          <b class="text-[10px] text-black"
             >*Wassalamualaikum Warahmatullahi Wabarakatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kami yang berbahagia,</span><br />
+          <span class="text-[10px] text-black">Kami yang berbahagia,</span><br />
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ title }}*</b><br />
-          <b v-if="tags" class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ title }}*</b><br />
+          <b v-if="tags" class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -139,30 +139,30 @@
     <div v-if="selectedIndex === 'wedding-2'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <span class="fonts fonts-10 black">Bismillahirrahmanirrahiim</span>
+          <span class="text-[10px] text-black">Bismillahirrahmanirrahiim</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold"
+          <b class="text-[10px] text-black font-semibold"
             >*Assalamu’alaikum Warahmatullahi Wabarakaatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kepada Yth.</span><br />
-          <span class="fonts fonts-10 black">Bapak/Ibu/Saudara/i</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ guestName }}*</b><br />
+          <span class="text-[10px] text-black">Kepada Yth.</span><br />
+          <span class="text-[10px] text-black">Bapak/Ibu/Saudara/i</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ guestName }}*</b><br />
           <span v-if="guestAddress">
-            <span class="fonts fonts-10 black">di</span>
-            <b class="fonts fonts-10 black semibold">*{{ guestAddress }}*</b>
+            <span class="text-[10px] text-black">di</span>
+            <b class="text-[10px] text-black font-semibold">*{{ guestAddress }}*</b>
           </span>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Maha Suci Allah SWT dengan segala Kebesaran-Nya. Tanpa mengurangi
             rasa hormat, perkenankan kami menyampaikan kabar bahagia atas
             pernikahan anak kami :
@@ -171,29 +171,29 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ brides }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ brides }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >yang InsyaAllah akan diselenggarakan pada :
           </span>
         </div>
         <br />
 
         <div v-if="location || date">
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Hari, tanggal : {{ date | moment('dddd, Do MMMM YYYY') }}</span
           ><br />
-          <span v-if="location" class="fonts fonts-10 black"
+          <span v-if="location" class="text-[10px] text-black"
             >Tempat : {{ location }}</span
           ><br />
         </div>
         <br v-if="location || date" />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Berikut merupakan link undangan kami :
           </span>
         </div>
@@ -204,7 +204,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -213,7 +213,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -222,7 +222,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan doa restu di hari bahagia
             keluarga kami.
@@ -231,30 +231,30 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Terima kasih.</span>
+          <span class="text-[10px] text-black">Terima kasih.</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black"
+          <b class="text-[10px] text-black"
             >*Wassalamualaikum Warahmatullahi Wabarakatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kami yang berbahagia,</span><br />
+          <span class="text-[10px] text-black">Kami yang berbahagia,</span><br />
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ title }}*</b><br />
-          <b v-if="tags" class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ title }}*</b><br />
+          <b v-if="tags" class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -265,17 +265,17 @@
     <div v-if="selectedIndex === 'wedding-3'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <b class="fonts fonts-10 black"
+          <b class="text-[10px] text-black"
             >*Assalamu'alaikum warahmatullahi wabarakatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kepada Yth.</span><br />
-          <span class="fonts fonts-10 black">Bapak/Ibu/Saudara/i</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ guestName }}*</b><br />
-          <b v-if="guestAddress" class="fonts fonts-10 black semibold"
+          <span class="text-[10px] text-black">Kepada Yth.</span><br />
+          <span class="text-[10px] text-black">Bapak/Ibu/Saudara/i</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ guestName }}*</b><br />
+          <b v-if="guestAddress" class="text-[10px] text-black font-semibold"
             >*{{ guestAddress }}*</b
           >
         </div>
@@ -283,7 +283,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Tanpa mengurangi rasa hormat, perkenankan kami mengundang
             Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</span
           >
@@ -291,8 +291,8 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black">Berikut link undangan kami</b>,
-          <span class="fonts fonts-10 black"
+          <b class="text-[10px] text-black">Berikut link undangan kami</b>,
+          <span class="text-[10px] text-black"
             >untuk info lengkap dari acara, bisa kunjungi :</span
           >
         </div>
@@ -303,7 +303,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -312,7 +312,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -321,7 +321,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan doa restu.</span
           >
@@ -329,27 +329,27 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kami yang berbahagia,</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ title }}*</b>
+          <span class="text-[10px] text-black">Kami yang berbahagia,</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ title }}*</b>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black"
+          <b class="text-[10px] text-black"
             >*Wassalamualaikum Warahmatullahi Wabarakatuh*</b
           >
         </div>
         <br v-if="tags" />
 
         <div v-if="tags">
-          <b class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
 
         <div>_____________________</div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -360,31 +360,31 @@
     <div v-if="selectedIndex === 'engagement'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <span class="fonts fonts-10 black">Bismillahirrahmanirrahim</span
+          <span class="text-[10px] text-black">Bismillahirrahmanirrahim</span
           ><br />
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Assalamu'alaikum warahmatullahi wabarakatuh.</span
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Dengan memohon limpahan Rahmat & Ridho Allah SWT, tanpa mengurangi
             rasa hormat, melalui media ini perkenankan kami mengundang
-            <b class="fonts fonts-10 black semibold">*{{ guestName }}*</b> untuk
+            <b class="text-[10px] text-black font-semibold">*{{ guestName }}*</b> untuk
             menghadiri acara pertunangan kami,</span
           >
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ brides }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ brides }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan doa restu.</span
           >
@@ -392,7 +392,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Untuk info lebih lengkap terkait acara pertunangan kami, silahkan
             untuk membuka link undangan berikut :</span
           >
@@ -404,7 +404,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -413,7 +413,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -422,25 +422,25 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Terimakasih atas perhatiannya.</span
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kami yang berbahagia,</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ title }}*</b>
+          <span class="text-[10px] text-black">Kami yang berbahagia,</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ title }}*</b>
         </div>
         <br />
 
         <div v-if="tags">
-          <b class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -451,30 +451,30 @@
     <div v-if="selectedIndex === 'khitan'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <span class="fonts fonts-10 black">Bismillahirrahmanirrahiim</span>
+          <span class="text-[10px] text-black">Bismillahirrahmanirrahiim</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold"
+          <b class="text-[10px] text-black font-semibold"
             >*Assalamu’alaikum Warahmatullahi Wabarakaatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Kepada Yth.</span><br />
-          <span class="fonts fonts-10 black">Bapak/Ibu/Saudara/i</span><br />
-          <b class="fonts fonts-10 black semibold">*{{ guestName }}*</b><br />
+          <span class="text-[10px] text-black">Kepada Yth.</span><br />
+          <span class="text-[10px] text-black">Bapak/Ibu/Saudara/i</span><br />
+          <b class="text-[10px] text-black font-semibold">*{{ guestName }}*</b><br />
           <span v-if="guestAddress">
-            <span class="fonts fonts-10 black">di</span>
-            <b class="fonts fonts-10 black semibold">*{{ guestAddress }}*</b>
+            <span class="text-[10px] text-black">di</span>
+            <b class="text-[10px] text-black font-semibold">*{{ guestAddress }}*</b>
           </span>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Tanpa mengurangi rasa hormat, perkenankan kami mengundang
             Bapak/Ibu/Saudara/i untuk menghadiri Acara Syukuran Walimatul Khitan
             Anak tercinta kami :
@@ -483,29 +483,29 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ brides }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ brides }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >yang InsyaAllah akan diselenggarakan pada :
           </span>
         </div>
         <br />
 
         <div v-if="location || date">
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Hari, tanggal : {{ date | moment('dddd, Do MMMM YYYY') }}</span
           ><br />
-          <span v-if="location" class="fonts fonts-10 black"
+          <span v-if="location" class="text-[10px] text-black"
             >Tempat : {{ location }}</span
           ><br />
         </div>
         <br v-if="location || date" />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Berikut merupakan link undangan kami :
           </span>
         </div>
@@ -516,7 +516,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -525,7 +525,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -534,7 +534,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan doa restu sebelum dan
             sesudahnya.
@@ -543,24 +543,24 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Terima kasih.</span>
+          <span class="text-[10px] text-black">Terima kasih.</span>
         </div>
         <br />
 
         <div>
-          <b class="fonts fonts-10 black"
+          <b class="text-[10px] text-black"
             >*Wassalamualaikum Warahmatullahi Wabarakatuh*</b
           >
         </div>
         <br />
 
         <div>
-          <b v-if="tags" class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b v-if="tags" class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -571,23 +571,23 @@
     <div v-if="selectedIndex === 'event'">
       <div :id="`target-invitation-${guestId}`">
         <div>
-          <b class="fonts fonts-10 black semibold">*Kepada {{ guestName }}*</b
+          <b class="text-[10px] text-black font-semibold">*Kepada {{ guestName }}*</b
           ><br />
-          <b v-if="guestAddress" class="fonts fonts-10 black semibold"
+          <b v-if="guestAddress" class="text-[10px] text-black font-semibold"
             >*{{ guestAddress }}*</b
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Undangan ini merupakan undangan resmi dari kami,</span
           >
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Tanpa mengurangi rasa hormat, perkenankan kami mengundang
             Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara
             kami :</span
@@ -596,12 +596,12 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*{{ brides }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ brides }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Berikut link untuk info lengkap dari acara kami :</span
           >
         </div>
@@ -612,7 +612,7 @@
             v-if="customLink"
             :href="`${customLink}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${customLink}` }}
@@ -621,7 +621,7 @@
             v-else
             :href="`${initUrl}/${shortLink}/${guestId}`"
             target="_blank"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: blue"
           >
             {{ `${initUrl}/${shortLink}/${guestId}` }}
@@ -630,7 +630,7 @@
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan untuk hadir dan memberikan do'a.</span
           >
@@ -638,25 +638,25 @@
         <br />
 
         <div>
-          <b class="fonts fonts-10 black semibold">*Terimakasih.*</b>
+          <b class="text-[10px] text-black font-semibold">*Terimakasih.*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black">Hormat kami,</span><br />
-          <b class="fonts fonts-10 black semibold"
+          <span class="text-[10px] text-black">Hormat kami,</span><br />
+          <b class="text-[10px] text-black font-semibold"
             >*Admin Acara: {{ title }}*</b
           >
         </div>
         <br />
 
         <div v-if="tags">
-          <b class="fonts fonts-10 black semibold">*{{ tags }}*</b>
+          <b class="text-[10px] text-black font-semibold">*{{ tags }}*</b>
         </div>
         <br />
 
         <div>
-          <span class="fonts fonts-10 black"
+          <span class="text-[10px] text-black"
             >(Simpan nomor jika link tidak dapat disentuh atau salin link ke
             browser untuk membuka undangan)</span
           >
@@ -675,7 +675,7 @@
     >
       <button
         v-if="!disabledButtonCopy"
-        class="btn btn-sekunder btn-full box-shadow"
+        class="btn btn-sekunder btn-full shadow-sm"
         @click="onCopyInvitation(`target-invitation-${guestId}`, guestName)"
       >
         <i class="icn icn-left fa fa-lg fa-copy"></i> Salin Kalimat Undangan

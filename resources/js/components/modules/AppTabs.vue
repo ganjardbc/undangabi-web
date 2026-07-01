@@ -28,7 +28,7 @@
       >
         <div class="tabs-label">{{ dt.label }}</div>
         <div v-if="dt.val" class="theme-notif" style="margin-left: 5px">
-          <div class="label fonts fonts-10 white">
+          <div class="label text-[10px] white">
             {{ dt.val }}
           </div>
         </div>

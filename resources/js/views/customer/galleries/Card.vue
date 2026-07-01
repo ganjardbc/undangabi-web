@@ -1,11 +1,11 @@
 <template>
-  <div class="width width-100 display-flex flex-start wrap">
+  <div class="width w-full flex flex-start flex-wrap">
     <div v-for="(dt, i) in data" :key="i" class="width width-row-4">
       <div
         class="margin margin-15px margin-mobile-left-0px margin-mobile-right-0px"
       >
-        <div class="card bg-white box-shadow">
-          <div class="width width-100 margin margin-bottom-10px">
+        <div class="card bg-white shadow-sm">
+          <div class="width w-full margin mb-[10px]">
             <div
               class="image image-padding bg-grey"
               :style="`background-image: url(${galleryImageThumbnailUrl + dt.gallery.image});`"
@@ -32,16 +32,16 @@
             </div>
           </div>
           <div
-            class="width width-100 margin margin-bottom-15px display-flex column align-center"
+            class="width w-full margin mb-[15px] flex flex-col items-center"
           >
-            <div class="fonts fonts-11 semibold black capitalize">
+            <div class="text-[11px] font-semibold text-black capitalize">
               {{ dt.gallery.type }}
             </div>
-            <div class="fonts fonts-10 normal grey">
+            <div class="text-[10px] normal text-gray-500">
               {{ dt.gallery.description }}
             </div>
           </div>
-          <div class="width width-100 display-flex space-between">
+          <div class="width w-full flex justify-between">
             <button
               class="btn btn-sekunder btn-full"
               style="width: calc(100% - 50px)"
@@ -50,7 +50,7 @@
               Lihat Detail
             </button>
             <el-popover placement="top-end" width="180" trigger="click">
-              <div class="width width-100">
+              <div class="width w-full">
                 <button
                   class="btn btn-white btn-full btn-align-left"
                   @click="onUpdateCover(dt.gallery)"

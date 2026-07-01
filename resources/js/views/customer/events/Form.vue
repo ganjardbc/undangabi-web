@@ -7,47 +7,47 @@
       @onSave="onSave"
       @onClose="onClose"
     >
-      <div class="width width-100">
-        <div class="padding padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            ID Acara <span class="fonts red">*</span>
+      <div class="width w-full">
+        <div class="p-4 padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            ID Acara <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.event_id"
             placeholder=""
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.event_id" class="fonts fonts-12px red">
+          <div v-if="formMessage.event_id" class="fonts-12px red">
             {{ formMessage.event_id[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Judul <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Judul <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.title"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.title" class="fonts fonts-12px red">
+          <div v-if="formMessage.title" class="fonts-12px red">
             {{ formMessage.title[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Deskripsi</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Deskripsi</div>
           <vue-editor
             v-model="formData.description"
             :editorToolbar="editorConfig"
             :disabled="!visibleSaveButton"
           ></vue-editor>
-          <div v-if="formMessage.description" class="fonts fonts-12px red">
+          <div v-if="formMessage.description" class="fonts-12px red">
             {{ formMessage.description[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Alamat <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Alamat <span class="red">*</span>
           </div>
           <el-input
             type="textarea"
@@ -55,12 +55,12 @@
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.address" class="fonts fonts-12px red">
+          <div v-if="formMessage.address" class="fonts-12px red">
             {{ formMessage.address[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Tanggal</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Tanggal</div>
           <el-date-picker
             style="width: 100%"
             v-model="formData.date"
@@ -73,12 +73,12 @@
             value-format="yyyy-MM-dd"
           >
           </el-date-picker>
-          <div v-if="formMessage.day" class="fonts fonts-12px red">
+          <div v-if="formMessage.day" class="fonts-12px red">
             {{ formMessage.day[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Jam Mulai</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Jam Mulai</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.startTime"
@@ -88,12 +88,12 @@
             clearable
             @change="onStartTime"
           ></el-time-select>
-          <div v-if="formMessage.time" class="fonts fonts-12px red">
+          <div v-if="formMessage.time" class="fonts-12px red">
             {{ formMessage.time[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Jam Berakhir</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Jam Berakhir</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.endTime"
@@ -104,8 +104,8 @@
             @change="onEndTime"
           ></el-time-select>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Zone Waktu</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Zone Waktu</div>
           <el-select
             v-model="formData.time_zone"
             slot="prepend"
@@ -121,13 +121,13 @@
               :value="dt"
             ></el-option>
           </el-select>
-          <div v-if="formMessage.time_zone" class="fonts fonts-12px red">
+          <div v-if="formMessage.time_zone" class="fonts-12px red">
             {{ formMessage.time_zone[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Live Streaming</div>
-          <div class="fonts fonts-10 normal grey">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Live Streaming</div>
+          <div class="text-[10px] normal text-gray-500">
             Isi dengan link jika acara akan dilakukan secara live-streaming
           </div>
           <el-input
@@ -135,15 +135,15 @@
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.streaming_link" class="fonts fonts-12px red">
+          <div v-if="formMessage.streaming_link" class="fonts-12px red">
             {{ formMessage.streaming_link[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Status</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Status</div>
           <div
             v-if="visibleSaveButton"
-            class="padding padding-top-15px padding-bottom-15px display-flex"
+            class="p-4 pt-[15px] pb-[15px] flex"
           >
             <label class="radio">
               <input
@@ -154,7 +154,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
             <label class="radio">
               <input
@@ -165,7 +165,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <el-input
@@ -174,7 +174,7 @@
             :value="formData.status === 'active' ? 'Active' : 'Inactive'"
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.status" class="fonts fonts-12px red">
+          <div v-if="formMessage.status" class="fonts-12px red">
             {{ formMessage.status[0] }}
           </div>
         </div>
@@ -186,7 +186,7 @@
 <script>
 import { mapState } from 'vuex'
 import { VueEditor } from 'vue2-editor'
-import AppSideFormPopup from '../../modules/AppSideFormPopup'
+import AppSideFormPopup from '../../../components/modules/AppSideFormPopup'
 
 export default {
   name: 'App',

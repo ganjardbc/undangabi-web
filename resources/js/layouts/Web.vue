@@ -1,201 +1,242 @@
 <template>
-  <div id="WebLayouts">
-    <div id="header">
-      <div id="header-container">
-        <div class="hc-logo">
-          <router-link
-            :to="{ name: 'home' }"
-            style="position: relative; width: 100%; top: 2px; left: 0"
-          >
-            <img :src="logo" alt="undang-abi" style="width: 100%" />
+  <div id="WebLayouts" class="min-h-screen flex flex-col bg-canvas text-body font-sans antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-canvas bg-opacity-95 backdrop-filter backdrop-blur-md border-b border-hairline">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="w-28 md:w-32 flex-shrink-0">
+          <router-link :to="{ name: 'home' }" class="block">
+            <img :src="logo" alt="undang-abi" class="w-full" />
           </router-link>
         </div>
-        <div class="hc-open">
-          <button class="btn btn-icon btn-white" @click="openMenu">
-            <i class="fa fa-lg fa-bars"></i>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-8">
+          <ul v-if="isInHomePage" class="flex items-center gap-8">
+            <li v-for="(dt, index) in navbar" :key="index">
+              <a
+                @click="onScrollTo(dt.link)"
+                class="text-sm font-medium text-muted hover:text-ink transition-colors duration-200 cursor-pointer pb-0.5 border-b-2 border-transparent hover:border-primary"
+              >
+                {{ dt.label }}
+              </a>
+            </li>
+          </ul>
+          <ul v-else class="flex items-center">
+            <li>
+              <router-link
+                :to="{ name: 'home' }"
+                class="text-sm font-medium text-muted hover:text-ink transition-colors duration-200"
+              >
+                ← Kembali
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Desktop Auth CTAs -->
+        <div class="hidden md:flex items-center gap-3">
+          <div v-if="user">
+            <button
+              class="inline-flex items-center justify-center px-5 py-2 text-xs font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm"
+              @click="toDashboard"
+            >
+              Dashboard
+            </button>
+          </div>
+          <div v-else class="flex items-center gap-3">
+            <router-link :to="{ name: 'login' }">
+              <button class="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold text-muted hover:text-ink transition-colors">
+                Masuk
+              </button>
+            </router-link>
+            <router-link :to="{ name: 'register' }">
+              <button class="inline-flex items-center justify-center px-5 py-2 text-xs font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm">
+                Daftar Gratis
+              </button>
+            </router-link>
+          </div>
+        </div>
+
+        <!-- Mobile Toggler -->
+        <div class="flex md:hidden">
+          <button
+            class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-hairline text-muted hover:bg-surface-card transition-colors"
+            @click="openMenu"
+          >
+            <i class="fa fa-bars text-sm"></i>
           </button>
         </div>
-        <div :class="visibleMenu ? 'hc-info open' : 'hc-info'">
-          <div class="display-flex display-mobile">
-            <div class="hc-menu-mobile">
-              <div class="display-flex space-between align-center">
-                <div class="fonts fonts-11 black semibold">Menu</div>
-                <button class="btn btn-icon btn-white" @click="closeMenu">
-                  <i class="fa fa-lg fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <div class="hc-menu">
-              <div class="hc-navigator">
-                <ul v-if="isInHomePage" class="navbar">
-                  <li
-                    v-for="(dt, index) in navbar"
-                    :key="index"
-                    @click="closeMenu"
-                  >
-                    <a @click="onScrollTo(dt.link)">
-                      {{ dt.label }}
-                    </a>
-                  </li>
-                </ul>
-                <ul v-else class="navbar">
-                  <li @click="closeMenu">
-                    <router-link :to="{ name: 'home' }">
-                      Back to Home
-                    </router-link>
-                  </li>
-                </ul>
-              </div>
-              <div v-if="user">
-                <button class="btn btn-main hc-link" @click="toDashboard">
-                  Dashboard
-                </button>
-              </div>
-              <div v-else class="display-flex display-mobile">
-                <router-link :to="{ name: 'login' }" class="hc-link">
-                  <button
-                    class="btn btn-sekunder width width-mobile"
-                    @click="closeMenu"
-                  >
-                    Login
-                  </button>
-                </router-link>
-                <router-link :to="{ name: 'register' }" class="hc-link">
-                  <button
-                    class="btn btn-main width width-mobile"
-                    @click="closeMenu"
-                  >
-                    Register
-                  </button>
-                </router-link>
-              </div>
-            </div>
-          </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Back-Overlay -->
+    <div
+      v-if="visibleMenu"
+      class="fixed inset-0 z-50 bg-gray-900 bg-opacity-40 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+      @click="closeMenu"
+    ></div>
+
+    <!-- Mobile Drawer Menu -->
+    <div
+      :class="`fixed inset-y-0 right-0 z-50 w-72 bg-canvas p-6 shadow-2xl border-l border-hairline flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
+        visibleMenu ? 'translate-x-0' : 'translate-x-full'
+      }`"
+    >
+      <!-- Drawer Header -->
+      <div class="flex justify-between items-center pb-5 border-b border-hairline">
+        <img :src="logo" alt="undang-abi" class="w-24" />
+        <button
+          class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-hairline text-muted hover:text-ink hover:bg-surface-card transition-colors"
+          @click="closeMenu"
+        >
+          <i class="fa fa-times text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="py-6 flex-1">
+        <ul v-if="isInHomePage" class="space-y-1">
+          <li v-for="(dt, index) in navbar" :key="index" @click="closeMenu">
+            <a
+              @click="onScrollTo(dt.link)"
+              class="flex items-center px-3 py-2.5 rounded-md text-sm font-medium text-muted hover:text-ink hover:bg-surface-card cursor-pointer transition-colors"
+            >
+              {{ dt.label }}
+            </a>
+          </li>
+        </ul>
+        <ul v-else class="space-y-1" @click="closeMenu">
+          <li>
+            <router-link
+              :to="{ name: 'home' }"
+              class="flex items-center px-3 py-2.5 rounded-md text-sm font-medium text-muted hover:text-ink hover:bg-surface-card"
+            >
+              ← Kembali ke Home
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Auth CTAs -->
+      <div class="border-t border-hairline pt-5 space-y-2">
+        <div v-if="user">
+          <button
+            class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all"
+            @click="toDashboard(); closeMenu();"
+          >
+            Dashboard
+          </button>
+        </div>
+        <div v-else class="flex flex-col gap-2">
+          <router-link :to="{ name: 'login' }" class="w-full" @click.native="closeMenu">
+            <button class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-ink border border-hairline hover:bg-surface-card rounded-md transition-all">
+              Masuk
+            </button>
+          </router-link>
+          <router-link :to="{ name: 'register' }" class="w-full" @click.native="closeMenu">
+            <button class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary-active rounded-md transition-all">
+              Daftar Gratis
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
-    <div id="body">
+
+    <!-- Main Content Body -->
+    <main id="body" class="flex-1">
       <router-view />
-    </div>
-    <div id="footer">
-      <div id="footer-content">
-        <div class="width width-30 width-mobile mobile-text-center">
-          <img
-            :src="logo"
-            alt="undang-abi"
-            style="position: relative; width: 150px; margin-bottom: 20px"
-          />
-          <div class="fonts fonts-13px fonts-mobile-11px grey">
-            This Site All Right Reserved @{{ getFullYear }}
-          </div>
-          <div style="margin-bottom: 30px">
-            <span class="fonts fonts-13px fonts-mobile-11px grey"
-              >Powered by</span
-            >
-            <span class="fonts fonts-13px fonts-mobile-11px black semibold"
-              >UNDANGABI</span
-            >
-          </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-dark text-on-dark-soft pt-16 pb-10 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+        <!-- Brand & Copyright -->
+        <div class="col-span-12 md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+          <img :src="logo2" alt="undang-abi" class="w-10 mb-5 brightness-0 invert opacity-80" />
+          <p class="text-lg font-normal text-on-dark font-display tracking-tight mb-2">UndangAbi</p>
+          <p class="text-xs text-on-dark-soft/80 leading-relaxed max-w-xs font-sans">
+            Platform pembuatan undangan digital yang praktis, cepat, dan elegan untuk momen terindah Anda.
+          </p>
+          <p class="mt-6 text-xs text-muted-soft">
+            © {{ getFullYear }} UndangAbi. All Rights Reserved.
+          </p>
         </div>
 
-        <div
-          class="width width-45 width-mobile display-flex display-mobile space-between"
-        >
-          <div
-            class="width width-50 width-mobile mobile-text-center"
-            style="margin-bottom: 30px"
-          >
-            <div class="fonts fonts-13px grey" style="margin-bottom: 10px">
-              About
-            </div>
-            <ul class="menu-list transparent">
-              <li class="ml-list">
-                <router-link :to="{ name: 'home' }" class="ml-link">
-                  Home
-                </router-link>
-              </li>
-              <li class="ml-list">
-                <router-link :to="{ name: 'about-us' }" class="ml-link">
-                  Tentang Kami
-                </router-link>
-              </li>
-              <li class="ml-list">
-                <router-link :to="{ name: 'how-to-orders' }" class="ml-link">
-                  Buat Undangan
-                </router-link>
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="width width-50 width-mobile mobile-text-center"
-            style="margin-bottom: 30px"
-          >
-            <div class="fonts fonts-13px grey" style="margin-bottom: 10px">
-              Kontak
-            </div>
-            <ul class="menu-list transparent">
-              <li class="ml-list">
-                <a href="tel:+62-8969-9181-669" class="ml-link">
-                  +62-8969-9181-669
-                </a>
-              </li>
-              <li class="ml-list">
-                <a href="mailto:admin@undangabi.com" class="ml-link">
-                  admin@undangabi.com
-                </a>
-              </li>
-              <li class="ml-list">
-                <a href="mailto:undangabi.official@gmail.com" class="ml-link">
-                  undangabi.official@gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
+        <!-- Nav links -->
+        <div class="col-span-12 sm:col-span-6 md:col-span-3 text-center md:text-left">
+          <h4 class="text-[11px] font-semibold text-on-dark uppercase tracking-widest mb-5 font-sans">Navigasi</h4>
+          <ul class="space-y-3 font-sans">
+            <li>
+              <router-link :to="{ name: 'home' }" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors">
+                Home
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'about-us' }" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors">
+                Tentang Kami
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'how-to-orders' }" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors">
+                Buat Undangan
+              </router-link>
+            </li>
+          </ul>
         </div>
 
-        <div
-          class="width width-13 width-mobile mobile-text-center"
-          style="margin-bottom: 30px"
-        >
-          <div class="fonts fonts-13px grey" style="margin-bottom: 15px">
-            Sosial Media
-          </div>
-          <div
-            class="display-flex mobile-justify-center"
-            style="margin-bottom: 15px"
-          >
+        <!-- Contact Links -->
+        <div class="col-span-12 sm:col-span-6 md:col-span-4 text-center md:text-left">
+          <h4 class="text-[11px] font-semibold text-on-dark uppercase tracking-widest mb-5 font-sans">Hubungi Kami</h4>
+          <ul class="space-y-3 font-sans">
+            <li>
+              <a href="tel:+62-8969-9181-669" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors block">
+                <Icon icon="mdi:phone" class="w-3.5 h-3.5 inline mr-2 text-on-dark-soft text-opacity-50 align-middle" /> +62-8969-9181-669
+              </a>
+            </li>
+            <li>
+              <a href="mailto:admin@undangabi.com" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors block break-all">
+                <Icon icon="mdi:email" class="w-3.5 h-3.5 inline mr-2 text-on-dark-soft text-opacity-50 align-middle" /> admin@undangabi.com
+              </a>
+            </li>
+            <li>
+              <a href="mailto:undangabi.official@gmail.com" class="text-sm text-on-dark-soft hover:text-on-dark transition-colors block break-all">
+                <Icon icon="mdi:email" class="w-3.5 h-3.5 inline mr-2 text-on-dark-soft text-opacity-50 align-middle" /> undangabi.official@gmail.com
+              </a>
+            </li>
+          </ul>
+          <div class="mt-6 flex justify-center md:justify-start gap-3">
             <a
               href="https://www.instagram.com/undangabi/"
               target="_blank"
-              style="margin-right: 5px"
+              class="w-9 h-9 rounded-md border border-gray-800 hover:border-primary hover:bg-primary text-on-dark-soft hover:text-white transition-all duration-300 flex items-center justify-center text-sm"
             >
-              <button class="btn btn-icon btn-small-radius btn-sekunder">
-                <i class="fab fa-lg fa-instagram" />
-              </button>
+              <Icon icon="mdi:instagram" class="w-4 h-4" />
             </a>
             <a
               href="https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital"
               target="_blank"
-              style="margin-right: 5px"
+              class="w-9 h-9 rounded-md border border-gray-800 hover:border-primary hover:bg-primary text-on-dark-soft hover:text-white transition-all duration-300 flex items-center justify-center text-sm"
             >
-              <button class="btn btn-icon btn-small-radius btn-sekunder">
-                <i class="fab fa-lg fa-whatsapp" />
-              </button>
+              <Icon icon="mdi:whatsapp" class="w-4 h-4" />
             </a>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
 
+    <!-- Floating WhatsApp Widget -->
     <a
       href="https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital"
       target="_blank"
-      class="floating-bottom-right"
+      class="fixed bottom-6 right-6 z-40 group animate-bounce"
     >
-      <button class="btn btn-big-icon btn-green">
-        <span class="notif">2</span>
-        <i class="fab fa-3x fa-whatsapp"></i>
+      <button class="relative flex items-center justify-center w-14 h-14 bg-green hover:bg-emerald-600 text-white rounded-full shadow-lg hover:shadow-xl hover:shadow-emerald-500/20 hover:scale-105 transition-all duration-300 active:scale-95">
+        <span class="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping -z-10"></span>
+        <span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+          2
+        </span>
+        <Icon icon="mdi:whatsapp" class="w-6 h-6" />
       </button>
     </a>
 
@@ -205,13 +246,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import logo from '../../../img/logo.png'
-import logo2 from '../../../img/icon.png'
-import AppWrapper from '../modules/AppWrapper'
-import AppButton from '../modules/AppButton'
-import AppText from '../modules/AppText'
-import SearchField from '../modules/SearchField'
-import AppToast from '../modules/AppToast'
+import logo from '../../img/logo.png'
+import logo2 from '../../img/icon.png'
+import AppWrapper from '../components/modules/AppWrapper'
+import AppButton from '../components/modules/AppButton'
+import AppText from '../components/modules/AppText'
+import SearchField from '../components/modules/SearchField'
+import AppToast from '../components/modules/AppToast'
 
 const navbar = [
   { label: 'Home', link: 'web-banner' },

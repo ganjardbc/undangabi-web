@@ -1,22 +1,22 @@
-import InvitationLayout from '../components/layouts/Invitation.vue';
-// import Home from '../components/customer/home/Index.vue';
-import Informations from '../components/customer/informations/Index.vue';
-import Invitation from '../components/customer/invitation/Index.vue';
-import Package from '../components/customer/package/Index.vue';
-import Themes from '../components/customer/themes/Index.vue';
-import Songs from '../components/customer/songs/Index.vue';
-import GoogleMap from '../components/customer/googleMap/Index.vue';
-import LoveStory from '../components/customer/loveStory/Index.vue';
-import Brides from '../components/customer/brides/Index.vue';
-import Events from '../components/customer/events/Index.vue';
-// import EventSchedule from '../components/customer/eventSchedule/Index.vue';
-import Galleries from '../components/customer/galleries/Index.vue';
-import YoutubeVideos from '../components/customer/youtubeVideo/Index.vue';
-import Gifts from '../components/customer/gifts/Index.vue';
-import SpecialThanks from '../components/customer/specialThanks/Index.vue';
-import GuestBook from '../components/customer/guestBook/Index.vue';
-import Reservations from '../components/customer/reservations/Index.vue';
-import Setting from '../components/customer/setting/Index.vue';
+import InvitationLayout from '../layouts/Invitation.vue';
+// import Home from '../views/customer/home/Index.vue';
+import Informations from '../views/customer/informations/Index.vue';
+import Invitation from '../views/customer/invitation/Index.vue';
+import Package from '../views/customer/package/Index.vue';
+import Themes from '../views/customer/themes/Index.vue';
+import Songs from '../views/customer/songs/Index.vue';
+import GoogleMap from '../views/customer/googleMap/Index.vue';
+import LoveStory from '../views/customer/loveStory/Index.vue';
+import Brides from '../views/customer/brides/Index.vue';
+import Events from '../views/customer/events/Index.vue';
+// import EventSchedule from '../views/customer/eventSchedule/Index.vue';
+import Galleries from '../views/customer/galleries/Index.vue';
+import YoutubeVideos from '../views/customer/youtubeVideo/Index.vue';
+import Gifts from '../views/customer/gifts/Index.vue';
+import SpecialThanks from '../views/customer/specialThanks/Index.vue';
+import GuestBook from '../views/customer/guestBook/Index.vue';
+import Reservations from '../views/customer/reservations/Index.vue';
+import Setting from '../views/customer/setting/Index.vue';
 
 const routes = {
     path: '/customer/invitation/:id/',

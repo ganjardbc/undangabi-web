@@ -6,7 +6,7 @@
 
     <div class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="submitData">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Simpan Paket
@@ -33,11 +33,11 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import AppTabs from '../../modules/AppTabs'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppBreadCrumb from '../../modules/AppBreadCrumb'
+import AppTabs from '../../../components/modules/AppTabs'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppBreadCrumb from '../../../components/modules/AppBreadCrumb'
 import Form from './Form'
 
 export default {

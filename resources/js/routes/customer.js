@@ -1,6 +1,6 @@
-import CustomerLayout from '../components/layouts/Customer.vue';
-import CustomeDashboard from '../components/customer/Index.vue';
-import CustomerCreateInvitation from '../components/customer/createInvitation/Index.vue';
+import CustomerLayout from '../layouts/Customer.vue';
+import CustomeDashboard from '../views/customer/Index.vue';
+import CustomerCreateInvitation from '../views/customer/createInvitation/Index.vue';
 
 const routes = {
     path: '/customer',

@@ -2,19 +2,25 @@
   <router-link
     v-if="routeName"
     :to="{ name: routeName }"
-    id="AppButton"
-    :class="[btn, btnStyle, btnRadius]"
+    class="no-underline inline-block"
   >
-    {{ title }}
+    <el-button
+      :type="elType"
+      :plain="elPlain"
+      :round="isRadius"
+    >
+      {{ title }}
+    </el-button>
   </router-link>
-  <button
+  <el-button
     v-else
-    id="AppButton"
-    :class="[btn, btnStyle, btnRadius]"
+    :type="elType"
+    :plain="elPlain"
+    :round="isRadius"
     @click="onPress"
   >
     {{ title }}
-  </button>
+  </el-button>
 </template>
 
 <script>
@@ -33,37 +39,27 @@ export default {
     },
     routeName: String,
   },
-  data() {
-    return {
-      btn: 'btn',
-      btnStyle: 'btn-main',
-      btnRadius: 'btn-radius',
+  computed: {
+    elType() {
+      switch (this.type) {
+        case 'main':
+        case 'primary':
+          return 'primary'
+        case 'sekunder':
+          return 'info'
+        case 'danger':
+        case 'red':
+          return 'danger'
+        case 'link':
+          return 'text'
+        default:
+          return 'default'
+      }
+    },
+    elPlain() {
+      return this.type === 'sekunder'
     }
-  },
-  mounted() {
-    // styles
-    this.btnStyle = this.type
-    switch (this.type) {
-      case 'main':
-        this.btnStyle = 'btn-main'
-        break
-      case 'primary':
-        this.btnStyle = 'btn-primary'
-        break
-      case 'sekunder':
-        this.btnStyle = 'btn-sekunder'
-        break
-      case 'link':
-        this.btnStyle = 'btn-link'
-        break
-      default:
-        this.btnStyle = 'btn-primary'
-        break
-    }
-
-    // radius
-    this.btnRadius = this.isRadius ? 'btn-radius-rounded' : 'btn-radius'
-  },
+  }
 }
 </script>
 

@@ -1,7 +1,7 @@
-import ThemeLayout from '../components/layouts/Theme.vue';
-import Generate from '../components/themes/Generate.vue';
-import InvitationGenerator from '../components/themes/InvitationGenerator.vue';
-import InvitationGeneratorPrivate from '../components/themes/InvitationGeneratorPrivate.vue';
+import ThemeLayout from '../layouts/Theme.vue';
+import Generate from '../views/themes/Generate.vue';
+import InvitationGenerator from '../views/themes/InvitationGenerator.vue';
+import InvitationGeneratorPrivate from '../views/themes/InvitationGeneratorPrivate.vue';
 
 const routes = {
     path: '/invitation',

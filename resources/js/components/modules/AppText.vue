@@ -16,7 +16,7 @@
         <slot />
       </span>
     </h2>
-    <p v-else-if="type === 'bold'" class="content bold">
+    <p v-else-if="type === 'bold'" class="content font-bold">
       <router-link v-if="routeName" :to="{ name: routeName }">
         <slot />
       </router-link>

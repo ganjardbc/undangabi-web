@@ -3,7 +3,7 @@
     <div style="width: 100%">
       <div
         v-if="this.image"
-        class="display-flex border-full"
+        class="flex border-full"
         style="border-radius: 3px; overflow: hidden; margin-bottom: 15px"
       >
         <input

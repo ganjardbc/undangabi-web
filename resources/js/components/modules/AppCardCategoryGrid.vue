@@ -1,7 +1,7 @@
 <template>
   <div
     id="AppCardCategoryGrid"
-    class="display-flex nowrap space-bettween"
+    class="flex nowrap space-bettween"
     style="width: 100%; background-color: #fff"
   >
     <div
@@ -10,10 +10,10 @@
       style="position: relative; padding: 0; width: calc(100% / 3)"
     >
       <div
-        class="card box-shadow"
+        class="card shadow-sm"
         style="padding: 0; margin: 20px 20px; border-radius: 100px"
       >
-        <div class="display-flex nowrap" style="padding: 15px">
+        <div class="flex nowrap" style="padding: 15px">
           <div style="width: 95px">
             <div
               style="
@@ -34,15 +34,15 @@
           </div>
           <div style="width: calc(100% - 95px)">
             <div
-              class="fonts fonts-14px semibold black"
+              class="fonts-14px font-semibold text-black"
               style="margin-bottom: 5px"
             >
               {{ dt.title }}
             </div>
-            <div class="fonts fonts-13px grey">
+            <div class="fonts-13px text-gray-500">
               {{ dt.description.substring(0, 50) }} ...
             </div>
-            <div class="display-flex">
+            <div class="flex">
               <router-link
                 :to="'/product'"
                 class="btn btn-main-reverse"

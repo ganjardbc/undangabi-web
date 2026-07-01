@@ -1,19 +1,19 @@
 <template>
   <div id="App" :class="formClass ? 'content-form' : 'content-form hide'">
     <div class="left">
-      <div class="bg-white box-shadow">
+      <div class="bg-white shadow-sm">
         <div
-          class="display-flex row space-between align-center border-bottom padding padding-10-px"
+          class="flex flex-row justify-between items-center border-bottom p-4 padding-10-px"
           style="height: 40px"
         >
-          <h1 class="fonts small black">BIZPARS</h1>
-          <div class="display-flex">
-            <button
-              class="btn btn-white btn-icon btn-radius"
+          <h1 class="small text-black">BIZPARS</h1>
+          <div class="flex">
+            <el-button
+              type="primary"
+              icon="el-icon-plus"
+              circle
               @click="onShow('CREATE')"
-            >
-              <i class="fa fa-lw fa-plus" />
-            </button>
+            ></el-button>
             <SearchField
               :value="filters.key.value"
               :placeholder="'Search bizpars ..'"
@@ -44,32 +44,42 @@
             <el-table-column width="100">
               <template slot-scope="scope">
                 <el-popover placement="bottom-end" width="180" trigger="click">
-                  <div class="width width-100">
-                    <button
-                      class="btn btn-white btn-full btn-align-left"
+                  <div class="width w-full">
+                    <el-button
+                      type="text"
+                      icon="el-icon-info"
+                      class="w-full text-left"
+                      style="justify-content: flex-start; display: flex; padding: 8px 12px; margin: 0;"
                       @click="onShow('VIEW', scope.row.id)"
                     >
-                      <i class="icn icn-left fa fa-lw fa-align-left"></i> Detail
-                    </button>
-                    <button
-                      class="btn btn-white btn-full btn-align-left"
+                      Detail
+                    </el-button>
+                    <el-button
+                      type="text"
+                      icon="el-icon-edit"
+                      class="w-full text-left"
+                      style="justify-content: flex-start; display: flex; padding: 8px 12px; margin: 0;"
                       @click="onShow('EDIT', scope.row.id)"
                     >
-                      <i class="icn icn-left fa fa-lw fa-edit"></i> Edit
-                    </button>
-                    <button
-                      class="btn btn-white btn-full btn-align-left"
+                      Edit
+                    </el-button>
+                    <el-button
+                      type="text"
+                      icon="el-icon-delete"
+                      class="w-full text-left text-red-600 hover:text-red-500"
+                      style="justify-content: flex-start; display: flex; padding: 8px 12px; margin: 0; color: #f56c6c;"
                       @click="onShowHideDelete(scope.row.id)"
                     >
-                      <i class="icn icn-left fa fa-lw fa-trash-alt"></i> Delete
-                    </button>
+                      Delete
+                    </el-button>
                   </div>
-                  <button
+                  <el-button
                     slot="reference"
-                    class="btn btn-sekunder btn-icon margin margin-left-10px"
-                  >
-                    <i class="fa fa-lw fa-ellipsis-h"></i>
-                  </button>
+                    icon="el-icon-more"
+                    circle
+                    size="small"
+                    class="margin margin-left-10px"
+                  ></el-button>
                 </el-popover>
               </template>
             </el-table-column>
@@ -77,10 +87,10 @@
         </div>
 
         <div
-          class="padding padding-10-px display-flex align-center flex-end"
+          class="p-4 padding-10-px flex items-center justify-end"
           style="height: 40px"
         >
-          <div class="fonts fonts-10 semibold grey">Total {{ totalPages }}</div>
+          <div class="text-[10px] font-semibold text-gray-500">Total {{ totalPages }}</div>
           <el-pagination
             background
             @current-change="handleCurrentChange"
@@ -127,10 +137,10 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
-import AppAlert from '../../modules/AppAlert'
-import SearchField from '../../modules/SearchField'
-import AppButtonMenu from '../../modules/AppButtonMenu'
+import AppLoader from '../../../components/modules/AppLoader'
+import AppAlert from '../../../components/modules/AppAlert'
+import SearchField from '../../../components/modules/SearchField'
+import AppButtonMenu from '../../../components/modules/AppButtonMenu'
 import Form from './Form'
 
 export default {

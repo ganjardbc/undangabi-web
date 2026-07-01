@@ -1,7 +1,7 @@
 <template>
   <div id="FormImage">
-    <div class="card box-shadow" v-for="(dt, index) in datas" :key="index">
-      <div class="display-flex">
+    <div class="card shadow-sm" v-for="(dt, index) in datas" :key="index">
+      <div class="flex">
         <div class="width width-60-px">
           <div class="image image-45px">
             <img
@@ -11,26 +11,26 @@
           </div>
         </div>
         <div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">ID</div>
-            <div class="fonts micro black semibold">{{ dt.id }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">ID</div>
+            <div class="micro text-black font-semibold">{{ dt.id }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">Image ID</div>
-            <div class="fonts micro black semibold">{{ dt.prodimage_id }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">Image ID</div>
+            <div class="micro text-black font-semibold">{{ dt.prodimage_id }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-10-px">
-            <div class="fonts micro black width width-100-px">Description</div>
-            <div class="fonts micro black semibold">{{ dt.description }}</div>
+          <div class="flex margin margin-bottom-10-px">
+            <div class="micro text-black width width-100-px">Description</div>
+            <div class="micro text-black font-semibold">{{ dt.description }}</div>
           </div>
         </div>
       </div>
       <div
         v-if="enableButton"
-        class="display-flex space-between margin margin-bottom-0-px"
+        class="flex justify-between margin margin-bottom-0-px"
       >
         <div></div>
-        <div class="display-flex content-right">
+        <div class="flex content-right">
           <button
             class="btn btn-small-icon btn-sekunder"
             @click="onEdit(index)"
@@ -79,7 +79,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -105,7 +105,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.image && formMessage.image[0] }}
@@ -121,7 +121,7 @@
         ></textarea>
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -151,8 +151,8 @@
 
 <script>
 import axios from 'axios'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 
 const time = new Date().getTime()
 

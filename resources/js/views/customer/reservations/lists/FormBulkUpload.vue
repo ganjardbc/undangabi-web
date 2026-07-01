@@ -1,24 +1,24 @@
 <template>
   <div id="BulkUpload" class="display-popup">
-    <div class="card-alert box-shadow post-middle">
+    <div class="card-alert shadow-sm post-middle">
       <div
-        class="display-flex space-between align-center margin margin-bottom-15px"
+        class="flex justify-between items-center margin mb-[15px]"
       >
-        <div class="fonts fonts-11 semibold">
+        <div class="text-[11px] font-semibold">
           {{ label ? label : 'Reservasi Bulk Upload' }}
         </div>
         <button class="btn btn-icon btn-white" @click="onClose">
           <i class="fa fa-lg fa-times"></i>
         </button>
       </div>
-      <div class="width width-100">
-        <div v-if="invitationData" class="padding padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Invitation</div>
-          <div class="fonts micro black">{{ invitationData.title }}</div>
+      <div class="width w-full">
+        <div v-if="invitationData" class="p-4 padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Invitation</div>
+          <div class="micro text-black">{{ invitationData.title }}</div>
         </div>
-        <div class="padding padding-bottom-15px">
-          <div class="padding padding-top-10px padding-bottom-5px">
-            <div class="fonts fonts-11 semibold black">
+        <div class="p-4 pb-[15px]">
+          <div class="p-4 padding-top-10px padding-bottom-5px">
+            <div class="text-[11px] font-semibold text-black">
               File (csv, xls, xlsx)
             </div>
             <input
@@ -32,7 +32,7 @@
             />
             <div
               v-if="formMessage"
-              class="fonts micro bold"
+              class="micro font-bold"
               style="color: red; margin-top: 5px"
             >
               {{ formMessage && formMessage.file && formMessage.file[0] }}
@@ -41,12 +41,12 @@
 
           <div
             v-if="dataBride && dataBride.length > 0"
-            class="padding padding-top-10px padding-bottom-5px"
+            class="p-4 padding-top-10px padding-bottom-5px"
           >
-            <div class="fonts fonts-11 semibold black">
+            <div class="text-[11px] font-semibold text-black">
               Special Invitation (optional)
             </div>
-            <div class="fonts micro black margin margin-bottom-10-px">
+            <div class="micro text-black margin margin-bottom-10-px">
               Choose bride, if this invitation for specific bride guests.
             </div>
             <el-select
@@ -65,7 +65,7 @@
             </el-select>
             <div
               v-if="formMessage"
-              class="fonts micro bold"
+              class="micro font-bold"
               style="color: red; margin-top: 5px"
             >
               {{
@@ -74,7 +74,7 @@
             </div>
           </div>
         </div>
-        <div class="display-flex justify-content">
+        <div class="flex justify-content">
           <button
             class="btn btn-main btn-full margin margin-right-5-px"
             @click="onSave"
@@ -97,7 +97,7 @@
 <script>
 import axios from 'axios'
 import { mapGetters, mapState } from 'vuex'
-import AppAlert from '../../../modules/AppAlert'
+import AppAlert from '../../../../components/modules/AppAlert'
 
 export default {
   data() {

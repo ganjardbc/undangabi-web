@@ -2,7 +2,7 @@
   <div id="admin">
     <div :class="isSidebarSmall ? 'sidebar mobile show' : 'sidebar mobile'">
       <div class="header">
-        <div class="header-content display-flex space-between">
+        <div class="header-content flex justify-between">
           <router-link
             :to="{ name: 'home' }"
             class="logo"
@@ -24,8 +24,8 @@
     </div>
     <div class="main">
       <div class="header">
-        <div class="set-padding display-flex space-between">
-          <div class="display-flex">
+        <div class="set-padding flex justify-between">
+          <div class="flex">
             <button
               class="show-on-mobile btn btn-sekunder btn-icon"
               style="margin-right: 5px"
@@ -37,7 +37,7 @@
               />
             </button>
           </div>
-          <div style="width: 100%" class="display-flex right">
+          <div style="width: 100%" class="flex right">
             <router-link
               :to="{ name: 'profile' }"
               class="card-small-profile"
@@ -65,8 +65,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import AppListMenu from '../modules/AppListMenu'
-import logo from '../../../img/logo.png'
+import AppListMenu from '../components/modules/AppListMenu'
+import logo from '../../img/logo.png'
 
 const sidebarAdmin = [
   // {icon: 'fa fa-lg fa-database', label: 'DASHBOARD', value: 0, menu: [

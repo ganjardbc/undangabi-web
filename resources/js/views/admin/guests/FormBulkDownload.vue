@@ -1,9 +1,9 @@
 <template>
   <div id="BulkUpload" class="display-popup">
-    <div class="card-alert box-shadow post-middle">
-      <div class="display-flex justify-content align-center">
+    <div class="card-alert shadow-sm post-middle">
+      <div class="flex justify-content items-center">
         <div style="width: 100%">
-          <div class="fonts micro semibold">
+          <div class="micro font-semibold">
             {{ label ? label : 'Guest Bulk Download' }}
           </div>
         </div>
@@ -31,14 +31,14 @@
             </el-select>
             <div
               v-if="formMessage"
-              class="fonts micro bold"
+              class="micro font-bold"
               style="color: red; margin-top: 5px"
             >
               {{ formMessage && formMessage.file && formMessage.file[0] }}
             </div>
           </div>
         </div>
-        <div class="display-flex justify-content">
+        <div class="flex justify-content">
           <button
             :disabled="!formData.invitation_id"
             class="btn btn-main btn-full margin margin-right-5-px"
@@ -61,7 +61,7 @@
 </template>
 <script>
 import axios from 'axios'
-import AppAlert from '../../modules/AppAlert'
+import AppAlert from '../../../components/modules/AppAlert'
 
 export default {
   data() {

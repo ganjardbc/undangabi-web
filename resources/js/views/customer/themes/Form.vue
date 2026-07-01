@@ -1,11 +1,11 @@
 <template>
   <div id="App" class="margin margin-top-15px">
     <div class="bg-white">
-      <div v-if="dataTheme" class="width width-100">
-        <div class="fonts fonts-14 semibold black">Tema Sekarang</div>
-        <div class="width width-100 padding padding-top-15px">
-          <div class="card bg-white box-shadow">
-            <div class="display-flex align-center">
+      <div v-if="dataTheme" class="width w-full">
+        <div class="fonts-14 font-semibold text-black">Tema Sekarang</div>
+        <div class="width w-full p-4 pt-[15px]">
+          <div class="card bg-white shadow-sm">
+            <div class="flex items-center">
               <div class="width width-55px margin margin-right-15px">
                 <div
                   class="image image-padding bg-grey"
@@ -18,10 +18,10 @@
                 </div>
               </div>
               <div style="width: calc(100% - 100px)">
-                <div class="fonts fonts-11 semibold black">
+                <div class="text-[11px] font-semibold text-black">
                   {{ dataTheme.name }}
                 </div>
-                <div class="fonts fonts-10 normal grey">
+                <div class="text-[10px] normal text-gray-500">
                   {{ dataTheme.description }}
                 </div>
               </div>
@@ -30,19 +30,19 @@
         </div>
       </div>
       <div
-        class="margin margin-bottom-15px padding padding-top-20px border-bottom"
+        class="margin mb-[15px] p-4 padding-top-20px border-bottom"
       ></div>
-      <div v-loading="visibleLoading" class="width width-100">
-        <div class="display-flex space-between align-center">
-          <div class="fonts fonts-14 semibold black">Daftar Tema</div>
+      <div v-loading="visibleLoading" class="width w-full">
+        <div class="flex justify-between items-center">
+          <div class="fonts-14 font-semibold text-black">Daftar Tema</div>
         </div>
         <div
           v-for="(dt, i) in data"
           :key="i"
-          class="card bg-white box-shadow margin margin-top-15px margin-bottom-15px"
+          class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
         >
           <div
-            class="display-flex space-between align-center margin margin-bottom-15px"
+            class="flex justify-between items-center margin mb-[15px]"
           >
             <div class="width width-55px">
               <div
@@ -55,7 +55,7 @@
                 ></i>
               </div>
             </div>
-            <div class="display-flex flex-end">
+            <div class="flex justify-end">
               <button
                 v-if="form.theme_id === dt.id"
                 class="btn btn-main btn-icon"
@@ -71,14 +71,14 @@
               </button>
             </div>
           </div>
-          <div class="width width-100">
-            <div class="fonts fonts-11 semibold black">{{ dt.name }}</div>
-            <div class="fonts fonts-10 normal grey">{{ dt.description }}</div>
+          <div class="width w-full">
+            <div class="text-[11px] font-semibold text-black">{{ dt.name }}</div>
+            <div class="text-[10px] normal text-gray-500">{{ dt.description }}</div>
           </div>
         </div>
       </div>
-      <div class="width width-100 display-flex flex-end align-center">
-        <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+      <div class="width w-full flex justify-end items-center">
+        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -95,7 +95,7 @@
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
+import AppLoader from '../../../components/modules/AppLoader'
 
 export default {
   name: 'App',

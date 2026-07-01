@@ -1,21 +1,21 @@
 <template>
   <div id="App">
-    <div v-if="isBronzeInvitation" class="width width-100">
+    <div v-if="isBronzeInvitation" class="width w-full">
       <div
-        class="display-flex space-between align-center padding padding-bottom-10px"
+        class="flex justify-between items-center p-4 padding-bottom-10px"
       >
-        <div class="fonts fonts-22 semibold black">Buku Tamu</div>
+        <div class="text-[22px] font-semibold text-black">Buku Tamu</div>
       </div>
       <AppEmpty
         title="Upgrade paket ke 'Gold' atau 'Silver' agar dapat menggunakan fitur ini."
       />
     </div>
-    <div v-if="isGoldInvitation || isSilverInvitation" class="width width-100">
+    <div v-if="isGoldInvitation || isSilverInvitation" class="width w-full">
       <div
-        class="display-flex space-between align-center padding padding-bottom-10px"
+        class="flex justify-between items-center p-4 padding-bottom-10px"
       >
-        <div class="fonts fonts-22 semibold black">Buku Tamu</div>
-        <div class="display-flex flex-end">
+        <div class="text-[22px] font-semibold text-black">Buku Tamu</div>
+        <div class="flex justify-end">
           <button
             class="btn btn-white btn-icon"
             @click="onShowHideBulkDownload"
@@ -32,14 +32,14 @@
         </div>
       </div>
       <div
-        class="width width-100 display-flex space-between padding padding-bottom-15px"
+        class="width w-full flex justify-between p-4 pb-[15px]"
       >
-        <div class="fonts fonts-11 semibold black">Tamu Hadir</div>
-        <div class="fonts fonts-11 semibold black">
+        <div class="text-[11px] font-semibold text-black">Tamu Hadir</div>
+        <div class="text-[11px] font-semibold text-black">
           {{ dataGuestMetrics.totalPresent }} Orang
         </div>
       </div>
-      <div class="width width-100 padding padding-bottom-15px">
+      <div class="width w-full p-4 pb-[15px]">
         <el-input
           placeholder="Cari buku tamu"
           v-model="formFilter.search"
@@ -66,9 +66,9 @@
         />
       </div>
       <div
-        class="width width-100 display-flex flex-end align-center padding padding-top-15px"
+        class="width w-full flex justify-end items-center p-4 pt-[15px]"
       >
-        <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -87,7 +87,7 @@
       class="invitation-main-footer"
     >
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="openFormPopup('create')">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Tambah Buku Tamu
@@ -146,11 +146,11 @@
 </template>
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppEmpty from '../../modules/AppEmpty'
-import AppPopupQrCode from '../../modules/AppPopupQrCode'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppEmpty from '../../../components/modules/AppEmpty'
+import AppPopupQrCode from '../../../components/modules/AppPopupQrCode'
 import Form from './Form'
 import Card from './Card'
 import ScannerDialog from './ScannerDialog'

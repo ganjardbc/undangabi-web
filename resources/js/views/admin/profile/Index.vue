@@ -1,11 +1,11 @@
 <template>
   <div id="App">
     <div
-      class="display-flex display-mobile space-between"
+      class="flex display-mobile justify-between"
       style="padding: 15px"
     >
       <div class="width width-25 width-mobile" style="margin-bottom: 30px">
-        <div class="card box-shadow bg-white">
+        <div class="card shadow-sm bg-white">
           <div class="content-center" style="margin-bottom: 20px">
             <div
               class="image image-circle image-150px"
@@ -50,41 +50,41 @@
         />
       </div>
       <div class="width width-73 width-mobile">
-        <div class="card box-shadow bg-white">
-          <div class="width width-100">
-            <div class="fonts bold big margin margin-bottom-20-px">Biodata</div>
+        <div class="card shadow-sm bg-white">
+          <div class="width w-full">
+            <div class="font-bold big margin margin-bottom-20-px">Biodata</div>
 
             <div class="margin margin-bottom-20-px">
-              <div class="fonts bold">Profil</div>
+              <div class="font-bold">Profil</div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
-              <div class="width width-300-px fonts fonts-11">ID</div>
-              <div class="fonts fonts-11 semibold">{{ user && user.id }}</div>
+              <div class="width width-300-px text-[11px]">ID</div>
+              <div class="text-[11px] font-semibold">{{ user && user.id }}</div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
-              <div class="width width-300-px fonts fonts-11">Nama</div>
-              <div class="fonts fonts-11 semibold">{{ user && user.name }}</div>
+              <div class="width width-300-px text-[11px]">Nama</div>
+              <div class="text-[11px] font-semibold">{{ user && user.name }}</div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
-              <div class="width width-300-px fonts fonts-11">Role</div>
-              <div class="fonts fonts-11 semibold">
+              <div class="width width-300-px text-[11px]">Role</div>
+              <div class="text-[11px] font-semibold">
                 {{ user && user.role_name }}
               </div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
               <div class="width width-300-px">
-                <div class="fonts fonts-11">Enabled</div>
-                <div class="fonts micro black">Is this user enable ?</div>
+                <div class="text-[11px]">Enabled</div>
+                <div class="micro text-black">Is this user enable ?</div>
               </div>
-              <!-- <div class="fonts semibold">{{ user && user.enabled ? 'Enable' : 'Disable' }}</div> -->
+              <!-- <div class="font-semibold">{{ user && user.enabled ? 'Enable' : 'Disable' }}</div> -->
               <div>
                 <label class="switch green">
                   <input
@@ -98,15 +98,15 @@
               </div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
               <div class="width width-300-px">
-                <div class="fonts fonts-11">Status</div>
-                <div class="fonts micro black">Is this user active ?</div>
+                <div class="text-[11px]">Status</div>
+                <div class="micro text-black">Is this user active ?</div>
               </div>
-              <!-- <div class="fonts semibold">{{ user && user.status && user.status === 'active' ? 'Active' : 'Inactive' }}</div> -->
+              <!-- <div class="font-semibold">{{ user && user.status && user.status === 'active' ? 'Active' : 'Inactive' }}</div> -->
               <div>
-                <div class="display-flex">
+                <div class="flex">
                   <label class="radio">
                     <input
                       type="radio"
@@ -116,7 +116,7 @@
                       v-model="user.status"
                     />
                     <span class="checkmark" />
-                    <span class="fonts micro"> Active </span>
+                    <span class="micro"> Active </span>
                   </label>
 
                   <label class="radio">
@@ -128,40 +128,40 @@
                       v-model="user.status"
                     />
                     <span class="checkmark" />
-                    <span class="fonts micro"> Inactive </span>
+                    <span class="micro"> Inactive </span>
                   </label>
                 </div>
               </div>
             </div>
 
             <div class="margin margin-bottom-20-px margin-top-40-px">
-              <div class="fonts fonts-11 bold">Kontak</div>
+              <div class="text-[11px] font-bold">Kontak</div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
-              <div class="width width-300-px fonts fonts-11">Email</div>
-              <div class="fonts fonts-11 semibold">
+              <div class="width width-300-px text-[11px]">Email</div>
+              <div class="text-[11px] font-semibold">
                 {{ user && user.email }}
               </div>
             </div>
             <div
-              class="width width-100 display-flex margin margin-bottom-20-px"
+              class="width w-full flex margin margin-bottom-20-px"
             >
-              <div class="width width-300-px fonts fonts-11">No. Handphone</div>
-              <div class="fonts fonts-11 semibold">-</div>
+              <div class="width width-300-px text-[11px]">No. Handphone</div>
+              <div class="text-[11px] font-semibold">-</div>
             </div>
 
             <div
               class="width width-80 width-mobile margin margin-top-40-px margin-bottom-40-px"
             >
-              <div class="display-flex">
+              <div class="flex">
                 <div class="width width-300-px"></div>
                 <div>
                   <button class="btn btn-main">UPDATE PROFIL</button>
                 </div>
               </div>
-              <!-- <div class="fonts light-grey">
+              <!-- <div class="light-grey">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi labore dolores dolorem beatae. Dolorum tempore nam temporibus!
                             </div> -->
             </div>
@@ -174,11 +174,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import AppWrapper from '../../modules/AppWrapper'
-import AppButton from '../../modules/AppButton'
-import AppText from '../../modules/AppText'
-import AppForm from '../../modules/AppForm'
-import AppCardCharts from '../../modules/AppCardCharts'
+import AppWrapper from '../../../components/modules/AppWrapper'
+import AppButton from '../../../components/modules/AppButton'
+import AppText from '../../../components/modules/AppText'
+import AppForm from '../../../components/modules/AppForm'
+import AppCardCharts from '../../../components/modules/AppCardCharts'
 
 export default {
   name: 'App',

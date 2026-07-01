@@ -2,18 +2,18 @@
   <div id="AppPopupForm" class="display-popup">
     <div class="post-center" style="padding-top: 15px; padding-bottom: 15px">
       <div
-        class="card-popup bg-white box-shadow"
+        class="card-popup bg-white shadow-sm"
         :style="enableRadius ? 'border-radius: 10px;' : 'border-radius: 0;'"
       >
-        <div class="width width-100 width-center width-mobile">
-          <div class="display-flex justify-content center">
+        <div class="width w-full width-center width-mobile">
+          <div class="flex justify-content center">
             <div style="width: calc(100% - 90px); margin-top: 8px">
-              <div class="fonts normal semibold">{{ title }}</div>
-              <div v-if="subtitle" class="fonts fonts fonts-10 normal grey">
+              <div class="normal font-semibold">{{ title }}</div>
+              <div v-if="subtitle" class="text-[10px] normal text-gray-500">
                 {{ subtitle }}
               </div>
             </div>
-            <div class="display-flex align-right" style="width: 150px">
+            <div class="flex align-right" style="width: 150px">
               <button
                 v-if="enableSaveButton"
                 class="btn btn-icon btn-white"

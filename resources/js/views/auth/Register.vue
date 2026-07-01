@@ -1,128 +1,109 @@
 <template>
-  <div id="register" class="main-screen" style="padding-top: 50px">
-    <div class="width width-400px width-mobile width-center">
-      <div class="padding padding-left-15px padding-right-15px">
-        <div class="card border-full border-radius">
-          <form action="#" @submit.prevent="submit" style="width: 100%">
-            <div
-              class="image image-all"
-              style="
-                width: 200px;
-                padding-bottom: 30%;
-                margin: auto;
-                margin-bottom: 0;
-                background-color: rgba(0, 0, 0, 0);
-              "
+  <div id="register" class="min-h-screen bg-canvas flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-sm">
+      <div class="bg-white rounded-lg shadow-sm border border-hairline p-8">
+        <form action="#" @submit.prevent="submit" class="w-full">
+          <div class="flex justify-center mb-6">
+            <img
+              :src="logo"
+              alt="undang-abi"
+              class="h-10 w-auto object-contain"
+            />
+          </div>
+
+          <div class="flex justify-between items-center mb-5">
+            <h3 class="text-lg font-semibold text-ink font-sans">Register</h3>
+            <router-link
+              :to="{ name: 'login' }"
+              class="text-sm font-medium text-primary hover:text-primary-active transition-colors duration-150 no-underline"
             >
-              <img
-                :src="logo"
-                alt="undangabi"
-                class="post-center"
-                style="width: 100%"
-              />
-            </div>
+              Login ke akun kamu?
+            </router-link>
+          </div>
 
-            <div class="display-flex space-between" style="margin-bottom: 20px">
-              <h3 style="margin-top: 8px">Register</h3>
-              <router-link
-                :to="{ name: 'login' }"
-                class="btn btn-main-reverse"
-                style="padding-left: 0; padding-right: 0"
-              >
-                Login ke akun kamu ?
-              </router-link>
+          <div class="mb-4">
+            <div class="text-xs font-semibold text-body mb-1.5">Nama Lengkap</div>
+            <el-input
+              :disabled="visibleButton"
+              placeholder=""
+              v-model="form.name"
+            />
+            <div
+              v-if="textError.name && visibleError"
+              class="text-xs text-red-600 mt-1"
+            >
+              {{ textError.name && textError.name[0] }}
             </div>
+          </div>
 
-            <div class="padding padding-top-10px padding-bottom-5px">
-              <div class="fonts fonts-11 semibold black">Nama Lengkap</div>
-              <el-input
-                :disabled="visibleButton"
-                placeholder=""
-                v-model="form.name"
-              />
-              <div
-                v-if="textError.name && visibleError"
-                class="fonts fonts-10 normal red"
-                style="margin-bottom: 5px"
-              >
-                {{ textError.name && textError.name[0] }}
-              </div>
+          <div class="mb-4">
+            <div class="text-xs font-semibold text-body mb-1.5">Email Kamu</div>
+            <el-input
+              type="email"
+              :disabled="visibleButton"
+              placeholder=""
+              v-model="form.email"
+            />
+            <div
+              v-if="textError.email && visibleError"
+              class="text-xs text-red-600 mt-1"
+            >
+              {{ textError.email && textError.email[0] }}
             </div>
+          </div>
 
-            <div class="padding padding-top-10px padding-bottom-5px">
-              <div class="fonts fonts-11 semibold black">Email Kamu</div>
-              <el-input
-                type="email"
-                :disabled="visibleButton"
-                placeholder=""
-                v-model="form.email"
-              />
-              <div
-                v-if="textError.email && visibleError"
-                class="fonts fonts-10 normal red"
-                style="margin-bottom: 5px"
-              >
-                {{ textError.email && textError.email[0] }}
-              </div>
+          <div class="mb-4">
+            <div class="text-xs font-semibold text-body mb-1.5">Buat Username</div>
+            <el-input
+              :disabled="visibleButton"
+              placeholder=""
+              @input="formUsername"
+              v-model="form.username"
+            />
+            <div
+              v-if="textError.username && visibleError"
+              class="text-xs text-red-600 mt-1"
+            >
+              {{ textError.username && textError.username[0] }}
             </div>
+          </div>
 
-            <div class="padding padding-top-10px padding-bottom-5px">
-              <div class="fonts fonts-11 semibold black">Buat Username</div>
-              <el-input
-                :disabled="visibleButton"
-                placeholder=""
-                @input="formUsername"
-                v-model="form.username"
-              />
-              <div
-                v-if="textError.username && visibleError"
-                class="fonts fonts-10 normal red"
-                style="margin-bottom: 5px"
-              >
-                {{ textError.username && textError.username[0] }}
-              </div>
+          <div class="mb-6">
+            <div class="text-xs font-semibold text-body mb-1.5">Buat Password</div>
+            <el-input
+              type="password"
+              :disabled="visibleButton"
+              placeholder=""
+              v-model="form.password"
+              show-password
+            />
+            <div
+              v-if="textError.password && visibleError"
+              class="text-xs text-red-600 mt-1"
+            >
+              {{ textError.password && textError.password[0] }}
             </div>
+          </div>
 
-            <div class="padding padding-top-10px padding-bottom-30px">
-              <div class="fonts fonts-11 semibold black">Buat Password</div>
-              <el-input
-                type="password"
-                :disabled="visibleButton"
-                placeholder=""
-                v-model="form.password"
-                show-password
-              />
-              <div
-                v-if="textError.password && visibleError"
-                class="fonts fonts-10 normal red"
-                style="margin-bottom: 5px"
-              >
-                {{ textError.password && textError.password[0] }}
-              </div>
-            </div>
+          <div class="mb-3">
+            <button
+              class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              type="submit"
+              :disabled="visibleButton"
+            >
+              Daftar Sekarang
+            </button>
+          </div>
 
-            <div style="margin-bottom: 10px" type="center">
-              <button
-                class="btn btn-main"
-                style="width: 100%"
-                type="submit"
-                :disabled="visibleButton"
-              >
-                Daftar Sekarang
-              </button>
-            </div>
-
-            <div style="margin-bottom: 10px" type="center">
-              <router-link
-                :to="{ name: 'login' }"
-                class="btn btn-white"
-                style="padding-left: 0; padding-right: 0"
-              >
-                Login
-              </router-link>
-            </div>
-          </form>
-        </div>
+          <div class="mb-2">
+            <router-link
+              :to="{ name: 'login' }"
+              class="w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-semibold rounded-md text-muted hover:text-ink bg-canvas border border-hairline hover:bg-surface-soft transition-all duration-300 text-center no-underline"
+            >
+              Login
+            </router-link>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -140,11 +121,11 @@
 <script>
 import { mapActions } from 'vuex'
 import logo from '../../../img/logo.png'
-import AppWrapper from '../modules/AppWrapper'
-import AppButton from '../modules/AppButton'
-import AppForm from '../modules/AppForm'
-import AppText from '../modules/AppText'
-import AppAlert from '../modules/AppAlert'
+import AppWrapper from '../../components/modules/AppWrapper'
+import AppButton from '../../components/modules/AppButton'
+import AppForm from '../../components/modules/AppForm'
+import AppText from '../../components/modules/AppText'
+import AppAlert from '../../components/modules/AppAlert'
 
 export default {
   name: 'register',

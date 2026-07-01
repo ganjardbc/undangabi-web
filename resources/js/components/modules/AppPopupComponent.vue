@@ -1,12 +1,12 @@
 <template>
   <div id="App" class="display-popup">
     <div class="post-middle-absolute width width-400px width-mobile">
-      <div class="padding padding-15px">
-        <div class="card box-shadow bg-white" style="padding: 0; width: 100%">
+      <div class="p-4 p-[15px]">
+        <div class="card shadow-sm bg-white" style="padding: 0; width: 100%">
           <div
-            class="padding padding-15px display-flex space-between align-center"
+            class="p-4 p-[15px] flex justify-between items-center"
           >
-            <div class="fonts fonts-11 semibold black">
+            <div class="text-[11px] font-semibold text-black">
               {{ title ? title : 'Popup Component' }}
             </div>
             <button class="btn btn-white btn-icon" @click="onClose">

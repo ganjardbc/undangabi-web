@@ -2,7 +2,7 @@
   <div id="App">
     <button
       v-if="!isMobileView"
-      class="theme-comment-button btn btn-main btn-icon btn-small-radius box-shadow"
+      class="theme-comment-button btn btn-main btn-icon btn-small-radius shadow-sm"
       @click="openPopup"
     >
       <i class="fa fa-lg fa-comments" />
@@ -17,22 +17,22 @@
       "
     >
       <div class="theme-comment-header">
-        <div class="display-flex space-between">
+        <div class="flex justify-between">
           <div class="">
-            <div class="post-top display-flex">
+            <div class="post-top flex">
               <div style="margin-right: 10px">
-                <div class="post-top fonts fonts-11 black semibold">
+                <div class="post-top text-[11px] text-black font-semibold">
                   Ucapan & Do'a
                 </div>
               </div>
               <div class="theme-notif">
-                <div class="label fonts fonts-10 white">
+                <div class="label text-[10px] white">
                   {{ datas.length }}
                 </div>
               </div>
             </div>
           </div>
-          <div class="display-flex">
+          <div class="flex">
             <button class="btn btn-main btn-icon" @click="getData(invID)">
               <i class="fa fa-lg fa-retweet"></i>
             </button>
@@ -54,9 +54,9 @@
               <i class="post-top fa fa-lg fa-user-circle"></i>
             </div>
             <div class="theme-comment-info">
-              <div class="display-flex" style="margin-bottom: 5px">
+              <div class="flex" style="margin-bottom: 5px">
                 <div>
-                  <div class="post-top fonts fonts-10 black semibold">
+                  <div class="post-top text-[10px] text-black font-semibold">
                     {{ dt.name }}
                   </div>
                 </div>
@@ -64,10 +64,10 @@
                   Hadir
                 </div>
               </div>
-              <div class="fonts fonts-10 black" style="margin-bottom: 5px">
+              <div class="text-[10px] text-black" style="margin-bottom: 5px">
                 {{ dt.comment }}
               </div>
-              <div class="fonts fonts-9 grey">
+              <div class="text-[9px] text-gray-500">
                 {{ dt.created_at | moment('from', 'now') }}
               </div>
             </div>
@@ -92,7 +92,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: red; margin-bottom: 5px"
           >
             {{ formMessage && formMessage.name && formMessage.name[0] }}
@@ -108,14 +108,14 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts fonts-10"
+            class="text-[10px]"
             style="color: red; margin-bottom: 10px"
           >
             {{ formMessage && formMessage.comment && formMessage.comment[0] }}
           </div>
-          <div class="display-flex space-between">
+          <div class="flex justify-between">
             <div></div>
-            <div class="display-flex">
+            <div class="flex">
               <button
                 v-if="!visibleLoaderAction"
                 class="btn btn-grey"

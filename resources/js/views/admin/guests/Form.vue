@@ -28,7 +28,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.image && formMessage.image[0] }}
@@ -59,7 +59,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.guest_id && formMessage.guest_id[0] }}
@@ -78,7 +78,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro semibold"
+            class="micro font-semibold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.name && formMessage.name[0] }}
@@ -95,7 +95,7 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.address && formMessage.address[0] }}
@@ -112,7 +112,7 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.comments && formMessage.comments[0] }}
@@ -120,7 +120,7 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">PRESENT</div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="micro text-black margin margin-bottom-10-px">
             Is this guest will present ?
           </div>
           <select
@@ -140,7 +140,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -158,7 +158,7 @@
           class="field-group margin margin-bottom-15-px"
         >
           <div class="field-label">ATTENDANCE</div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="micro text-black margin margin-bottom-10-px">
             How many people will attendance ?
           </div>
           <select
@@ -178,7 +178,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -211,7 +211,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.rsvp && formMessage.rsvp[0] }}
@@ -219,7 +219,7 @@
         </div>
         <div class="field-group margin margin-bottom-25-px">
           <div class="field-label">STATUS</div>
-          <div class="display-flex">
+          <div class="flex">
             <label class="radio">
               <input
                 type="radio"
@@ -230,7 +230,7 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
 
             <label class="radio">
@@ -243,12 +243,12 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.status && formMessage.status[0] }}
@@ -256,8 +256,8 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">AVAILABLE</div>
-          <div class="display-flex space-between">
-            <div class="fonts micro black">Is this guest still available ?</div>
+          <div class="flex justify-between">
+            <div class="micro text-black">Is this guest still available ?</div>
             <label class="switch green">
               <input
                 type="checkbox"
@@ -271,7 +271,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -314,7 +314,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -336,11 +336,11 @@
 
 <script>
 import axios from 'axios'
-import AppTabs from '../../modules/AppTabs'
-import AppSideForm from '../../modules/AppSideForm'
-import AppImage from '../../modules/AppImage'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppTabs from '../../../components/modules/AppTabs'
+import AppSideForm from '../../../components/modules/AppSideForm'
+import AppImage from '../../../components/modules/AppImage'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 import FormInvitation from '../invitations/FormInvitation'
 
 const tabs = [

@@ -3,7 +3,7 @@
     <div class="theme-masonry-gallery">
       <div class="card-masonry" v-for="(item, i) in dataGallery" :key="i">
         <img
-          class="img box-shadow"
+          class="img shadow-sm"
           style="cursor: pointer"
           :src="item.thumbnail"
           alt=""

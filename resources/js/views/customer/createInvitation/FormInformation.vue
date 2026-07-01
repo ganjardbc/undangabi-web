@@ -1,47 +1,47 @@
 <template>
   <div id="App">
-    <div class="card bg-white box-shadow margin margin-bottom-20px">
-      <div class="fonts fonts-14 semibold black">Informasi</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          ID Undangan <span class="fonts red">*</span>
+    <div class="card bg-white shadow-sm margin margin-bottom-20px">
+      <div class="fonts-14 font-semibold text-black">Informasi</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          ID Undangan <span class="red">*</span>
         </div>
         <el-input
           v-model="form.invitation_id"
           placeholder=""
           :disabled="true"
         ></el-input>
-        <div v-if="errorMessage.invitation_id" class="fonts fonts-12px red">
+        <div v-if="errorMessage.invitation_id" class="fonts-12px red">
           {{ errorMessage.invitation_id[0] }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Short Link <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Short Link <span class="red">*</span>
         </div>
-        <div class="fonts fonts-10 normal black">Contoh: sinta-rio</div>
+        <div class="text-[10px] normal text-black">Contoh: sinta-rio</div>
         <el-input
           v-model="form.short_link"
           @input="formShortLink"
           placeholder=""
         ></el-input>
-        <div v-if="errorMessage.short_link" class="fonts fonts-12px red">
+        <div v-if="errorMessage.short_link" class="fonts-12px red">
           {{ errorMessage.short_link[0] }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Judul <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Judul <span class="red">*</span>
         </div>
-        <div class="fonts fonts-10 normal black">Contoh: Sinta & Rio</div>
+        <div class="text-[10px] normal text-black">Contoh: Sinta & Rio</div>
         <el-input v-model="form.title" placeholder=""></el-input>
-        <div v-if="errorMessage.title" class="fonts fonts-12px red">
+        <div v-if="errorMessage.title" class="fonts-12px red">
           {{ errorMessage.title[0] }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-10px">
-        <div class="fonts fonts-11 semibold black">
-          Kategori <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-10px">
+        <div class="text-[11px] font-semibold text-black">
+          Kategori <span class="red">*</span>
         </div>
         <el-select
           v-model="form.category_id"
@@ -56,17 +56,17 @@
             :value="dt.id"
           ></el-option>
         </el-select>
-        <div v-if="errorMessage.category_id" class="fonts fonts-12px red">
+        <div v-if="errorMessage.category_id" class="fonts-12px red">
           {{ errorMessage.category_id[0] }}
         </div>
       </div>
     </div>
 
-    <div class="card bg-white box-shadow margin margin-bottom-20px">
-      <div class="fonts fonts-14 semibold black">Jadwal Acara</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Tanggal <span class="fonts red">*</span>
+    <div class="card bg-white shadow-sm margin margin-bottom-20px">
+      <div class="fonts-14 font-semibold text-black">Jadwal Acara</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Tanggal <span class="red">*</span>
         </div>
         <el-date-picker
           style="width: 100%"
@@ -79,15 +79,15 @@
           value-format="yyyy-MM-dd"
         >
         </el-date-picker>
-        <div v-if="errorMessage.date" class="fonts fonts-12px red">
+        <div v-if="errorMessage.date" class="fonts-12px red">
           {{ errorMessage.date[0] }}
         </div>
       </div>
-      <div class="display-flex display-mobile">
+      <div class="flex display-mobile">
         <div
-          class="width width-35 width-mobile padding padding-top-10px padding-bottom-5px padding-right-15px padding-mobile-right-0"
+          class="width width-35 width-mobile p-4 padding-top-10px padding-bottom-5px pr-[15px] padding-mobile-right-0"
         >
-          <div class="fonts fonts-11 semibold black">Jam Mulai</div>
+          <div class="text-[11px] font-semibold text-black">Jam Mulai</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.startTime"
@@ -96,14 +96,14 @@
             clearable
             @change="onStartTime"
           ></el-time-select>
-          <div v-if="errorMessage.time" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time" class="fonts-12px red">
             {{ errorMessage.time }}
           </div>
         </div>
         <div
-          class="width width-35 width-mobile padding padding-top-10px padding-bottom-5px padding-right-15px padding-mobile-right-0"
+          class="width width-35 width-mobile p-4 padding-top-10px padding-bottom-5px pr-[15px] padding-mobile-right-0"
         >
-          <div class="fonts fonts-11 semibold black">Jam Berakhir</div>
+          <div class="text-[11px] font-semibold text-black">Jam Berakhir</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.endTime"
@@ -112,14 +112,14 @@
             clearable
             @change="onEndTime"
           ></el-time-select>
-          <div v-if="errorMessage.time" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time" class="fonts-12px red">
             {{ errorMessage.time }}
           </div>
         </div>
         <div
-          class="width width-25 width-mobile padding padding-top-10px padding-bottom-5px"
+          class="width width-25 width-mobile p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Zona Waktu</div>
+          <div class="text-[11px] font-semibold text-black">Zona Waktu</div>
           <el-select
             v-model="form.time_zone"
             slot="prepend"
@@ -134,18 +134,18 @@
               :value="dt"
             ></el-option>
           </el-select>
-          <div v-if="errorMessage.time_zone" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time_zone" class="fonts-12px red">
             {{ errorMessage.time_zone }}
           </div>
         </div>
       </div>
     </div>
 
-    <div class="card bg-white box-shadow margin margin-bottom-20px">
-      <div class="fonts fonts-14 semibold black">Lokasi Acara</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Alamat / Deskripsi <span class="fonts red">*</span>
+    <div class="card bg-white shadow-sm margin margin-bottom-20px">
+      <div class="fonts-14 font-semibold text-black">Lokasi Acara</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Alamat / Deskripsi <span class="red">*</span>
         </div>
         <el-input
           v-model="form.description"
@@ -153,25 +153,25 @@
           type="textarea"
           :autosize="{ minRows: 4, maxRows: 8 }"
         ></el-input>
-        <div v-if="errorMessage.description" class="fonts fonts-12px red">
+        <div v-if="errorMessage.description" class="fonts-12px red">
           {{ errorMessage.description[0] }}
         </div>
       </div>
     </div>
 
-    <div class="card bg-white box-shadow margin margin-bottom-20px">
-      <div class="fonts fonts-14 semibold black">Pengaturan</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
+    <div class="card bg-white shadow-sm margin margin-bottom-20px">
+      <div class="fonts-14 font-semibold text-black">Pengaturan</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
         <div
-          class="display-flex display-mobile align-center padding padding-bottom-5px"
+          class="flex display-mobile items-center p-4 padding-bottom-5px"
         >
           <div class="width width-70 width-mobile">
-            <div class="fonts fonts-11 semibold black">Privasi</div>
-            <div class="fonts fonts-10 normal grey">
+            <div class="text-[11px] font-semibold text-black">Privasi</div>
+            <div class="text-[10px] normal text-gray-500">
               Ubah pengaturan privasi undangan untuk Publik atau Privat
             </div>
           </div>
-          <div class="width width-30 width-mobile display-flex flex-end">
+          <div class="width width-30 width-mobile flex justify-end">
             <el-switch
               v-model="form.privacy"
               active-value="private"
@@ -182,7 +182,7 @@
             </el-switch>
           </div>
         </div>
-        <div v-if="errorMessage.privacy" class="fonts fonts-12px red">
+        <div v-if="errorMessage.privacy" class="fonts-12px red">
           {{ errorMessage.privacy[0] }}
         </div>
       </div>

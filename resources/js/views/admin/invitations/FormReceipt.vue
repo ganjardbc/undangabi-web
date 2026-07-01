@@ -18,14 +18,14 @@
         </section>
     </VueHtml2pdf> -->
   <div id="FormReceipt" class="display-popup">
-    <div class="card-alert box-shadow post-middle" style="width: 900px">
-      <div class="display-flex space-between align-center">
+    <div class="card-alert shadow-sm post-middle" style="width: 900px">
+      <div class="flex justify-between items-center">
         <div>
-          <div class="fonts micro semibold">
+          <div class="micro font-semibold">
             {{ label ? label : 'Print Receipt' }}
           </div>
         </div>
-        <div class="display-flex">
+        <div class="flex">
           <button class="btn btn-small-icon btn-white" @click="onPrint">
             <i class="fa fa-lw fa-print"></i>
           </button>
@@ -37,34 +37,34 @@
 
       <div id="print-receipt">
         <div style="padding: 15px">
-          <div class="display-flex" style="padding-bottom: 25px">
+          <div class="flex" style="padding-bottom: 25px">
             <div style="width: 140px">
-              <div class="fonts fonts-16 black semibold">UNDANGABI</div>
+              <div class="fonts-16 text-black font-semibold">UNDANGABI</div>
             </div>
             <div style="width: calc(100% - 140px)">
-              <div class="display-flex space-between">
+              <div class="flex justify-between">
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Dari:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">Undangabi</div>
-                  <div class="fonts fonts-10 black">di Tempat</div>
-                  <div class="display-flex" style="padding-top: 15px">
+                  <div class="text-[10px] text-black">Undangabi</div>
+                  <div class="text-[10px] text-black">di Tempat</div>
+                  <div class="flex" style="padding-top: 15px">
                     <div class="width width-20">
-                      <div class="fonts fonts-10 black">Tel:</div>
+                      <div class="text-[10px] text-black">Tel:</div>
                     </div>
                     <div class="width width-80">
-                      <div class="fonts fonts-10 black">021</div>
+                      <div class="text-[10px] text-black">021</div>
                     </div>
                   </div>
-                  <div class="display-flex">
+                  <div class="flex">
                     <div class="width width-20">
-                      <div class="fonts fonts-10 black">Email:</div>
+                      <div class="text-[10px] text-black">Email:</div>
                     </div>
                     <div class="width width-80">
-                      <div class="fonts fonts-10 black">
+                      <div class="text-[10px] text-black">
                         undangabi.official@gmail.com
                       </div>
                     </div>
@@ -74,73 +74,73 @@
             </div>
           </div>
 
-          <div class="display-flex" style="padding-bottom: 25px">
+          <div class="flex" style="padding-bottom: 25px">
             <div style="width: 140px">
-              <div class="display-flex space-between">
+              <div class="flex justify-between">
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold">Kepada:</div>
+                  <div class="text-[10px] text-black font-semibold">Kepada:</div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">Undangabi</div>
-                  <div class="fonts fonts-10 black">di Tempat</div>
+                  <div class="text-[10px] text-black">Undangabi</div>
+                  <div class="text-[10px] text-black">di Tempat</div>
                 </div>
               </div>
             </div>
             <div style="width: calc(100% - 140px)">
               <div
-                class="display-flex space-between"
+                class="flex justify-between"
                 style="padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     No Invoice:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">-</div>
+                  <div class="text-[10px] text-black">-</div>
                 </div>
               </div>
               <div
-                class="display-flex space-between"
+                class="flex justify-between"
                 style="padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Tanggal Invoice:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">-</div>
+                  <div class="text-[10px] text-black">-</div>
                 </div>
               </div>
               <div
-                class="display-flex space-between"
+                class="flex justify-between"
                 style="padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Batas Waktu:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">-</div>
+                  <div class="text-[10px] text-black">-</div>
                 </div>
               </div>
-              <div class="display-flex space-between" style="padding-bottom: 0">
+              <div class="flex justify-between" style="padding-bottom: 0">
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Status:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black">-</div>
+                  <div class="text-[10px] text-black">-</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div style="padding-bottom: 25px">
-            <table class="normal-table fonts fonts-10">
+            <table class="normal-table text-[10px]">
               <thead>
                 <tr>
                   <th>Produk</th>
@@ -162,48 +162,48 @@
             </table>
           </div>
 
-          <div class="display-flex space-between">
+          <div class="flex justify-between">
             <div></div>
             <div style="width: 285px">
               <div
-                class="display-flex space-between"
+                class="flex justify-between"
                 style="padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Jumlah:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black text-align-right">
+                  <div class="text-[10px] text-black text-align-right">
                     Rp. 250.000,
                   </div>
                 </div>
               </div>
               <div
-                class="display-flex space-between"
+                class="flex justify-between"
                 style="padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black semibold text-align-right">
+                  <div class="text-[10px] text-black font-semibold text-align-right">
                     Pajak:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-10 black text-align-right">-</div>
+                  <div class="text-[10px] text-black text-align-right">-</div>
                 </div>
               </div>
               <div
-                class="display-flex space-between border-top border-bottom"
+                class="flex justify-between border-top border-bottom"
                 style="padding-top: 15px; padding-bottom: 15px"
               >
                 <div class="width width-49">
-                  <div class="fonts fonts-13 black semibold text-align-right">
+                  <div class="fonts-13 text-black font-semibold text-align-right">
                     Total:
                   </div>
                 </div>
                 <div class="width width-49">
-                  <div class="fonts fonts-13 black semibold text-align-right">
+                  <div class="fonts-13 text-black font-semibold text-align-right">
                     Rp. 250.000,
                   </div>
                 </div>

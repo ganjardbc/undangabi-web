@@ -4,8 +4,8 @@
     :class="innerClass ? innerClass : 'width width-100 width-mobile'"
   >
     <div :class="'theme-guest mobile box-shadow'">
-      <div v-if="!isEnableGuestBook" class="padding padding-15px bg-red">
-        <div class="fonts fonts-11 semibold white align-center">
+      <div v-if="!isEnableGuestBook" class="p-4 p-[15px] bg-red">
+        <div class="text-[11px] font-semibold white items-center">
           {{
             enableEnglish
               ? 'Reservation Has Been Closed'
@@ -15,11 +15,11 @@
       </div>
 
       <div class="theme-guest-header bg-white">
-        <div class="display-flex space-between align-center">
-          <div class="fonts fonts-11 black semibold">
+        <div class="flex justify-between items-center">
+          <div class="text-[11px] text-black font-semibold">
             {{ title ? title : enableEnglish ? 'Guest Book' : 'Buku Tamu' }}
           </div>
-          <div class="display-flex">
+          <div class="flex">
             <button
               class="btn btn-white btn-icon"
               @click="getData(invStringID)"
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="display-flex display-mobile">
+      <div class="flex display-mobile">
         <div
           :class="`${!disablePopupForm ? `theme-guest-book ${visiblePopup ? 'show' : ''}` : 'theme-guest-book-normal'} width width-40 width-mobile border-right`"
         >
@@ -45,8 +45,8 @@
             v-if="!disablePopupForm"
             class="theme-guest-add theme-guest-header bg-white"
           >
-            <div class="display-flex space-between align-center">
-              <div class="fonts micro semibold">
+            <div class="flex justify-between items-center">
+              <div class="micro font-semibold">
                 {{
                   enableEnglish
                     ? 'Fill in Guest Attendance'
@@ -65,7 +65,7 @@
           >
             <div style="width: 100%">
               <div class="field-group margin margin-bottom-15-px">
-                <div class="fonts micro black semibold">
+                <div class="micro text-black font-semibold">
                   {{
                     labelNameText
                       ? labelNameText
@@ -73,9 +73,9 @@
                         ? 'Name'
                         : 'Nama'
                   }}
-                  <span class="fonts red">*</span>
+                  <span class="red">*</span>
                 </div>
-                <div v-if="descriptionNameText" class="fonts micro black">
+                <div v-if="descriptionNameText" class="micro text-black">
                   {{ descriptionNameText }}
                 </div>
                 <!-- isThereGuest || !isEnableGuestBook -->
@@ -88,14 +88,14 @@
                 ></el-input>
                 <div
                   v-if="formMessage"
-                  class="fonts micro semibold"
+                  class="micro font-semibold"
                   style="color: red; margin-bottom: 5px"
                 >
                   {{ formMessage && formMessage.name && formMessage.name[0] }}
                 </div>
               </div>
               <div class="field-group margin margin-bottom-15-px">
-                <div class="fonts micro black semibold">
+                <div class="micro text-black font-semibold">
                   {{
                     labelCommentText
                       ? labelCommentText
@@ -104,7 +104,7 @@
                         : "Ucapan & Do'a"
                   }}
                 </div>
-                <div v-if="descriptionCommentText" class="fonts micro black">
+                <div v-if="descriptionCommentText" class="micro text-black">
                   {{ descriptionCommentText }}
                 </div>
                 <el-input
@@ -116,7 +116,7 @@
                 ></el-input>
                 <div
                   v-if="formMessage"
-                  class="fonts micro semibold"
+                  class="micro font-semibold"
                   style="color: red; margin-bottom: 10px"
                 >
                   {{
@@ -128,7 +128,7 @@
               </div>
               <div v-if="formData.present_type !== 'present'">
                 <div class="field-group margin margin-bottom-15-px">
-                  <div class="fonts micro black semibold">
+                  <div class="micro text-black font-semibold">
                     {{
                       labelAttendanceText
                         ? labelAttendanceText
@@ -136,9 +136,9 @@
                           ? 'Attendance'
                           : 'Kehadiran'
                     }}
-                    <span class="fonts red">*</span>
+                    <span class="red">*</span>
                   </div>
-                  <div class="fonts micro black">
+                  <div class="micro text-black">
                     {{
                       descriptionAttendanceText
                         ? descriptionAttendanceText
@@ -167,7 +167,7 @@
                   </div>
                   <div
                     v-if="formMessage"
-                    class="fonts micro bold"
+                    class="micro font-bold"
                     style="color: red; margin-top: 5px"
                   >
                     {{
@@ -181,8 +181,8 @@
                   v-if="formData.present_type === 'will-present'"
                   class="field-group margin margin-bottom-15-px"
                 >
-                  <div class="display-flex column">
-                    <div class="fonts micro black semibold">
+                  <div class="flex flex-col">
+                    <div class="micro text-black font-semibold">
                       {{
                         labelPresentText
                           ? labelPresentText
@@ -193,7 +193,7 @@
                     </div>
                     <div
                       v-if="descriptionPresentText"
-                      class="fonts micro black"
+                      class="micro text-black"
                     >
                       {{ descriptionPresentText }}
                     </div>
@@ -209,7 +209,7 @@
                   </div>
                   <div
                     v-if="formMessage"
-                    class="fonts micro bold"
+                    class="micro font-bold"
                     style="color: red; margin-top: 5px"
                   >
                     {{
@@ -221,7 +221,7 @@
                 </div>
               </div>
               <div v-if="formData.present_type === 'present'">
-                <div class="fonts micro black semibold">
+                <div class="micro text-black font-semibold">
                   {{
                     labelAttendanceText
                       ? labelAttendanceText
@@ -229,9 +229,9 @@
                         ? 'Attendance Status'
                         : 'Status Kehadiran'
                   }}
-                  <span class="fonts red">*</span>
+                  <span class="red">*</span>
                 </div>
-                <div class="display-flex">
+                <div class="flex">
                   <div
                     v-if="formData.present_type === 'present'"
                     :class="'card-capsule active'"
@@ -262,7 +262,7 @@
                   </div>
                 </div>
               </div>
-              <div class="display-flex right" style="padding-top: 10px">
+              <div class="flex right" style="padding-top: 10px">
                 <button
                   v-if="!disablePopupForm"
                   class="theme-guest-add btn btn-white"
@@ -306,16 +306,16 @@
                 </div>
                 <div class="theme-guest-info">
                   <div
-                    class="display-flex left align-center display-mobile"
+                    class="flex left items-center display-mobile"
                     style="margin-bottom: 5px"
                   >
                     <div
-                      class="fonts fonts-11 black semibold"
+                      class="text-[11px] text-black font-semibold"
                       style="margin-right: 5px"
                     >
                       {{ dt.name }}
                     </div>
-                    <div class="display-flex left">
+                    <div class="flex left">
                       <div
                         v-if="dt.present_type === 'present'"
                         :class="'card-capsule active'"
@@ -346,11 +346,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="fonts fonts-11 black" style="margin-bottom: 5px">
+                  <div class="text-[11px] text-black" style="margin-bottom: 5px">
                     {{ dt.comments }}
                   </div>
-                  <div class="display-flex align-center">
-                    <div class="fonts fonts-10 grey">
+                  <div class="flex items-center">
+                    <div class="text-[10px] text-gray-500">
                       {{
                         dt.updated_at
                           ? dt.updated_at
@@ -359,10 +359,10 @@
                     </div>
                     <i
                       v-if="dt.address"
-                      class="fa fa-lg fa-circle fonts fonts-3 light-grey"
+                      class="fa fa-lg fa-circle fonts-3 light-grey"
                       style="margin: 0 5px"
                     ></i>
-                    <div v-if="dt.address" class="fonts fonts-10 grey">
+                    <div v-if="dt.address" class="text-[10px] text-gray-500">
                       {{ dt.address }}
                     </div>
                   </div>

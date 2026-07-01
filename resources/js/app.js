@@ -27,6 +27,7 @@ import VueYouTubeEmbed from 'vue-youtube-embed'
 import VueQrcodeReader from 'vue-qrcode-reader'
 import VueMeta from 'vue-meta'
 import VueZoomer from 'vue-zoomer'
+import { Icon } from '@iconify/vue2'
 import '../icons/fontawesome/css/all.min.css'
 import '../animations/app.css'
 
@@ -65,6 +66,7 @@ Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 Vue.use(VueCookies)
 Vue.use(SmartTable)
+Vue.component('Icon', Icon)
 
 const options = {
   styles: [`${api}/css/app.css`],

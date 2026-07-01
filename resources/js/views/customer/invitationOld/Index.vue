@@ -1,6 +1,6 @@
 <template>
   <div id="App" v-loading="invitationLoading">
-    <div class="width width-100 width-mobile margin margin-bottom-20-px">
+    <div class="width w-full width-mobile margin margin-bottom-20-px">
       <AppTabs
         :selectedIndex="selectedIndex"
         :data="tabs"
@@ -10,15 +10,15 @@
     </div>
     <div
       v-if="selectedIndex === 0"
-      class="display-flex space-between display-mobile"
+      class="flex justify-between display-mobile"
     >
       <div
-        class="width width-30 width width-mobile padding padding-bottom-20px"
+        class="width width-30 width-mobile p-4 padding-bottom-20px"
       >
         <FormCover />
       </div>
       <div
-        class="width width-70 width width-mobile padding padding-left-20px padding-mobile"
+        class="width width-70 width-mobile p-4 padding-left-20px padding-mobile"
       >
         <Form />
       </div>
@@ -30,7 +30,7 @@
 
     <div class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="submitData">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Simpan Undangan
@@ -57,10 +57,10 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import AppTabs from '../../modules/AppTabs'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
+import AppTabs from '../../../components/modules/AppTabs'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
 import Form from './Form'
 import FormPacket from './FormPacket'
 import FormTheme from './FormTheme'

@@ -1,13 +1,13 @@
 <template>
   <div id="App">
     <div v-if="visiblePopup" class="display-popup">
-      <div class="card-alert big box-shadow post-middle" style="padding: 0">
+      <div class="card-alert big shadow-sm post-middle" style="padding: 0">
         <div
-          class="display-flex space-between align-center"
+          class="flex justify-between items-center"
           style="padding: 15px"
         >
           <div>
-            <div class="fonts fonts-11 semibold">Peringatan</div>
+            <div class="text-[11px] font-semibold">Peringatan</div>
           </div>
           <button class="btn btn-icon btn-white" @click="onOpen">
             <i class="fa fa-lg fa-times"></i>
@@ -21,15 +21,15 @@
           "
         >
           <div class="content-center">
-            <div class="fonts fonts-10 black">
+            <div class="text-[10px] text-black">
               Acara ini dilaksanakan dengan menerapkan
             </div>
-            <div class="fonts fonts-16 black semibold">PROTOKOL KESEHATAN</div>
-            <div class="fonts fonts-10 black">Sebagai berikut:</div>
+            <div class="fonts-16 text-black font-semibold">PROTOKOL KESEHATAN</div>
+            <div class="text-[10px] text-black">Sebagai berikut:</div>
           </div>
           <div
             style="padding-top: 30px; padding-bottom: 30px"
-            class="display-flex wrap"
+            class="flex flex-wrap"
           >
             <div v-for="(dt, i) in data" :key="i" style="width: calc(100% / 3)">
               <div style="padding: 10px" class="content-center">
@@ -42,16 +42,16 @@
                     style="font-size: 38px; color: #1a1507"
                   />
                 </div>
-                <div class="fonts fonts-9 black">{{ dt.title }}</div>
+                <div class="text-[9px] text-black">{{ dt.title }}</div>
               </div>
             </div>
           </div>
           <div class="content-center">
-            <div class="fonts fonts-10 black" style="margin-bottom: 15px">
+            <div class="text-[10px] text-black" style="margin-bottom: 15px">
               Tanpa mengurangi rasa hormat demi mengurangi penyebaran pandemi,
               mohon untuk tetap mengikuti protokol kesehatan yang berlaku.
             </div>
-            <div class="fonts fonts-9 black" style="margin-bottom: 15px">
+            <div class="text-[9px] text-black" style="margin-bottom: 15px">
               Peringatan ini akan tertutup otomatis dalam 15 detik.
             </div>
           </div>

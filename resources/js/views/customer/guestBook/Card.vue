@@ -1,17 +1,17 @@
 <template>
-  <div id="App" class="width width-100">
+  <div id="App" class="width w-full">
     <div
       v-for="(dt, i) in data"
       :key="i"
-      class="card bg-white box-shadow margin margin-top-15px margin-bottom-15px"
+      class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
     >
       <div
-        class="width width-100 margin margin-bottom-15px padding padding-bottom-15px border-bottom"
+        class="width w-full margin mb-[15px] p-4 pb-[15px] border-bottom"
       >
         <div
-          class="display-flex align-center space-between margin margin-bottom-15px"
+          class="flex items-center justify-between margin mb-[15px]"
         >
-          <div class="width width-50px">
+          <div class="width w-[50px]">
             <div
               class="image image-padding bg-grey"
               :style="`background-image: url(${guestImageThumbnailUrl + dt.guest.image});`"
@@ -53,24 +53,24 @@
             </div>
           </div>
         </div>
-        <div class="width width-100">
-          <div class="fonts fonts-11 semibold black">{{ dt.guest.name }}</div>
+        <div class="width w-full">
+          <div class="text-[11px] font-semibold text-black">{{ dt.guest.name }}</div>
           <div
             v-if="dt.guest.comments"
-            class="fonts fonts-11 normal grey overflow-ellipsis"
+            class="text-[11px] normal text-gray-500 overflow-ellipsis"
           >
             <i
-              class="fa fa-lw fa-comment fonts fonts-10 main"
+              class="fa fa-lw fa-comment text-[10px] main"
               style="margin-right: 5px"
             ></i>
             {{ dt.guest.comments }}
           </div>
           <div
             v-if="dt.guest.address"
-            class="fonts fonts-11 normal grey overflow-ellipsis"
+            class="text-[11px] normal text-gray-500 overflow-ellipsis"
           >
             <i
-              class="fa fa-lw fa-map-marker-alt fonts fonts-10 main"
+              class="fa fa-lw fa-map-marker-alt text-[10px] main"
               style="margin-right: 5px"
             ></i>
             {{ dt.guest.address }}
@@ -78,7 +78,7 @@
         </div>
       </div>
 
-      <div class="width width-100 display-flex flex-end">
+      <div class="width w-full flex justify-end">
         <button
           class="btn btn-sekunder"
           style="margin-right: 10px"
@@ -87,7 +87,7 @@
           Lihat Detail
         </button>
         <el-popover placement="top-end" width="180" trigger="click">
-          <div class="width width-100">
+          <div class="width w-full">
             <button
               class="btn btn-white btn-full btn-align-left"
               @click="onEdit(dt.guest)"

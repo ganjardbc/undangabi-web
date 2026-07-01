@@ -1,9 +1,9 @@
 <template>
   <div id="App">
-    <div style="position: relative" class="width width-100">
-      <div class="width width-100">
+    <div style="position: relative" class="width w-full">
+      <div class="width w-full">
         <div
-          class="image image-padding image-circle bg-white box-shadow"
+          class="image image-padding image-circle bg-white shadow-sm"
           :style="`
                         background-image: url(${invitationCover});
                         text-align: center;
@@ -12,7 +12,7 @@
         >
           <i
             v-if="invitationData && !invitationData.profile"
-            class="post-middle-absolute fonts fonts-48 light-grey fa fa-lg fa-image"
+            class="post-middle-absolute fonts-48 light-grey fa fa-lg fa-image"
           />
         </div>
       </div>
@@ -49,10 +49,10 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import VueCountdown from '@chenfengyuan/vue-countdown'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppFileUpload from '../../modules/AppFileUpload'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppFileUpload from '../../../components/modules/AppFileUpload'
 
 export default {
   name: 'App',

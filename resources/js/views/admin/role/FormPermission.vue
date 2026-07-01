@@ -1,29 +1,29 @@
 <template>
   <div id="FormPermission">
-    <div class="card box-shadow" v-for="(dt, index) in datas" :key="index">
-      <div class="display-flex">
+    <div class="card shadow-sm" v-for="(dt, index) in datas" :key="index">
+      <div class="flex">
         <div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">ID</div>
-            <div class="fonts micro black semibold">{{ dt.id }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">ID</div>
+            <div class="micro text-black font-semibold">{{ dt.id }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">
               Permission ID
             </div>
-            <div class="fonts micro black semibold">
+            <div class="micro text-black font-semibold">
               {{ dt.main_permission_id }}
             </div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">Name</div>
-            <div class="fonts micro black semibold">
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">Name</div>
+            <div class="micro text-black font-semibold">
               {{ dt.permission_name }}
             </div>
           </div>
-          <div class="display-flex margin margin-bottom-10-px">
-            <div class="fonts micro black width width-100-px">Description</div>
-            <div class="fonts micro black semibold">
+          <div class="flex margin margin-bottom-10-px">
+            <div class="micro text-black width width-100-px">Description</div>
+            <div class="micro text-black font-semibold">
               {{ dt.permission_description }}
             </div>
           </div>
@@ -31,10 +31,10 @@
       </div>
       <div
         v-if="enableButton"
-        class="display-flex space-between margin margin-bottom-0-px"
+        class="flex justify-between margin margin-bottom-0-px"
       >
         <div></div>
-        <div class="display-flex content-right">
+        <div class="flex content-right">
           <button
             class="btn btn-small-icon btn-sekunder"
             @click="onShowHideDelete(index)"
@@ -94,8 +94,8 @@
 </template>
 <script>
 import axios from 'axios'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 
 const payload = {
   id: 0,

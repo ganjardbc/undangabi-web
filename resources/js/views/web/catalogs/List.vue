@@ -4,19 +4,19 @@
       <div class="self-padding" style="padding-bottom: 0; padding-top: 0">
         <div class="space space-center">
           <h2
-            class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-catalogs-animate"
+            class="fonts-32px fonts-mobile-22px font-semibold text-black no-line-height theme-catalogs-animate"
           >
             Katalog Undangan
           </h2>
-          <div class="display-flex center">
+          <div class="flex center">
             <div
               class="bottom-line theme-catalogs-animate"
               style="margin-top: 15px; margin-bottom: 15px"
             ></div>
           </div>
-          <div class="padding padding-left-15px padding-right-15px">
+          <div class="p-4 pl-[15px] pr-[15px]">
             <div
-              class="fonts fonts-16px fonts-mobile-13px grey theme-catalogs-animate"
+              class="fonts-16px fonts-mobile-13px text-gray-500 theme-catalogs-animate"
             >
               Berikut katalog undangan yang kami sediakan.
             </div>
@@ -31,32 +31,32 @@
       :class="`width width-100 ${i !== catalogs.length - 1 && 'padding padding-bottom-30px'}`"
     >
       <div
-        class="display-flex align-center space-between"
+        class="flex items-center justify-between"
         style="padding: 0 15px"
       >
-        <div class="display-flex align-center margin margin-right-10px">
+        <div class="flex items-center margin margin-right-10px">
           <div class="width width-30px">
-            <i class="fonts green far fa-lg fa-star"></i>
+            <Icon icon="lucide:star" class="green w-5 h-5" />
           </div>
-          <h2 class="fonts fonts-16px fonts-mobile-13px semibold black">
+          <h2 class="fonts-16px fonts-mobile-13px font-semibold text-black">
             {{ catalog.groupName }}
           </h2>
         </div>
-        <div class="fonts fonts-16px fonts-mobile-13px grey">
+        <div class="fonts-16px fonts-mobile-13px text-gray-500">
           {{ catalog.groupThemes.length }} item(s)
         </div>
       </div>
-      <div class="display-flex display-mobile wrap">
+      <div class="flex display-mobile flex-wrap">
         <div
           v-for="(theme, j) in catalog.groupThemes"
           :key="j"
-          class="width width-row-3"
+          class="width w-full md:w-[calc(33.33%-16px)]"
         >
           <div
-            class="card box-shadow theme-catalog-items-animate"
+            class="card shadow-sm theme-catalog-items-animate"
             style="padding: 0; margin: 20px 20px"
           >
-            <!-- <div class="width width-100" style="margin-bottom: 20px">
+            <!-- <div class="width w-full" style="margin-bottom: 20px">
               <div
                 class="image image-padding"
                 style="padding-bottom: 75%; border-radius: 0"
@@ -65,13 +65,13 @@
               </div>
             </div> -->
             <div style="padding: 0 20px; width: calc(100% - 40px)">
-              <div class="fonts fonts-13px fonts-mobile-11px grey">
+              <div class="fonts-13px fonts-mobile-11px text-gray-500">
                 {{ theme.type }}
               </div>
-              <div class="fonts fonts-16px fonts-mobile-13px semibold black">
+              <div class="fonts-16px fonts-mobile-13px font-semibold text-black">
                 {{ theme.title }}
               </div>
-              <div class="display-flex" style="padding-top: 10px">
+              <div class="flex" style="padding-top: 10px">
                 <div
                   v-for="(packet, k) in theme.packets"
                   :key="k"
@@ -81,7 +81,7 @@
                 </div>
               </div>
               <div
-                class="width width-100 display-flex space-between align-center"
+                class="width w-full flex justify-between items-center"
                 style="padding-top: 20px"
               >
                 <a
@@ -89,7 +89,7 @@
                   target="_blank"
                 >
                   <button class="btn btn-main btn-icon">
-                    <i class="icn fa fa-lg fa-shopping-cart" />
+                    <Icon icon="lucide:shopping-cart" class="w-4 h-4" />
                   </button>
                 </a>
                 <router-link :to="theme.link" target="_blank">
@@ -107,7 +107,7 @@
 
 <script>
 import { gsap, ScrollTrigger } from 'gsap/all'
-import AppLoader from '../../modules/AppLoader'
+import AppLoader from '../../../components/modules/AppLoader'
 import listOfCatalogs from './data'
 import coverImage from '../../../../img/all-theme-4.png'
 

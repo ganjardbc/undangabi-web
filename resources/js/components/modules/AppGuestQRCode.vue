@@ -1,17 +1,17 @@
 <template>
   <div id="App">
     <div
-      class="width width-280px width-mobile width-center padding padding-top-30px"
+      class="width width-280px width-mobile width-center p-4 padding-top-30px"
     >
       <div
-        class="card bg-white box-shadow content-center"
+        class="card bg-white shadow-sm content-center"
         style="border-radius: 5px"
       >
         <vue-qrcode
           :width="230"
           :value="`${initUrl}/${invitationShortLink}/${guestID}`"
         />
-        <div class="fonts micro black align-center margin margin-top-15px">
+        <div class="micro text-black items-center margin margin-top-15px">
           {{
             enableEnglish
               ? 'Save this QR-Code with Screen Shoot This Section and Show This QR-Code To The Committee When Attending This Event.'
@@ -23,19 +23,19 @@
 
     <div v-if="visibleQRScanner" class="display-popup">
       <div class="post-middle-absolute width width-400px width-mobile">
-        <div class="padding padding-15px">
-          <div class="card box-shadow bg-white">
+        <div class="p-4 p-[15px]">
+          <div class="card shadow-sm bg-white">
             <div
-              class="display-flex space-between align-center margin margin-bottom-15px"
+              class="flex justify-between items-center margin mb-[15px]"
             >
-              <div class="fonts fonts-11 semibold black">
+              <div class="text-[11px] font-semibold text-black">
                 {{ enableEnglish ? 'Scan QR Invitation' : 'Scan QR Undangan' }}
               </div>
               <button class="btn btn-white btn-icon" @click="onClose">
                 <i class="fa fa-lg fa-times"></i>
               </button>
             </div>
-            <div v-if="!selectedInvitationID" class="width width-100">
+            <div v-if="!selectedInvitationID" class="width w-full">
               <qrcode-stream @decode="onDecode" @init="onInit">
                 <div v-if="loading" class="post-middle-absolute">
                   <AppLoader
@@ -44,7 +44,7 @@
                 </div>
               </qrcode-stream>
               <div class="margin margin-top-15px">
-                <div class="fonts fonts-11 align-center normal black">
+                <div class="text-[11px] items-center normal text-black">
                   {{
                     enableEnglish
                       ? 'Scan The QR-Code That Committee Has Been Set in This Event.'
@@ -56,14 +56,14 @@
             <div v-if="selectedInvitationID">
               <div
                 v-if="selectedInvitationID === invitationID"
-                class="padding padding-30px"
+                class="p-4 padding-30px"
               >
-                <div class="display-flex column align-center">
+                <div class="flex flex-col items-center">
                   <i
-                    class="fonts fonts-64 primary far fa-4x fa-question-circle"
+                    class="fonts-64 primary far fa-4x fa-question-circle"
                   ></i>
                   <div
-                    class="fonts fonts-12 semibold black align-center margin margin-top-30px"
+                    class="text-[12px] font-semibold text-black items-center margin margin-top-30px"
                   >
                     {{
                       enableEnglish
@@ -72,7 +72,7 @@
                     }}
                   </div>
                   <div
-                    class="fonts fonts-12 normal black align-center margin margin-bottom-30px"
+                    class="text-[12px] normal text-black items-center margin margin-bottom-30px"
                   >
                     {{
                       enableEnglish
@@ -80,7 +80,7 @@
                         : 'Ubah status kehadiran kamu menjadi "Hadir" ?'
                     }}
                   </div>
-                  <div class="display-flex space-between width width-100">
+                  <div class="flex justify-between width w-full">
                     <button
                       class="btn btn-grey width width-48"
                       @click="onClickNo"
@@ -96,11 +96,11 @@
                   </div>
                 </div>
               </div>
-              <div v-else class="padding padding-30px">
-                <div class="display-flex column align-center">
-                  <i class="fonts fonts-64 primary fa fa-4x fa-info-circle"></i>
+              <div v-else class="p-4 padding-30px">
+                <div class="flex flex-col items-center">
+                  <i class="fonts-64 primary fa fa-4x fa-info-circle"></i>
                   <div
-                    class="fonts fonts-12 semibold black align-center margin margin-top-30px margin-bottom-30px"
+                    class="text-[12px] font-semibold text-black items-center margin margin-top-30px margin-bottom-30px"
                   >
                     {{
                       enableEnglish

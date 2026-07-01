@@ -7,10 +7,10 @@
       @onSave="onSave"
       @onClose="onClose"
     >
-      <div class="width width-100">
-        <div v-if="typeForm !== 'create'" class="padding padding-bottom-15px">
+      <div class="width w-full">
+        <div v-if="typeForm !== 'create'" class="p-4 pb-[15px]">
           <div
-            class="width width-150px width-center padding padding-bottom-15px"
+            class="width width-150px width-center p-4 pb-[15px]"
           >
             <div
               class="image image-padding bg-grey"
@@ -22,31 +22,31 @@
               ></i>
             </div>
           </div>
-          <div class="display-flex center">
+          <div class="flex center">
             <button class="btn btn-sekunder" @click="onUpdateCover(formData)">
               <i class="icn icn-left fa fa-lg fa-camera"></i> Ubah Cover
             </button>
           </div>
         </div>
-        <div class="padding padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            ID Special Thanks <span class="fonts red">*</span>
+        <div class="p-4 padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            ID Special Thanks <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.specialthanks_id"
             placeholder=""
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.specialthanks_id" class="fonts fonts-12px red">
+          <div v-if="formMessage.specialthanks_id" class="fonts-12px red">
             {{ formMessage.specialthanks_id[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Nama <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Nama <span class="red">*</span>
           </div>
-          <div class="display-flex space-between margin margin-bottom-10px">
-            <div class="fonts fonts-9 black">Ubah field menjadi editor ?</div>
+          <div class="flex justify-between margin mb-[10px]">
+            <div class="text-[9px] text-black">Ubah field menjadi editor ?</div>
             <el-switch
               v-model="formData.is_editor"
               :active-value="1"
@@ -66,26 +66,26 @@
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.name" class="fonts fonts-12px red">
+          <div v-if="formMessage.name" class="fonts-12px red">
             {{ formMessage.name[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Link</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Link</div>
           <el-input
             v-model="formData.link"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.link" class="fonts fonts-12px red">
+          <div v-if="formMessage.link" class="fonts-12px red">
             {{ formMessage.link[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Status</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Status</div>
           <div
             v-if="visibleSaveButton"
-            class="padding padding-top-15px display-flex"
+            class="p-4 pt-[15px] flex"
           >
             <label class="radio">
               <input
@@ -96,7 +96,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
             <label class="radio">
               <input
@@ -107,7 +107,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <el-input
@@ -116,7 +116,7 @@
             :value="formData.status === 'active' ? 'Active' : 'Inactive'"
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.status" class="fonts fonts-12px red">
+          <div v-if="formMessage.status" class="fonts-12px red">
             {{ formMessage.status[0] }}
           </div>
         </div>
@@ -128,7 +128,7 @@
 <script>
 import { mapState } from 'vuex'
 import { VueEditor } from 'vue2-editor'
-import AppSideFormPopup from '../../modules/AppSideFormPopup'
+import AppSideFormPopup from '../../../components/modules/AppSideFormPopup'
 
 export default {
   name: 'App',

@@ -2,7 +2,7 @@
   <div id="AppPopupQrCodeSmall">
     <button :class="`btn btn-full ${buttonStyle}`" @click="onOpen">
       <i v-if="buttonLabel" class="icn icn-left fa fa-lg fa-qrcode"></i>
-      <span v-if="buttonLabel" class="fonts fonts-13px semibold">
+      <span v-if="buttonLabel" class="fonts-13px font-semibold">
         {{ buttonLabel ? buttonLabel : 'QR-Code' }}
       </span>
       <i v-if="!buttonLabel" class="icn fa fa-lg fa-qrcode"></i>
@@ -12,12 +12,12 @@
       <div
         class="width width-450px width-center width-mobile margin margin-top-20px margin-bottom-20px"
       >
-        <div class="padding padding-15px">
-          <div class="card box-shadow bg-white">
+        <div class="p-4 p-[15px]">
+          <div class="card shadow-sm bg-white">
             <div
-              class="display-flex space-between align-center margin margin-bottom-15px"
+              class="flex justify-between items-center margin mb-[15px]"
             >
-              <div class="fonts fonts-11 semibold black">
+              <div class="text-[11px] font-semibold text-black">
                 {{ buttonLabel ? buttonLabel : 'QR-Code' }}
               </div>
               <button class="btn btn-white btn-icon" @click="onClose">
@@ -25,7 +25,7 @@
               </button>
             </div>
             <div
-              class="width width-100 margin margin-bottom-15px content-center"
+              class="width w-full margin mb-[15px] content-center"
               style="overflow: auto"
             >
               <AppLoader v-if="previewLoader" />
@@ -43,7 +43,7 @@
                   id="component-to-print"
                   class="width width-290px width-center bg-transparent"
                 >
-                  <div class="padding padding-10px">
+                  <div class="p-4 padding-10px">
                     <div
                       class="border-radius"
                       style="width: calc(100% - 8px); border: 4px solid #facc48"
@@ -67,11 +67,11 @@
                   </div>
                 </div>
               </div>
-              <div class="padding padding-10px display-flex center">
+              <div class="p-4 padding-10px flex center">
                 <div id="component-to-place"></div>
               </div>
             </div>
-            <div class="width width-100">
+            <div class="width w-full">
               <button
                 class="btn btn-full btn-sekunder"
                 :disabled="previewLoader"

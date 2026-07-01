@@ -25,7 +25,7 @@
       <slide v-for="(dt, i) in dataGallery" :key="i">
         <div class="theme-image small">
           <img
-            class="img box-shadow border-radius"
+            class="img shadow-sm border-radius"
             style="cursor: pointer"
             :src="dt.src"
             alt=""

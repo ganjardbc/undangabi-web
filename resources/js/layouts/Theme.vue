@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import AppToast from '../modules/AppToast'
+import AppToast from '../components/modules/AppToast'
 
 export default {
   name: 'ThemeLayout',

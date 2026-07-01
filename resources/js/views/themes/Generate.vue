@@ -73,9 +73,9 @@
 import { mapActions, mapState } from 'vuex'
 import VueCountdown from '@chenfengyuan/vue-countdown'
 import ChooseTheme from './ChooseTheme'
-import AppLoader from '../modules/AppLoader'
-import AppEmpty from '../modules/AppEmpty'
-import AppCardFreeTrial from '../modules/AppCardFreeTrial'
+import AppLoader from '../../components/modules/AppLoader'
+import AppEmpty from '../../components/modules/AppEmpty'
+import AppCardFreeTrial from '../../components/modules/AppCardFreeTrial'
 import logo from '../../../img/logo.png'
 
 export default {

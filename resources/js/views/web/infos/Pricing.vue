@@ -1,158 +1,137 @@
 <template>
-  <div id="App" style="padding-top: 0">
-    <div class="main-screen" style="margin-top: 0">
-      <div class="self-padding" style="padding-bottom: 0">
-        <div class="space space-center">
-          <h2
-            class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-pricing-animate"
-          >
-            Harga Undangan
-          </h2>
-          <div class="display-flex center">
-            <div
-              class="bottom-line theme-pricing-animate"
-              style="margin-top: 15px; margin-bottom: 15px"
-            ></div>
-          </div>
-          <div class="padding padding-left-15px padding-right-15px">
-            <div
-              class="fonts fonts-16px fonts-mobile-13px grey theme-pricing-animate"
-            >
-              Harga yang kami berikan bersahabat dan terjangkau di semua
-              kalangan.
-            </div>
-          </div>
-        </div>
+  <div id="App" class="max-w-5xl mx-auto px-6 py-20 border-t" style="border-color: rgba(230, 223, 216, 0.6);">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="font-semibold text-primary uppercase tracking-widest mb-4 font-sans" style="font-size: 11px;">Paket & Harga</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-ink tracking-tight">
+        Harga Undangan
+      </h2>
+      <!-- 4-spoke radial asterisk divider -->
+      <div class="flex items-center justify-center gap-3 my-5">
+        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-hairline"></div>
+        <svg class="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"/>
+        </svg>
+        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-hairline"></div>
       </div>
-      <div class="display-flex display-mobile wrap">
-        <div v-for="(dt, i) in pricing" :key="i" class="width width-row-3">
-          <div style="padding: 15px">
+      <p class="text-sm md:text-base text-body leading-relaxed font-sans">
+        Harga yang kami berikan bersahabat dan terjangkau di semua kalangan.
+      </p>
+    </div>
+
+    <!-- Pricing Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div v-for="(dt, i) in pricing" :key="i" class="w-full">
+        <!-- Pricing Card -->
+        <div
+          :class="`border rounded-lg p-8 flex flex-col justify-between relative hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full min-h-[500px] ${
+            dt.isRecomended 
+              ? 'bg-surface-dark border-primary border-opacity-45 text-on-dark' 
+              : 'bg-canvas border-hairline text-ink'
+          }`"
+        >
+          <!-- Recommended Badge -->
+          <div
+            v-if="dt.isRecomended"
+            class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-primary text-white text-[10px] font-semibold tracking-wider uppercase px-4 py-1.5 rounded-md shadow-sm flex items-center gap-1"
+            style="font-size: 10px;"
+          >
+            <Icon icon="lucide:star" class="w-2.5 h-2.5" />
+            <span>Direkomendasikan</span>
+          </div>
+
+          <div>
+            <!-- Header -->
+            <div :class="`font-display font-bold text-2xl ${dt.isRecomended ? 'text-on-dark' : 'text-ink'}`">
+              {{ dt.title }}
+            </div>
+            
+            <!-- Pricing -->
+            <div class="mt-4 flex flex-col">
+              <span
+                v-if="dt.secondPrice"
+                :class="`text-xs line-through tracking-wide ${dt.isRecomended ? 'text-on-dark-soft' : 'text-muted'}`"
+              >
+                {{ dt.secondPrice }}
+              </span>
+              <span :class="`text-4xl font-display font-bold tracking-tight mt-1 ${dt.isRecomended ? 'text-on-dark' : 'text-ink'}`">
+                {{ dt.price }}
+              </span>
+            </div>
+
+            <!-- Features -->
             <div
-              :class="`card box-shadow ${dt.type === 'pro' ? 'background-placeholder' : 'background-white'} theme-pricing-animate-2`"
-              style="overflow: unset"
+              :class="`border-t mt-6 pt-6 space-y-4 ${dt.isRecomended ? '' : 'border-hairline'}`"
+              :style="dt.isRecomended ? 'border-color: rgba(230, 223, 216, 0.1);' : ''"
             >
-              <div style="padding: 15px">
-                <div
-                  class="fonts fonts-22px fonts-mobile-16px black semibold theme-pricing-animate-2"
-                >
-                  {{ dt.title }}
-                </div>
-                <div style="margin-top: 15px">
-                  <div
-                    v-if="dt.secondPrice"
-                    class="fonts fonts-16px fonts-mobile-13px grey theme-pricing-animate-2"
-                    style="text-decoration: line-through"
-                  >
-                    {{ dt.secondPrice }}
-                  </div>
-                  <div
-                    class="fonts fonts-22px fonts-mobile-16px green semibold theme-pricing-animate-2"
-                  >
-                    {{ dt.price }}
-                  </div>
-                </div>
-                <div
-                  v-if="dt.isRecomended"
-                  class="display-flex center"
-                  style="position: absolute; top: -10px; right: 0; width: 100%"
-                >
-                  <div class="card-value">
-                    <i class="fa fa-lw fa-star" />
-                    <span class="fonts fonts-14px fonts-mobile-11px white"
-                      >Direkomendasikan</span
-                    >
-                  </div>
-                </div>
-                <div style="padding-top: 30px; padding-bottom: 50px">
-                  <div
-                    v-for="(sb, j) in dt.data"
-                    :key="j"
-                    class="display-flex align-center theme-pricing-animate-2"
-                    style="padding-top: 10px; padding-bottom: 10px"
-                  >
-                    <div style="width: 30px; padding-top: 3px">
-                      <i
-                        v-if="sb.status"
-                        class="fonts green far fa-lg fa-check-circle"
-                      />
-                      <i v-else class="fonts red far fa-lg fa-times-circle" />
-                    </div>
-                    <div class="display-flex" style="width: calc(100% - 30px)">
-                      <div class="fonts fonts-13px fonts-mobile-11px black">
-                        {{ sb.title }}
-                      </div>
-                      <div
-                        v-if="sb.note"
-                        class="fonts fonts-13px fonts-mobile-11px black semibold"
-                        style="margin-left: 5px"
-                      >
-                        {{ sb.note }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="theme-pricing-animate-2">
-                  <a
-                    :href="`https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital ${dt.title}`"
-                    target="_blank"
-                    class="btn btn-main btn-div"
-                  >
-                    <i class="icn icn-left fa fa-lw fa-shopping-cart" /> Pesan
-                    Ini
-                  </a>
-                </div>
+              <div
+                v-for="(sb, j) in dt.data"
+                :key="j"
+                class="flex items-start text-sm"
+              >
+                <!-- Feature Icon Status -->
+                <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center mr-3 mt-0.5">
+                  <Icon v-if="sb.status" icon="lucide:check" class="w-4 h-4 text-emerald-500" />
+                  <Icon v-else :icon="'lucide:x'" :class="`w-4 h-4 ${dt.isRecomended ? 'text-on-dark-soft text-opacity-30' : 'text-muted-soft text-opacity-40'}`" />
+                </span>
+                
+                <span :class="`leading-normal flex-1 font-sans ${dt.isRecomended ? 'text-on-dark-soft' : 'text-body'}`">
+                  {{ sb.title }}
+                  <span v-if="sb.note" :class="`font-semibold ml-1 ${dt.isRecomended ? 'text-on-dark' : 'text-body-strong'}`">
+                    {{ sb.note }}
+                  </span>
+                </span>
               </div>
             </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="mt-8">
+            <a
+              :href="`https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital ${dt.title}`"
+              target="_blank"
+              :class="`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm transition-all duration-300 shadow-sm ${
+                dt.isRecomended
+                  ? 'bg-primary hover:bg-primary-active text-white'
+                  : 'bg-canvas hover:bg-surface-card border border-hairline text-ink'
+              }`"
+            >
+              <Icon icon="lucide:shopping-cart" class="w-3.5 h-3.5" />
+              <span>Pesan Sekarang</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-if="isShowPlatinum" class="main-screen" style="padding-top: 10px">
-      <div class="self-padding" style="padding-bottom: 0">
-        <div class="space space-center" style="padding-bottom: 0">
-          <div style="padding: 15px">
-            <h2
-              class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-pricing-animate-2"
-            >
-              Paket Platinum
-            </h2>
-            <div class="display-flex center">
-              <div
-                class="bottom-line theme-pricing-animate-2"
-                style="margin-top: 15px; margin-bottom: 15px"
-              ></div>
-            </div>
-            <div class="width width-100">
-              <div
-                class="fonts fonts-16px fonts-mobile-13px grey theme-pricing-animate-2"
-              >
-                Kamu bisa kustom tema sendiri dengan fitur-fitur dari paket
-                Bronze, Silver atau Gold.
-              </div>
-            </div>
-            <div style="margin-top: 15px; margin-bottom: 30px">
-              <div
-                class="fonts fonts-22px fonts-mobile-16px green semibold theme-pricing-animate-2"
-              >
-                Rp (With Deal)
-              </div>
-            </div>
-            <div class="theme-pricing-animate-2">
-              <a
-                href="https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital Paket Platinum"
-                target="_blank"
-                class="btn btn-main btn-div width width-130px width-center"
-              >
-                <i class="icn icn-left fa fa-lw fa-shopping-cart" /> Pesan Ini
-              </a>
-            </div>
-          </div>
-        </div>
+    <!-- Platinum Package Section - Styled as a Coral Callout Card -->
+    <div v-if="isShowPlatinum" class="max-w-3xl mx-auto bg-primary text-white rounded-lg p-10 mt-16 text-center shadow-lg">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas bg-opacity-20 text-canvas font-semibold text-xs mb-3 font-sans">
+        Custom Design
+      </div>
+      <h3 class="text-3xl font-normal text-canvas font-display tracking-tight">
+        Paket Platinum
+      </h3>
+      <p class="mt-3 text-canvas text-opacity-80 text-sm md:text-base leading-relaxed max-w-lg mx-auto font-sans">
+        Kamu bisa kustom tema sendiri dengan fitur-fitur dari paket Bronze, Silver atau Gold sesuai keinginan.
+      </p>
+      <div class="mt-4 text-3xl font-normal text-canvas font-display">
+        Rp (With Deal)
+      </div>
+      <div class="mt-6">
+        <a
+          href="https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital Paket Platinum"
+          target="_blank"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-canvas hover:bg-surface-card text-ink text-sm font-semibold rounded-md transition-all duration-300 shadow-sm hover:shadow-md"
+        >
+          <Icon icon="lucide:shopping-cart" class="w-3.5 h-3.5" />
+          <span>Hubungi Kami</span>
+        </a>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import { mapState } from 'vuex'
 

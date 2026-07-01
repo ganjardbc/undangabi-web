@@ -1,36 +1,36 @@
 <template>
   <div id="FormToping">
-    <div class="card box-shadow" v-for="(dt, index) in datas" :key="index">
-      <div class="display-flex">
+    <div class="card shadow-sm" v-for="(dt, index) in datas" :key="index">
+      <div class="flex">
         <div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">ID</div>
-            <div class="fonts micro black semibold">{{ dt.id }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">ID</div>
+            <div class="micro text-black font-semibold">{{ dt.id }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">Toping ID</div>
-            <div class="fonts micro black semibold">{{ dt.toping_id }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">Toping ID</div>
+            <div class="micro text-black font-semibold">{{ dt.toping_id }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">Name</div>
-            <div class="fonts micro black semibold">{{ dt.name }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">Name</div>
+            <div class="micro text-black font-semibold">{{ dt.name }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-5-px">
-            <div class="fonts micro black width width-100-px">Price</div>
-            <div class="fonts micro black semibold">{{ dt.price }}</div>
+          <div class="flex margin margin-bottom-5-px">
+            <div class="micro text-black width width-100-px">Price</div>
+            <div class="micro text-black font-semibold">{{ dt.price }}</div>
           </div>
-          <div class="display-flex margin margin-bottom-10-px">
-            <div class="fonts micro black width width-100-px">Description</div>
-            <div class="fonts micro black semibold">{{ dt.description }}</div>
+          <div class="flex margin margin-bottom-10-px">
+            <div class="micro text-black width width-100-px">Description</div>
+            <div class="micro text-black font-semibold">{{ dt.description }}</div>
           </div>
         </div>
       </div>
       <div
         v-if="enableButton"
-        class="display-flex space-between margin margin-bottom-0-px"
+        class="flex justify-between margin margin-bottom-0-px"
       >
         <div></div>
-        <div class="display-flex content-right">
+        <div class="flex content-right">
           <button
             class="btn btn-small-icon btn-sekunder"
             @click="onShowHideDelete(index)"
@@ -91,8 +91,8 @@
 
 <script>
 import axios from 'axios'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 
 const payload = {
   id: 0,

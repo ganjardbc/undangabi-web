@@ -1,8 +1,8 @@
 <template>
   <div id="App" :class="`form-side-popup ${visibleForm ? 'show' : 'hide'}`">
-    <div class="fsp-header display-flex space-between align-center">
-      <div class="fonts normal semibold">{{ title ? title : 'Form' }}</div>
-      <div class="display-flex align-right">
+    <div class="fsp-header flex justify-between items-center">
+      <div class="normal font-semibold">{{ title ? title : 'Form' }}</div>
+      <div class="flex align-right">
         <button class="btn btn-icon btn-white" title="Close" @click="onClose">
           <i class="fa fa-lg fa-times" />
         </button>
@@ -15,7 +15,7 @@
     </div>
     <div
       v-if="enableSaveButton"
-      class="fsp-footer display-flex space-between align-center"
+      class="fsp-footer flex justify-between items-center"
     >
       <button class="btn btn-main btn-full" @click="onSave">Simpan Data</button>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="InvitationHome">
-    <div class="width width-100">
-      <div class="fonts fonts-22 semibold black">Home</div>
+    <div class="width w-full">
+      <div class="text-[22px] font-semibold text-black">Home</div>
     </div>
   </div>
 </template>

@@ -1,42 +1,42 @@
 <template>
   <div id="FormDetail">
-    <div class="card box-shadow" v-for="(dt, index) in datas" :key="index">
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">ID</div>
-        <div class="fonts micro black semibold">{{ dt.id }}</div>
+    <div class="card shadow-sm" v-for="(dt, index) in datas" :key="index">
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">ID</div>
+        <div class="micro text-black font-semibold">{{ dt.id }}</div>
       </div>
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">Detail ID</div>
-        <div class="fonts micro black semibold">{{ dt.proddetail_id }}</div>
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">Detail ID</div>
+        <div class="micro text-black font-semibold">{{ dt.proddetail_id }}</div>
       </div>
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">Name</div>
-        <div class="fonts micro black semibold">{{ dt.name }}</div>
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">Name</div>
+        <div class="micro text-black font-semibold">{{ dt.name }}</div>
       </div>
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">Price</div>
-        <div class="fonts micro black semibold">{{ dt.price }}</div>
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">Price</div>
+        <div class="micro text-black font-semibold">{{ dt.price }}</div>
       </div>
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">Status</div>
-        <div class="fonts micro black semibold">{{ dt.status }}</div>
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">Status</div>
+        <div class="micro text-black font-semibold">{{ dt.status }}</div>
       </div>
-      <div class="display-flex margin margin-bottom-5-px">
-        <div class="fonts micro black width width-100-px">Is Available</div>
-        <div class="fonts micro black semibold">
+      <div class="flex margin margin-bottom-5-px">
+        <div class="micro text-black width width-100-px">Is Available</div>
+        <div class="micro text-black font-semibold">
           {{ dt.is_available ? 'yes' : 'no' }}
         </div>
       </div>
-      <div class="display-flex margin margin-bottom-10-px">
-        <div class="fonts micro black width width-100-px">Description</div>
-        <div class="fonts micro black semibold">{{ dt.description }}</div>
+      <div class="flex margin margin-bottom-10-px">
+        <div class="micro text-black width width-100-px">Description</div>
+        <div class="micro text-black font-semibold">{{ dt.description }}</div>
       </div>
       <div
         v-if="enableButton"
-        class="display-flex space-between margin margin-bottom-0-px"
+        class="flex justify-between margin margin-bottom-0-px"
       >
         <div></div>
-        <div class="display-flex content-right">
+        <div class="flex content-right">
           <button
             class="btn btn-small-icon btn-sekunder"
             @click="onEdit(index)"
@@ -85,7 +85,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -107,7 +107,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.name && formMessage.name[0] }}
@@ -125,7 +125,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.price && formMessage.price[0] }}
@@ -133,7 +133,7 @@
       </div>
       <div class="field-group margin margin-bottom-20-px">
         <div class="field-label">STATUS</div>
-        <div class="display-flex">
+        <div class="flex">
           <label class="radio">
             <input
               type="radio"
@@ -143,7 +143,7 @@
               v-model="payload.status"
             />
             <span class="checkmark" />
-            <span class="fonts micro"> Active </span>
+            <span class="micro"> Active </span>
           </label>
 
           <label class="radio">
@@ -155,12 +155,12 @@
               v-model="payload.status"
             />
             <span class="checkmark" />
-            <span class="fonts micro"> Inactive </span>
+            <span class="micro"> Inactive </span>
           </label>
         </div>
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.status && formMessage.status[0] }}
@@ -168,8 +168,8 @@
       </div>
       <div class="field-group margin margin-bottom-15-px">
         <div class="field-label">AVAILABLE</div>
-        <div class="display-flex space-between">
-          <div class="fonts micro black">Is this detail still available ?</div>
+        <div class="flex justify-between">
+          <div class="micro text-black">Is this detail still available ?</div>
           <label class="switch green">
             <input
               type="checkbox"
@@ -182,7 +182,7 @@
         </div>
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -202,7 +202,7 @@
         ></textarea>
         <div
           v-if="formMessage"
-          class="fonts micro semibold"
+          class="micro font-semibold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -232,8 +232,8 @@
 
 <script>
 import axios from 'axios'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 
 const time = new Date().getTime()
 

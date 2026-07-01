@@ -1,97 +1,79 @@
 <template>
-  <div id="Login" class="main-screen" style="padding-top: 50px">
-    <div class="width width-400px width-mobile width-center">
-      <div class="padding padding-left-15px padding-right-15px">
-        <div class="card border-full border-radius">
-          <form action="#" @submit.prevent="submit" style="width: 100%">
-            <div
-              class="image image-all"
-              style="
-                width: 200px;
-                padding-bottom: 30%;
-                margin: auto;
-                margin-bottom: 0;
-                background-color: rgba(0, 0, 0, 0);
-              "
+  <div id="Login" class="min-h-screen bg-canvas flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-sm">
+      <div class="bg-white rounded-lg shadow-sm border border-hairline p-8">
+        <form action="#" @submit.prevent="submit" class="w-full">
+          <div class="flex justify-center mb-6">
+            <img
+              :src="logo"
+              alt="undang-abi"
+              class="h-10 w-auto object-contain"
+            />
+          </div>
+
+          <div class="flex justify-between items-center mb-5">
+            <h3 class="text-lg font-semibold text-ink font-sans">Sign-In</h3>
+            <router-link
+              :to="{ name: 'register' }"
+              class="text-sm font-medium text-primary hover:text-primary-active transition-colors duration-150 no-underline"
             >
-              <img
-                :src="logo"
-                alt="HNF"
-                class="post-center"
-                style="width: 100%"
-              />
-            </div>
+              Buat akun?
+            </router-link>
+          </div>
 
-            <div class="display-flex space-between" style="margin-bottom: 20px">
-              <h3 style="margin-top: 8px">Sign-In</h3>
-              <router-link
-                :to="{ name: 'register' }"
-                class="btn btn-main-reverse"
-                style="padding-left: 0; padding-right: 0"
-              >
-                Buat akun ?
-              </router-link>
-            </div>
-
-            <div class="padding padding-top-10px padding-bottom-5px">
-              <div class="fonts fonts-11 semibold black">Username</div>
-              <el-input :disabled="visibleButton" v-model="form.username" />
-              <div
-                v-if="textError['username']"
-                class="fonts fonts-10 normal red"
-                style="margin-top: 5px"
-              >
-                {{ textError['username'][0] }}
-              </div>
-            </div>
-
-            <div class="padding padding-top-10px padding-bottom-30px">
-              <div class="fonts fonts-11 semibold black">Password</div>
-              <el-input
-                type="password"
-                :disabled="visibleButton"
-                v-model="form.password"
-                show-password
-              />
-              <div
-                v-if="textError['password']"
-                class="fonts fonts-10 normal red"
-                style="margin-top: 5px"
-              >
-                {{ textError['password'][0] }}
-              </div>
-            </div>
-
+          <div class="mb-4">
+            <div class="text-xs font-semibold text-body mb-1.5">Username</div>
+            <el-input :disabled="visibleButton" v-model="form.username" />
             <div
-              v-if="typeof textError === 'string' && textError !== ''"
-              class="fonts fonts-10 normal red"
-              style="text-align: center; margin-bottom: 15px"
+              v-if="textError['username']"
+              class="text-xs text-red-600 mt-1"
             >
-              {{ textError }}
+              {{ textError['username'][0] }}
             </div>
+          </div>
 
-            <div style="margin-bottom: 10px">
-              <button
-                class="btn btn-main"
-                style="width: 100%"
-                type="submit"
-                :disabled="visibleButton"
-              >
-                Cek Akun
-              </button>
+          <div class="mb-6">
+            <div class="text-xs font-semibold text-body mb-1.5">Password</div>
+            <el-input
+              type="password"
+              :disabled="visibleButton"
+              v-model="form.password"
+              show-password
+            />
+            <div
+              v-if="textError['password']"
+              class="text-xs text-red-600 mt-1"
+            >
+              {{ textError['password'][0] }}
             </div>
+          </div>
 
-            <div style="margin-bottom: 10px" type="center">
-              <router-link
-                :to="{ name: 'register' }"
-                class="btn btn-white"
-                style="padding-left: 0; padding-right: 0"
-              >
-                Register
-              </router-link>
-            </div>
-          </form>
-        </div>
+          <div
+            v-if="typeof textError === 'string' && textError !== ''"
+            class="text-xs text-red-600 text-center mb-4"
+          >
+            {{ textError }}
+          </div>
+
+          <div class="mb-3">
+            <button
+              class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              type="submit"
+              :disabled="visibleButton"
+            >
+              Cek Akun
+            </button>
+          </div>
+
+          <div class="mb-2">
+            <router-link
+              :to="{ name: 'register' }"
+              class="w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-semibold rounded-md text-muted hover:text-ink bg-canvas border border-hairline hover:bg-surface-soft transition-all duration-300 text-center no-underline"
+            >
+              Register
+            </router-link>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -102,11 +84,11 @@
 <script>
 import { mapActions } from 'vuex'
 import logo from '../../../img/logo.png'
-import AppWrapper from '../modules/AppWrapper'
-import AppButton from '../modules/AppButton'
-import AppForm from '../modules/AppForm'
-import AppText from '../modules/AppText'
-import AppAlert from '../modules/AppAlert'
+import AppWrapper from '../../components/modules/AppWrapper'
+import AppButton from '../../components/modules/AppButton'
+import AppForm from '../../components/modules/AppForm'
+import AppText from '../../components/modules/AppText'
+import AppAlert from '../../components/modules/AppAlert'
 
 export default {
   name: 'Login',

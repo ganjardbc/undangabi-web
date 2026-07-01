@@ -10,12 +10,12 @@
         </div>
       </div>
       <div class="ci-information">
-        <div class="padding padding-mobile-bottom-15px">
+        <div class="p-4 padding-mobile-bottom-15px">
           <div
-            class="display-flex align-center justify-center-mobile display-mobile-column padding padding-mobile-bottom-15px"
+            class="flex items-center justify-center-mobile display-mobile-column p-4 padding-mobile-bottom-15px"
           >
             <div
-              class="fonts big black semibold margin margin-right-10px"
+              class="big text-black font-semibold margin margin-right-10px"
               v-html="invitationData.title"
             />
             <div
@@ -25,30 +25,30 @@
               {{ invitationData.status }}
             </div>
           </div>
-          <div class="display-flex justify-center-mobile">
+          <div class="flex justify-center-mobile">
             <div
-              class="fonts fonts-11 normal grey overflow-ellipsis margin margin-right-15px"
+              class="text-[11px] normal text-gray-500 overflow-ellipsis margin margin-right-15px"
             >
               <i
-                class="fa fa-lw fa-link fonts fonts-10 main"
+                class="fa fa-lw fa-link text-[10px] main"
                 style="width: 20px"
               ></i>
               {{ invitationData.short_link }}
             </div>
             <div
-              class="fonts fonts-11 normal grey overflow-ellipsis capitalize margin margin-right-15px"
+              class="text-[11px] normal text-gray-500 overflow-ellipsis capitalize margin margin-right-15px"
             >
               <i
-                class="fa fa-lw fa-list-ol fonts fonts-10 main"
+                class="fa fa-lw fa-list-ol text-[10px] main"
                 style="width: 20px"
               ></i>
               {{ invitationCategory }}
             </div>
             <div
-              class="fonts fonts-11 normal grey overflow-ellipsis capitalize"
+              class="text-[11px] normal text-gray-500 overflow-ellipsis capitalize"
             >
               <i
-                class="fa fa-lw fa-flag fonts fonts-10 main"
+                class="fa fa-lw fa-flag text-[10px] main"
                 style="width: 20px"
               ></i>
               {{
@@ -72,7 +72,7 @@
             </button>
           </div>
           <el-popover placement="bottom-end" width="220" trigger="click">
-            <div class="width width-100">
+            <div class="width w-full">
               <router-link
                 :to="{
                   name: 'generate-only',
@@ -81,7 +81,7 @@
                   },
                 }"
                 target="_blank"
-                class="width width-100"
+                class="width w-full"
               >
                 <button class="btn btn-full btn-white btn-align-left">
                   <i class="icn icn-left far fa-lg fa-envelope-open"></i> Lihat
@@ -96,7 +96,7 @@
                   },
                 }"
                 target="_blank"
-                class="width width-100"
+                class="width w-full"
               >
                 <button class="btn btn-full btn-white btn-align-left">
                   <i class="icn icn-left fa fa-lg fa-lock-open"></i> Public
@@ -111,7 +111,7 @@
                   },
                 }"
                 target="_blank"
-                class="width width-100"
+                class="width w-full"
               >
                 <button class="btn btn-full btn-white btn-align-left">
                   <i class="icn icn-left fa fa-lg fa-lock"></i> Private
@@ -137,10 +137,10 @@
       </div>
     </div>
     <div
-      class="width width-100 display-flex align-center space-between padding padding-top-25px"
+      class="width w-full flex items-center justify-between p-4 padding-top-25px"
     >
-      <div class="fonts fonts-11 semibold black">Kelola Undangan</div>
-      <div class="display-flex">
+      <div class="text-[11px] font-semibold text-black">Kelola Undangan</div>
+      <div class="flex">
         <button
           :class="`btn btn-icon ${gridType === 'grid' ? 'btn-main' : 'btn-white'}`"
           @click="onChangeGrid('grid')"
@@ -175,24 +175,24 @@
           >
             <div
               v-if="gridType === 'grid'"
-              class="post-middle-absolute display-flex column center align-center"
+              class="post-middle-absolute flex flex-col center items-center"
             >
               <div class="image image-60px image-circle">
                 <i :class="`post-middle-absolute ${item.icon}`"></i>
               </div>
-              <div class="padding padding-top-15px">
-                <div class="fonts fonts-11 semibold black align-center">
+              <div class="p-4 pt-[15px]">
+                <div class="text-[11px] font-semibold text-black items-center">
                   {{ item.label }}
                 </div>
               </div>
             </div>
-            <div v-else class="display-flex align-center">
+            <div v-else class="flex items-center">
               <div
                 class="image image-50px image-circle margin margin-right-15px"
               >
                 <i :class="`post-middle-absolute ${item.icon}`"></i>
               </div>
-              <div class="fonts fonts-11 semibold black align-center">
+              <div class="text-[11px] font-semibold text-black items-center">
                 {{ item.label }}
               </div>
             </div>
@@ -206,7 +206,7 @@
 import { mapGetters } from 'vuex'
 import FormCover from './FormCover'
 import FormProfile from './FormProfile'
-import AppPopupQrCodeSmall from '../../modules/AppPopupQrCodeSmall'
+import AppPopupQrCodeSmall from '../../../components/modules/AppPopupQrCodeSmall'
 
 export default {
   name: 'InvitationMain',

@@ -1,82 +1,54 @@
 <template>
-  <div class="main-screen" style="padding-top: 0">
-    <div style="padding-left: 15px; padding-right: 15px">
-      <div class="self-padding" style="padding-bottom: 0; padding-top: 0">
-        <div class="space space-center">
-          <h2
-            class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-catalogs-animate"
-          >
-            Katalog Undangan
-          </h2>
-          <div class="display-flex center">
-            <div
-              class="bottom-line theme-catalogs-animate"
-              style="margin-top: 15px; margin-bottom: 15px"
-            ></div>
-          </div>
-          <div class="padding padding-left-15px padding-right-15px">
-            <div
-              class="fonts fonts-16px fonts-mobile-13px grey theme-catalogs-animate"
-            >
-              Berikut katalog undangan yang kami sediakan.
-            </div>
-          </div>
-        </div>
+  <div class="bg-canvas border-t border-hairline">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="font-semibold text-primary uppercase tracking-widest mb-4 font-sans" style="font-size: 11px;">Koleksi Tema</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ink leading-tight -tracking-wide">
+          Katalog Undangan
+        </h2>
+        <p class="mt-4 text-sm md:text-base text-body leading-relaxed font-sans">
+          Pilih tema yang paling mencerminkan momen spesial Anda.
+        </p>
       </div>
-    </div>
 
-    <div
-      v-for="(catalog, i) in catalogs"
-      :key="i"
-      :class="`width width-100 ${i !== catalogs.length - 1 && 'padding padding-bottom-30px'}`"
-    >
-      <div
-        class="display-flex align-center space-between"
-        style="padding: 0 15px"
-      >
-        <div class="display-flex align-center margin margin-right-10px">
-          <div class="width width-30px">
-            <i class="fonts green far fa-lg fa-star"></i>
+      <!-- Catalogs List -->
+      <div v-for="(catalog, i) in catalogs" :key="i" class="w-full mb-12 last:mb-0">
+        <!-- Group Header with 4-spoke radial asterisk motif -->
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-[1px] flex-1 bg-hairline"></div>
+          <div class="flex items-center gap-3">
+            <svg class="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"/>
+            </svg>
+            <h3 class="text-base font-normal text-ink font-display whitespace-nowrap">{{ catalog.groupName }}</h3>
+            <span class="text-xs text-muted font-sans">({{ catalog.groupThemes.length }} tema)</span>
+            <svg class="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"/>
+            </svg>
           </div>
-          <h2 class="fonts fonts-16px fonts-mobile-13px semibold black">
-            {{ catalog.groupName }}
-          </h2>
+          <div class="h-[1px] flex-1 bg-hairline"></div>
         </div>
-        <div class="fonts fonts-16px fonts-mobile-13px grey">
-          {{ catalog.groupThemes.length }} item(s)
-        </div>
-      </div>
-      <div class="display-flex display-mobile wrap">
-        <div
-          v-for="(theme, j) in catalog.groupThemes"
-          :key="j"
-          class="width width-row-2"
-        >
-          <div class="display-flex align-center padding padding-15px">
-            <div style="width: 50px; margin-right: 15px">
-              <div
-                class="image image-padding image-circle bg-white box-shadow theme-feature-animate"
-              >
-                <i
-                  :class="`post-middle-absolute fonts fonts-18px fonts-mobile-16px primary fa fa-lg fa-envelope`"
-                ></i>
+
+        <!-- Theme Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div v-for="(theme, j) in catalog.groupThemes" :key="j">
+            <div class="bg-white border border-hairline rounded-lg p-5 hover:border-primary hover:border-opacity-40 hover:bg-white transition-all duration-300 flex items-start justify-between group">
+              <div class="flex-1 min-w-0">
+                <div class="w-8 h-8 rounded-md bg-primary bg-opacity-10 text-white flex items-center justify-center mb-3 flex-shrink-0">
+                  <Icon icon="mdi:envelope" class="w-3.5 h-3.5" />
+                </div>
+                <h4 class="text-sm font-semibold text-ink leading-snug truncate pr-2 font-sans">{{ theme.title }}</h4>
+                <span class="inline-block font-medium px-2 py-0.5 mt-1.5 rounded bg-surface-soft text-muted border border-hairline font-sans" style="font-size: 10px;">
+                  {{ theme.type }}
+                </span>
               </div>
+              <router-link :to="theme.link" target="_blank" class="flex-shrink-0 mt-1">
+                <button class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-hairline text-muted hover:text-white hover:bg-primary hover:border-primary transition-all duration-300">
+                  <Icon icon="lucide:external-link" class="w-3.5 h-3.5" />
+                </button>
+              </router-link>
             </div>
-            <div style="width: calc(100% - 180px)">
-              <div class="fonts fonts-16px fonts-mobile-13px semibold black">
-                {{ theme.title }}
-              </div>
-              <div class="fonts fonts-13px fonts-mobile-11px grey">
-                {{ theme.type }}
-              </div>
-            </div>
-            <router-link
-              :to="theme.link"
-              target="_blank"
-              style="display: block; width: 100px; margin-left: 15px"
-            >
-              <button class="btn btn-sekunder btn-big btn-full">Preview</button>
-            </router-link>
           </div>
         </div>
       </div>
@@ -85,7 +57,7 @@
 </template>
 
 <script>
-import AppLoader from '../../modules/AppLoader'
+import AppLoader from '../../../components/modules/AppLoader'
 import listOfCatalogs from './data'
 
 export default {
@@ -111,10 +83,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.self-padding {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-</style>

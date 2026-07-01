@@ -7,10 +7,10 @@
       @onSave="onSave"
       @onClose="onClose"
     >
-      <div class="width width-100">
-        <div class="padding padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            ID Jadwal <span class="fonts red">*</span>
+      <div class="width w-full">
+        <div class="p-4 padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            ID Jadwal <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.reservation_schedule_id"
@@ -19,27 +19,27 @@
           ></el-input>
           <div
             v-if="formMessage.reservation_schedule_id"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ formMessage.reservation_schedule_id[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Judul <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Judul <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.title"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.title" class="fonts fonts-12px red">
+          <div v-if="formMessage.title" class="fonts-12px red">
             {{ formMessage.title[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Tanggal <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Tanggal <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.schedule_date"
@@ -47,15 +47,15 @@
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.schedule_date" class="fonts fonts-12px red">
+          <div v-if="formMessage.schedule_date" class="fonts-12px red">
             {{ formMessage.schedule_date[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Jam <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Jam <span class="red">*</span>
           </div>
-          <div class="fonts fonts-10 normal grey">
+          <div class="text-[10px] normal text-gray-500">
             Isi dengan jam mulai - jam akhir (09.00 - 17.00)
           </div>
           <el-input
@@ -64,15 +64,15 @@
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.schedule_time" class="fonts fonts-12px red">
+          <div v-if="formMessage.schedule_time" class="fonts-12px red">
             {{ formMessage.schedule_time[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Zona Waktu <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Zona Waktu <span class="red">*</span>
           </div>
-          <div class="fonts fonts-10 normal grey">Pilih WIB/WIT/WITA</div>
+          <div class="text-[10px] normal text-gray-500">Pilih WIB/WIT/WITA</div>
           <el-select
             v-model="formData.schedule_timezone"
             slot="prepend"
@@ -89,16 +89,16 @@
           </el-select>
           <div
             v-if="formMessage.schedule_timezone"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ formMessage.schedule_timezone }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Status</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Status</div>
           <div
             v-if="visibleSaveButton"
-            class="padding padding-top-15px display-flex"
+            class="p-4 pt-[15px] flex"
           >
             <label class="radio">
               <input
@@ -109,7 +109,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
             <label class="radio">
               <input
@@ -120,7 +120,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <el-input
@@ -129,7 +129,7 @@
             :value="formData.status === 'active' ? 'Active' : 'Inactive'"
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.status" class="fonts fonts-12px red">
+          <div v-if="formMessage.status" class="fonts-12px red">
             {{ formMessage.status[0] }}
           </div>
         </div>
@@ -140,7 +140,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import AppSideFormPopup from '../../../modules/AppSideFormPopup'
+import AppSideFormPopup from '../../../../components/modules/AppSideFormPopup'
 
 export default {
   name: 'App',

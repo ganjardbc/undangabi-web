@@ -1,13 +1,13 @@
 <template>
   <div id="App" :class="formClass ? 'content-form' : 'content-form hide'">
     <div class="left">
-      <div class="bg-white box-shadow">
+      <div class="bg-white shadow-sm">
         <div
-          class="display-flex row space-between align-center border-bottom padding padding-10-px"
+          class="flex flex-row justify-between items-center border-bottom p-4 padding-10-px"
           style="height: 40px"
         >
-          <h1 class="fonts small black">THEMES</h1>
-          <div class="display-flex">
+          <h1 class="small text-black">THEMES</h1>
+          <div class="flex">
             <button
               class="btn btn-white btn-icon btn-radius"
               @click="onShow('CREATE')"
@@ -42,7 +42,7 @@
             </el-table-column>
             <el-table-column label="Status" width="150">
               <template slot-scope="scope">
-                <div class="display-flex">
+                <div class="flex">
                   <div
                     :class="`card-capsule ${scope.row.status === 'active' && 'active'}`"
                     style="text-transform: capitalize; line-height: 0.6"
@@ -55,7 +55,7 @@
             <el-table-column width="100">
               <template slot-scope="scope">
                 <el-popover placement="bottom-end" width="180" trigger="click">
-                  <div class="width width-100">
+                  <div class="width w-full">
                     <button
                       class="btn btn-white btn-full btn-align-left"
                       @click="onShow('VIEW', scope.row.id)"
@@ -88,10 +88,10 @@
         </div>
 
         <div
-          class="padding padding-10-px display-flex align-center flex-end"
+          class="p-4 padding-10-px flex items-center justify-end"
           style="height: 40px"
         >
-          <div class="fonts fonts-10 semibold grey">Total {{ totalPages }}</div>
+          <div class="text-[10px] font-semibold text-gray-500">Total {{ totalPages }}</div>
           <el-pagination
             background
             @current-change="handleCurrentChange"
@@ -140,10 +140,10 @@
 <script>
 import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
-import AppAlert from '../../modules/AppAlert'
-import SearchField from '../../modules/SearchField'
-import AppButtonMenu from '../../modules/AppButtonMenu'
+import AppLoader from '../../../components/modules/AppLoader'
+import AppAlert from '../../../components/modules/AppAlert'
+import SearchField from '../../../components/modules/SearchField'
+import AppButtonMenu from '../../../components/modules/AppButtonMenu'
 import Form from './Form'
 
 export default {

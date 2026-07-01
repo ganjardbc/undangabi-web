@@ -1,9 +1,9 @@
 <template>
-  <div class="display-flex center wrap">
+  <div class="flex center flex-wrap">
     <div v-for="(dt, i) in data" :key="i" class="width width-row-2">
-      <div class="padding padding-15-px">
+      <div class="p-4 padding-15-px">
         <div
-          class="card bg-white box-shadow border-radius content-center"
+          class="card bg-white shadow-sm border-radius content-center"
           style="
             overflow: unset;
             padding-top: 80px;
@@ -21,7 +21,7 @@
             "
           >
             <div
-              class="image image-80px image-center image-circle box-shadow bg-white"
+              class="image image-80px image-center image-circle shadow-sm bg-white"
             >
               <i
                 class="post-middle-absolute fa fa-lg fa-heart"
@@ -35,9 +35,9 @@
           >
             {{ dt.title }}
           </h2>
-          <div class="fonts fonts-12 grey">{{ dt.description }}</div>
+          <div class="text-[12px] text-gray-500">{{ dt.description }}</div>
           <div style="margin-top: 42px; margin-bottom: 42px">
-            <div class="fonts fonts-12 black">
+            <div class="text-[12px] text-black">
               {{ dt.date | moment('dddd, Do MMMM YYYY') }}
             </div>
             <b
@@ -46,7 +46,7 @@
               {{ dt.time }}
             </b>
           </div>
-          <div class="fonts fonts-12 grey">{{ dt.address }}</div>
+          <div class="text-[12px] text-gray-500">{{ dt.address }}</div>
         </div>
       </div>
     </div>

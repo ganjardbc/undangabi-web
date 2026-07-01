@@ -3,7 +3,7 @@
     <div
       v-for="(detail, j) in data.slice(from ? from : 0, to ? to : data.length)"
       :key="j"
-      class="display-flex"
+      class="flex"
       style="padding-top: 10px; padding-bottom: 10px"
     >
       <div style="width: 100px; margin-right: 15px">
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div style="width: 100%">
-        <div class="fonts fonts-12 semibold" style="margin-bottom: 5px">
+        <div class="text-[12px] font-semibold" style="margin-bottom: 5px">
           {{ detail.product_name
           }}<AppDote style="position: relative; top: -2px" />{{
             detail.product_detail
@@ -24,7 +24,7 @@
             detail.product_toping
           }}
         </div>
-        <div class="fonts fonts-10 grey">
+        <div class="text-[10px] text-gray-500">
           {{ detail.quantity }} product x Rp
           {{ detail.price + detail.toping_price }}
         </div>

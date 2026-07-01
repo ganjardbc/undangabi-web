@@ -7,10 +7,10 @@
       @onSave="onSave"
       @onClose="onClose"
     >
-      <div class="width width-100">
-        <div class="padding padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            ID Reservasi <span class="fonts red">*</span>
+      <div class="width w-full">
+        <div class="p-4 padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            ID Reservasi <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.reservation_list_id"
@@ -19,59 +19,59 @@
           ></el-input>
           <div
             v-if="formMessage.reservation_list_id"
-            class="fonts fonts-12px red"
+            class="fonts-12px red"
           >
             {{ formMessage.reservation_list_id[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Nama Lengkap <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Nama Lengkap <span class="red">*</span>
           </div>
           <el-input
             v-model="formData.name"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.name" class="fonts fonts-12px red">
+          <div v-if="formMessage.name" class="fonts-12px red">
             {{ formMessage.name[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Alamat</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Alamat</div>
           <el-input
             type="textarea"
             v-model="formData.address"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.address" class="fonts fonts-12px red">
+          <div v-if="formMessage.address" class="fonts-12px red">
             {{ formMessage.address[0] }}
           </div>
         </div>
         <div
           v-if="!isCreateForm"
-          class="padding padding-top-10px padding-bottom-5px"
+          class="p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Ucapan & Do'a</div>
+          <div class="text-[11px] font-semibold text-black">Ucapan & Do'a</div>
           <el-input
             type="textarea"
             v-model="formData.comments"
             placeholder=""
             :disabled="!visibleSaveButton"
           ></el-input>
-          <div v-if="formMessage.comments" class="fonts fonts-12px red">
+          <div v-if="formMessage.comments" class="fonts-12px red">
             {{ formMessage.comments[0] }}
           </div>
         </div>
         <div
           v-if="!isCreateForm"
-          class="padding padding-top-10px padding-bottom-5px"
+          class="p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">
-            Kehadiran <span class="fonts red">*</span>
+          <div class="text-[11px] font-semibold text-black">
+            Kehadiran <span class="red">*</span>
           </div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="micro text-black margin margin-bottom-10-px">
             Apakah tamu ini akan hadir ?
           </div>
           <el-select
@@ -89,7 +89,7 @@
             >
             </el-option>
           </el-select>
-          <div v-if="formMessage" class="fonts fonts-12px red">
+          <div v-if="formMessage" class="fonts-12px red">
             {{
               formMessage &&
               formMessage.present_type &&
@@ -99,10 +99,10 @@
         </div>
         <div
           v-if="!isCreateForm && formData.present_type === 'will-present'"
-          class="padding padding-top-10px padding-bottom-5px"
+          class="p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Jumlah Kehadiran</div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="text-[11px] font-semibold text-black">Jumlah Kehadiran</div>
+          <div class="micro text-black margin margin-bottom-10-px">
             Berapa banyak orang yang akan menghadiri acara ini ?
           </div>
           <el-input-number
@@ -113,7 +113,7 @@
             :disabled="!visibleSaveButton"
             style="width: 100%"
           ></el-input-number>
-          <div v-if="formMessage" class="fonts fonts-12px red">
+          <div v-if="formMessage" class="fonts-12px red">
             {{
               formMessage && formMessage.attendance && formMessage.attendance[0]
             }}
@@ -121,10 +121,10 @@
         </div>
         <div
           v-if="!isCreateForm && formData.present_type === 'will-present'"
-          class="padding padding-top-10px padding-bottom-5px"
+          class="p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Jadwal Tamu</div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="text-[11px] font-semibold text-black">Jadwal Tamu</div>
+          <div class="micro text-black margin margin-bottom-10-px">
             Pilih jadwal kedatangan tamu undangan.
           </div>
           <el-select
@@ -142,7 +142,7 @@
             >
             </el-option>
           </el-select>
-          <div v-if="formMessage" class="fonts fonts-12px red">
+          <div v-if="formMessage" class="fonts-12px red">
             {{
               formMessage &&
               formMessage.reservation_schedule_id &&
@@ -152,10 +152,10 @@
         </div>
         <div
           v-if="dataBride && dataBride.length > 0"
-          class="padding padding-top-10px padding-bottom-5px"
+          class="p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Undangan Khusus</div>
-          <div class="fonts micro black margin margin-bottom-10-px">
+          <div class="text-[11px] font-semibold text-black">Undangan Khusus</div>
+          <div class="micro text-black margin margin-bottom-10-px">
             Pilih pengantin, jika undangan ini khusus untuk salah satu
             pengantin.
           </div>
@@ -174,15 +174,15 @@
             >
             </el-option>
           </el-select>
-          <div v-if="formMessage" class="fonts fonts-12px red">
+          <div v-if="formMessage" class="fonts-12px red">
             {{ formMessage && formMessage.bride_id && formMessage.bride_id[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Status</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Status</div>
           <div
             v-if="visibleSaveButton"
-            class="padding padding-top-15px padding-bottom-15px display-flex"
+            class="p-4 pt-[15px] pb-[15px] flex"
           >
             <label class="radio">
               <input
@@ -193,7 +193,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
             <label class="radio">
               <input
@@ -204,7 +204,7 @@
                 v-model="formData.status"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <el-input
@@ -213,7 +213,7 @@
             :value="formData.status === 'active' ? 'Active' : 'Inactive'"
             :disabled="true"
           ></el-input>
-          <div v-if="formMessage.status" class="fonts fonts-12px red">
+          <div v-if="formMessage.status" class="fonts-12px red">
             {{ formMessage.status[0] }}
           </div>
         </div>
@@ -224,7 +224,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import AppSideFormPopup from '../../../modules/AppSideFormPopup'
+import AppSideFormPopup from '../../../../components/modules/AppSideFormPopup'
 
 export default {
   name: 'App',

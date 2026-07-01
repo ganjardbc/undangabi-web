@@ -1,13 +1,13 @@
 <template>
   <div id="AppPreviewGallery" class="display-popup">
     <div class="width width-600px width-mobile post-middle">
-      <div class="padding padding-15px">
-        <div class="width width-100 bg-white box-shadow">
+      <div class="p-4 p-[15px]">
+        <div class="width w-full bg-white shadow-sm">
           <div
-            class="display-flex space-between align-center border-bottom"
+            class="flex justify-between items-center border-bottom"
             style="padding: 10px 15px"
           >
-            <div class="fonts fonts-11 semibold black">Preview</div>
+            <div class="text-[11px] font-semibold text-black">Preview</div>
             <button class="btn btn-icon btn-circle btn-white" @click="onClose">
               <i class="fa fa-lg fa-times"></i>
             </button>
@@ -25,7 +25,7 @@
             />
           </v-zoomer>
           <div
-            class="display-flex center align-center border-top"
+            class="flex center items-center border-top"
             style="padding: 10px 15px"
           >
             <button

@@ -92,9 +92,9 @@
 </template>
 <script>
 import axios from 'axios'
-import AppLoader from '../modules/AppLoader'
-import AppTextInvitation from '../modules/AppTextInvitation'
-import AppEmpty from '../modules/AppEmpty'
+import AppLoader from '../../components/modules/AppLoader'
+import AppTextInvitation from '../../components/modules/AppTextInvitation'
+import AppEmpty from '../../components/modules/AppEmpty'
 import logo from '../../../img/logo.png'
 import FooterSecond from './FooterSecond'
 

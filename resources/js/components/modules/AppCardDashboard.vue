@@ -1,7 +1,7 @@
 <template>
   <div id="AppCardDashboard" style="padding: 0 10px; width: calc(100% - 20px)">
     <div
-      class="card box-shadow bg-white"
+      class="card shadow-sm bg-white"
       style="
         height: 350px;
         padding: 0;
@@ -11,13 +11,13 @@
       "
     >
       <div
-        class="display-flex space-between border-bottom"
+        class="flex justify-between border-bottom"
         style="height: 30px; padding: 5px 10px"
       >
         <div style="margin-top: 5px">
-          <div class="fonts font-9 semibold">TITLE</div>
+          <div class="font-9 font-semibold">TITLE</div>
         </div>
-        <div class="display-flex">
+        <div class="flex">
           <button class="btn btn-small-icon btn-white">
             <i class="fa fa-lw fa-retweet"></i>
           </button>

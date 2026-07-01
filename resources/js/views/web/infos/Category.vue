@@ -1,91 +1,59 @@
 <template>
-  <div id="App" class="main-screen" style="margin-top: 0">
-    <div class="self-padding" style="padding-bottom: 0">
-      <div class="space space-center">
-        <h2
-          class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-home-animate"
-        >
-          Apa Yang Kami Sediakan
-        </h2>
-        <div class="display-flex center">
-          <div
-            class="bottom-line theme-home-animate"
-            style="margin-top: 15px; margin-bottom: 15px"
-          ></div>
-        </div>
-        <div class="padding padding-left-15px padding-right-15px">
-          <p class="fonts fonts-16px fonts-mobile-13px grey theme-home-animate">
-            Atur acara pernikahanmu dari undangan hingga pencatatan kehadiran
-            Tamu.
-          </p>
-        </div>
-      </div>
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="font-semibold text-primary uppercase tracking-widest mb-4 font-sans" style="font-size: 11px;">Fitur Unggulan</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-ink leading-tight -tracking-wide">
+        Semua yang Anda Butuhkan
+      </h2>
+      <p class="mt-5 text-body text-sm md:text-base max-w-md mx-auto leading-relaxed font-sans">
+        Atur seluruh acara pernikahan dari undangan hingga pencatatan tamu — dalam satu platform.
+      </p>
     </div>
-    <div class="display-flex center wrap">
+
+    <!-- Feature grid with ghost numbers -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div
         v-for="(dt, i) in fiturs"
         :key="i"
-        class="width width-row-4 width-mobile"
+        class="relative group p-8 rounded-lg border border-hairline bg-surface-card bg-opacity-40 hover:border-primary hover:border-opacity-40 transition-all duration-300 overflow-hidden"
       >
-        <div class="padding padding-15px">
-          <div class="card-category">
-            <div class="cover">
-              <div
-                class="image image-padding image-circle bg-white box-shadow theme-feature-animate"
-              >
-                <i
-                  :class="`post-middle-absolute fonts fonts-28px fonts-mobile-18px primary ${dt.icon}`"
-                ></i>
-              </div>
-            </div>
-            <div class="detail">
-              <div
-                class="fonts fonts-16px fonts-mobile-13px black semibold theme-feature-animate"
-                style="margin-bottom: 5px"
-              >
-                {{ dt.title }}
-              </div>
-              <div
-                class="fonts fonts-14px fonts-mobile-11px grey normal theme-feature-animate"
-              >
-                {{ dt.description }}
-              </div>
-            </div>
-          </div>
+        <!-- Ghost number backdrop -->
+        <div class="absolute -bottom-4 -right-2 text-9xl font-normal font-display leading-none select-none group-hover:text-primary group-hover:text-opacity-10 transition-colors duration-500 pointer-events-none" style="color: rgba(20, 20, 19, 0.03);">
+          {{ String(i + 1).padStart(2, '0') }}
         </div>
+        <!-- Icon -->
+        <div class="relative w-11 h-11 rounded-md bg-primary bg-opacity-10 text-white flex items-center justify-center mb-5 flex-shrink-0">
+          <Icon :icon="dt.icon" class="w-5 h-5" />
+        </div>
+        <!-- Content -->
+        <h3 class="relative text-xl font-normal text-ink font-display mb-2">{{ dt.title }}</h3>
+        <p class="relative text-body text-sm leading-relaxed font-sans">{{ dt.description }}</p>
       </div>
     </div>
   </div>
 </template>
-<script>
-import countdown from '../../../../img/countdown.png'
-import quotes from '../../../../img/quotes.png'
 
+<script>
 export default {
-  name: 'App',
+  name: 'Category',
   data() {
     return {
       fiturs: [
         {
-          cover: countdown,
-          isNew: false,
-          icon: 'fa fa-lg fa-envelope-open',
-          title: 'Undangan',
-          description: 'Undangan digital dengan fitur-fitur unggulan.',
+          icon: 'lucide:mail-open',
+          title: 'Undangan Digital',
+          description: 'Fitur-fitur unggulan yang bisa dibagikan kapan saja.',
         },
         {
-          cover: quotes,
-          isNew: false,
-          icon: 'fa fa-lg fa-calendar-alt',
-          title: 'Reservasi',
-          description: 'Atur reservasi Tamu dengan jadwal acara.',
+          icon: 'lucide:calendar',
+          title: 'Manajemen Reservasi',
+          description: 'Atur reservasi Tamu dengan jadwal real-time dan akurat.',
         },
         {
-          cover: quotes,
-          isNew: false,
-          icon: 'fa fa-lg fa-book-open',
-          title: 'Buku Tamu',
-          description: 'Catat kehadiran Tamu dengan Buku Tamu digital.',
+          icon: 'lucide:book-open',
+          title: 'Buku Tamu Digital',
+          description: 'Catat kehadiran Tamu secara digital tanpa kertas, tanpa antrian panjang.',
         },
       ],
     }

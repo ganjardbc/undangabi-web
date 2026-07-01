@@ -2,28 +2,28 @@
   <div id="App">
     <AppBreadCrumb title="Youtube Video" />
 
-    <div v-if="!isGoldInvitation" class="width width-100">
+    <div v-if="!isGoldInvitation" class="width w-full">
       <AppEmpty
         title="Upgrade paket ke 'Gold' agar dapat menggunakan fitur ini."
       />
     </div>
 
-    <div v-if="isGoldInvitation" class="width width-100">
+    <div v-if="isGoldInvitation" class="width w-full">
       <div
-        class="card bg-white box-shadow margin margin-bottom-20px margin-top-20px"
+        class="card bg-white shadow-sm margin margin-bottom-20px margin-top-20px"
       >
-        <div class="fonts fonts-14 semibold black">Video</div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Youtube URL</div>
+        <div class="fonts-14 font-semibold text-black">Video</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Youtube URL</div>
           <el-input v-model="form.video_link" placeholder=""></el-input>
-          <div v-if="errorMessage.video_link" class="fonts fonts-12px red">
+          <div v-if="errorMessage.video_link" class="fonts-12px red">
             {{ errorMessage.video_link }}
           </div>
         </div>
       </div>
-      <div v-if="videoId" class="card bg-white box-shadow">
-        <div class="fonts fonts-14 semibold black">Tampilan Video</div>
-        <div class="width width-100 padding padding-top-15px">
+      <div v-if="videoId" class="card bg-white shadow-sm">
+        <div class="fonts-14 font-semibold text-black">Tampilan Video</div>
+        <div class="width w-full p-4 pt-[15px]">
           <youtube
             :video-id="videoId"
             player-width="100%"
@@ -35,7 +35,7 @@
 
     <div v-if="isGoldInvitation" class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="submitData">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Simpan Data
@@ -64,11 +64,11 @@
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppEmpty from '../../modules/AppEmpty'
-import AppBreadCrumb from '../../modules/AppBreadCrumb'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppEmpty from '../../../components/modules/AppEmpty'
+import AppBreadCrumb from '../../../components/modules/AppBreadCrumb'
 
 export default {
   name: 'App',

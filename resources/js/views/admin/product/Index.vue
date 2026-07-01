@@ -1,16 +1,16 @@
 <template>
   <div id="App" :class="formClass ? 'content-form' : 'content-form hide'">
     <div class="left">
-      <div class="bg-white box-shadow">
+      <div class="bg-white shadow-sm">
         <div
-          class="display-flex row space-between border-bottom padding padding-10-px"
+          class="flex flex-row justify-between border-bottom p-4 padding-10-px"
           style="height: 40px"
         >
           <div>
-            <h1 class="fonts small black">PRODUCTS</h1>
-            <p class="fonts micro grey no-line-height">controll your datas</p>
+            <h1 class="small text-black">PRODUCTS</h1>
+            <p class="micro text-gray-500 no-line-height">controll your datas</p>
           </div>
-          <div class="display-flex">
+          <div class="flex">
             <AppButtonMenu
               :icon="'fa fa-lw fa-filter'"
               :button="'btn btn-icon btn-white'"
@@ -73,7 +73,7 @@
                   </div>
                 </td>
                 <td class="medium-col">
-                  <div class="display-flex justify-content">
+                  <div class="flex justify-content">
                     <button
                       class="btn btn-transparent btn-small-icon btn-radius"
                       @click="onShow('EDIT', row.product.id)"
@@ -99,7 +99,7 @@
           </v-table>
         </div>
 
-        <div class="padding padding-10-px" style="height: 40px">
+        <div class="p-4 padding-10-px" style="height: 40px">
           <smart-pagination
             :maxPageLinks="5"
             :currentPage.sync="currentPage"
@@ -142,10 +142,10 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
-import AppAlert from '../../modules/AppAlert'
-import SearchField from '../../modules/SearchField'
-import AppButtonMenu from '../../modules/AppButtonMenu'
+import AppLoader from '../../../components/modules/AppLoader'
+import AppAlert from '../../../components/modules/AppAlert'
+import SearchField from '../../../components/modules/SearchField'
+import AppButtonMenu from '../../../components/modules/AppButtonMenu'
 import Form from './Form'
 
 export default {

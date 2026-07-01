@@ -3,9 +3,9 @@
     <div :class="`invitation-sidebar ${visibleSideBar && 'show'}`">
       <div class="invitation-header">
         <div
-          class="invitation-header-content display-flex space-between align-center"
+          class="invitation-header-content flex justify-between items-center"
         >
-          <h1 class="text-logo fonts medium bold black">Menu</h1>
+          <h1 class="text-logo medium font-bold text-black">Menu</h1>
           <div class="close">
             <button
               class="btn btn-icon btn-rounded btn-white"
@@ -18,7 +18,7 @@
       </div>
       <div class="invitation-content">
         <div
-          class="padding padding-top-15px padding-bottom-15px padding-left-13px padding-right-13px border-bottom"
+          class="p-4 pt-[15px] pb-[15px] padding-left-13px padding-right-13px border-bottom"
         >
           <button
             class="btn btn-sekunder btn-full"
@@ -28,7 +28,7 @@
             Daftar Undangan
           </button>
         </div>
-        <div class="padding padding-top-15px padding-bottom-15px">
+        <div class="p-4 pt-[15px] pb-[15px]">
           <AppGridMenu
             :data.sync="sidebar"
             @onClickMenu="visibleSideBar = false"
@@ -39,7 +39,7 @@
     <div class="invitation-main">
       <div class="invitation-main-header">
         <div
-          class="invitation-main-header-container display-flex space-between align-center"
+          class="invitation-main-header-container flex justify-between items-center"
         >
           <div class="invitation-main-header-left">
             <button
@@ -58,7 +58,7 @@
             <el-popover placement="bottom-end" width="250" trigger="click">
               <div
                 v-loading="invitationLoading"
-                class="display-flex align-center column padding padding-top-10px"
+                class="flex items-center flex-col p-4 padding-top-10px"
               >
                 <div class="width width-100px">
                   <div
@@ -71,17 +71,17 @@
                     ></i>
                   </div>
                 </div>
-                <div class="width width-100 padding padding-top-15px">
+                <div class="width w-full p-4 pt-[15px]">
                   <h2
-                    class="fonts fonts-12 semibold black align-center"
+                    class="text-[12px] font-semibold text-black items-center"
                     v-html="invitationData && invitationData.title"
                   />
-                  <div class="fonts fonts-10 black capitalize align-center">
+                  <div class="text-[10px] text-black capitalize items-center">
                     {{ invitationCategory }} | {{ invitationType }}
                   </div>
                 </div>
                 <div
-                  class="width width-100 margin margin-bottom-15px padding padding-top-15px border-bottom"
+                  class="width w-full margin mb-[15px] p-4 pt-[15px] border-bottom"
                 ></div>
                 <router-link
                   :to="{
@@ -91,7 +91,7 @@
                     },
                   }"
                   target="_blank"
-                  class="width width-100 margin margin-bottom-5px"
+                  class="width w-full margin mb-[5px]"
                 >
                   <button class="btn btn-white btn-full btn-align-left">
                     <i class="icn icn-left far fa-lg fa-envelope-open"></i>
@@ -106,7 +106,7 @@
                     },
                   }"
                   target="_blank"
-                  class="width width-100 margin margin-bottom-5px"
+                  class="width w-full margin mb-[5px]"
                 >
                   <button class="btn btn-white btn-full btn-align-left">
                     <i class="icn icn-left fa fa-lg fa-lock-open"></i> Public
@@ -121,7 +121,7 @@
                     },
                   }"
                   target="_blank"
-                  class="width width-100"
+                  class="width w-full"
                 >
                   <button class="btn btn-white btn-full btn-align-left">
                     <i class="icn icn-left fa fa-lg fa-lock"></i> Private
@@ -137,10 +137,10 @@
               </button>
             </el-popover>
             <el-popover placement="bottom-end" width="250" trigger="click">
-              <div class="width width-100 padding padding-top-10px">
-                <div class="display-flex column align-center">
+              <div class="width w-full p-4 padding-top-10px">
+                <div class="flex flex-col items-center">
                   <div
-                    class="image image-circle image-80px margin margin-bottom-10px"
+                    class="image image-circle image-80px margin mb-[10px]"
                     style="text-align: center"
                   >
                     <i
@@ -149,21 +149,21 @@
                       style="color: #999"
                     />
                   </div>
-                  <div class="fonts fonts-11 semibold black">
+                  <div class="text-[11px] font-semibold text-black">
                     {{ user && user.name }}
                   </div>
-                  <div class="fonts fonts-9 normal black">
+                  <div class="text-[9px] normal text-black">
                     {{ user && user.role_name }}
                   </div>
                 </div>
                 <div
-                  class="margin margin-bottom-15px padding padding-top-15px border-bottom"
+                  class="margin mb-[15px] p-4 pt-[15px] border-bottom"
                 ></div>
                 <button
                   class="btn btn-sekunder btn-full btn-center"
                   @click="onLogout"
                 >
-                  <i class="fonts red icn icn-left fa fa-lg fa-power-off"></i>
+                  <i class="red icn icn-left fa fa-lg fa-power-off"></i>
                   Logout
                 </button>
               </div>
@@ -180,7 +180,7 @@
       <div class="invitation-main-content">
         <div
           v-if="!invitationData.payment_status"
-          class="width width-100 padding padding-bottom-15px"
+          class="width w-full p-4 pb-[15px]"
         >
           <el-alert
             type="error"
@@ -188,19 +188,19 @@
             class="payment-status-container"
           >
             <div
-              class="width width-100 display-flex space-between align-center display-mobile"
+              class="width w-full flex justify-between items-center display-mobile"
             >
               <div class="width width-50 width-mobile">
-                <div class="fonts fonts-16px semibold red">
+                <div class="fonts-16px font-semibold red">
                   Undangan Belum Dibayar
                 </div>
-                <div class="fonts fonts-12px normal red">
+                <div class="fonts-12px normal red">
                   Segera lakukan pembayaran untuk undangan ini sebelum di
                   Non-Aktifkan oleh Admin.
                 </div>
               </div>
               <div
-                class="width width-200px width-mobile padding padding-mobile-top-15px"
+                class="width width-200px width-mobile p-4 padding-mobile-top-15px"
               >
                 <button
                   class="btn btn-red btn-full"
@@ -228,10 +228,10 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import logo from '../../../img/logo.png'
-import AppGridMenu from '../modules/AppGridMenu'
-import AppToast from '../modules/AppToast'
-import AppDoPayment from '../modules/AppDoPayment'
+import logo from '../../img/logo.png'
+import AppGridMenu from '../components/modules/AppGridMenu'
+import AppToast from '../components/modules/AppToast'
+import AppDoPayment from '../components/modules/AppDoPayment'
 
 export default {
   name: 'invitation',

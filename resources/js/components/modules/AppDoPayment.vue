@@ -1,16 +1,16 @@
 <template>
   <div id="DoPayment" class="display-popup">
     <div class="post-middle-absolute width width-600px width-mobile">
-      <div class="padding padding-15px">
-        <div class="card box-shadow bg-white">
-          <div class="display-flex space-between align-center">
-            <div class="fonts fonts-11 semibold black">Lakukan Pembayaran</div>
+      <div class="p-4 p-[15px]">
+        <div class="card shadow-sm bg-white">
+          <div class="flex justify-between items-center">
+            <div class="text-[11px] font-semibold text-black">Lakukan Pembayaran</div>
             <button class="btn btn-white btn-icon" @click="onClose">
               <i class="fa fa-lg fa-times"></i>
             </button>
           </div>
           <div
-            class="width width-100"
+            class="width w-full"
             style="max-height: calc(100vh - 300px); overflow-y: auto"
           >
             <div
@@ -25,19 +25,19 @@
               <div class="info">
                 <div style="padding: 5px 15px">
                   <div
-                    class="fonts fonts-11 black semibold"
+                    class="text-[11px] text-black font-semibold"
                     style="margin-bottom: 5px"
                   >
                     {{ dt.title }}
                   </div>
-                  <div class="fonts fonts-11 grey">
+                  <div class="text-[11px] text-gray-500">
                     <span v-html="dt.description"></span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="width width-100">
+          <div class="width w-full">
             <a
               :href="`https://wa.me/6289699181669?text=Halo admin, Saya ingin melakukan pembayaran untuk undangan dengan ID *${data.invitation_id}*`"
               target="_blank"

@@ -1,48 +1,48 @@
 <template>
   <div id="App">
     <div
-      class="card bg-white box-shadow margin margin-top-20px margin-bottom-20px"
+      class="card bg-white shadow-sm margin margin-top-20px margin-bottom-20px"
     >
-      <div class="fonts fonts-14 semibold black">Informasi</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
+      <div class="fonts-14 font-semibold text-black">Informasi</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
           ID Undangan
-          <span class="fonts red"><span class="fonts red">*</span></span>
+          <span class="red"><span class="red">*</span></span>
         </div>
         <el-input
           v-model="form.invitation_id"
           placeholder=""
           :disabled="true"
         ></el-input>
-        <div v-if="errorMessage.invitation_id" class="fonts fonts-12px red">
+        <div v-if="errorMessage.invitation_id" class="fonts-12px red">
           {{ errorMessage.invitation_id }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Short Link <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Short Link <span class="red">*</span>
         </div>
         <el-input
           v-model="form.short_link"
           @input="formShortLink"
           placeholder=""
         ></el-input>
-        <div v-if="errorMessage.short_link" class="fonts fonts-12px red">
+        <div v-if="errorMessage.short_link" class="fonts-12px red">
           {{ errorMessage.short_link }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Judul <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Judul <span class="red">*</span>
         </div>
         <el-input v-model="form.title" placeholder=""></el-input>
-        <div v-if="errorMessage.title" class="fonts fonts-12px red">
+        <div v-if="errorMessage.title" class="fonts-12px red">
           {{ errorMessage.title }}
         </div>
       </div>
-      <div class="padding padding-top-10px padding-bottom-10px">
-        <div class="fonts fonts-11 semibold black">
-          Kategori <span class="fonts red">*</span>
+      <div class="p-4 padding-top-10px padding-bottom-10px">
+        <div class="text-[11px] font-semibold text-black">
+          Kategori <span class="red">*</span>
         </div>
         <el-select
           v-model="form.category_id"
@@ -57,16 +57,16 @@
             :value="dt.id"
           ></el-option>
         </el-select>
-        <div v-if="errorMessage.category_id" class="fonts fonts-12px red">
+        <div v-if="errorMessage.category_id" class="fonts-12px red">
           {{ errorMessage.category_id[0] }}
         </div>
       </div>
     </div>
-    <div class="card bg-white box-shadow margin margin-top-20px">
-      <div class="fonts fonts-14 semibold black">Jadwal Acara</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Tanggal <span class="fonts red">*</span>
+    <div class="card bg-white shadow-sm margin margin-top-20px">
+      <div class="fonts-14 font-semibold text-black">Jadwal Acara</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Tanggal <span class="red">*</span>
         </div>
         <el-date-picker
           style="width: 100%"
@@ -79,15 +79,15 @@
           value-format="yyyy-MM-dd"
         >
         </el-date-picker>
-        <div v-if="errorMessage.date" class="fonts fonts-12px red">
+        <div v-if="errorMessage.date" class="fonts-12px red">
           {{ errorMessage.date[0] }}
         </div>
       </div>
-      <div class="display-flex display-mobile">
+      <div class="flex display-mobile">
         <div
-          class="width width-35 width-mobile padding padding-top-10px padding-bottom-5px padding-right-15px padding-mobile-right-0"
+          class="width width-35 width-mobile p-4 padding-top-10px padding-bottom-5px pr-[15px] padding-mobile-right-0"
         >
-          <div class="fonts fonts-11 semibold black">Jam Mulai</div>
+          <div class="text-[11px] font-semibold text-black">Jam Mulai</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.startTime"
@@ -96,14 +96,14 @@
             clearable
             @change="onStartTime"
           ></el-time-select>
-          <div v-if="errorMessage.time" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time" class="fonts-12px red">
             {{ errorMessage.time }}
           </div>
         </div>
         <div
-          class="width width-35 width-mobile padding padding-top-10px padding-bottom-5px padding-right-15px padding-mobile-right-0"
+          class="width width-35 width-mobile p-4 padding-top-10px padding-bottom-5px pr-[15px] padding-mobile-right-0"
         >
-          <div class="fonts fonts-11 semibold black">Jam Berakhir</div>
+          <div class="text-[11px] font-semibold text-black">Jam Berakhir</div>
           <el-time-select
             style="width: 100%"
             v-model="localForm.endTime"
@@ -112,14 +112,14 @@
             clearable
             @change="onEndTime"
           ></el-time-select>
-          <div v-if="errorMessage.time" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time" class="fonts-12px red">
             {{ errorMessage.time }}
           </div>
         </div>
         <div
-          class="width width-25 width-mobile padding padding-top-10px padding-bottom-5px"
+          class="width width-25 width-mobile p-4 padding-top-10px padding-bottom-5px"
         >
-          <div class="fonts fonts-11 semibold black">Zona Waktu</div>
+          <div class="text-[11px] font-semibold text-black">Zona Waktu</div>
           <el-select
             v-model="form.time_zone"
             slot="prepend"
@@ -134,19 +134,19 @@
               :value="dt"
             ></el-option>
           </el-select>
-          <div v-if="errorMessage.time_zone" class="fonts fonts-12px red">
+          <div v-if="errorMessage.time_zone" class="fonts-12px red">
             {{ errorMessage.time_zone }}
           </div>
         </div>
       </div>
     </div>
     <div
-      class="card bg-white box-shadow margin margin-bottom-20px margin-top-20px"
+      class="card bg-white shadow-sm margin margin-bottom-20px margin-top-20px"
     >
-      <div class="fonts fonts-14 semibold black">Lokasi Acara</div>
-      <div class="padding padding-top-10px padding-bottom-5px">
-        <div class="fonts fonts-11 semibold black">
-          Alamat <span class="fonts red">*</span>
+      <div class="fonts-14 font-semibold text-black">Lokasi Acara</div>
+      <div class="p-4 padding-top-10px padding-bottom-5px">
+        <div class="text-[11px] font-semibold text-black">
+          Alamat <span class="red">*</span>
         </div>
         <el-input
           v-model="form.description"
@@ -154,62 +154,62 @@
           type="textarea"
           :autosize="{ minRows: 4, maxRows: 8 }"
         ></el-input>
-        <div v-if="errorMessage.description" class="fonts fonts-12px red">
+        <div v-if="errorMessage.description" class="fonts-12px red">
           {{ errorMessage.description }}
         </div>
       </div>
     </div>
     <div
-      class="card bg-white box-shadow margin margin-top-20px margin-bottom-20px"
+      class="card bg-white shadow-sm margin margin-top-20px margin-bottom-20px"
     >
       <AppCardCollapse title="Note & Hastag">
-        <div class="padding padding-top-10px padding-bottom-10px">
-          <div class="fonts fonts-11 semibold black">Note</div>
-          <div class="fonts fonts-10 normal black">
+        <div class="p-4 padding-top-10px padding-bottom-10px">
+          <div class="text-[11px] font-semibold text-black">Note</div>
+          <div class="text-[10px] normal text-black">
             Catatan untuk tamu yang diundang
           </div>
           <vue-editor
             v-model="form.note"
             :editorToolbar="editorConfig"
           ></vue-editor>
-          <div v-if="errorMessage.note" class="fonts fonts-12px red">
+          <div v-if="errorMessage.note" class="fonts-12px red">
             {{ errorMessage.note }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-10px">
-          <div class="fonts fonts-11 semibold black">Hashtag</div>
-          <div class="fonts fonts-10 normal black">
+        <div class="p-4 padding-top-10px padding-bottom-10px">
+          <div class="text-[11px] font-semibold text-black">Hashtag</div>
+          <div class="text-[10px] normal text-black">
             Tambah hashtag diundangan kamu, hashtag ini akan muncul di kalimat
             undangan kamu nanti.
           </div>
           <el-input v-model="form.tag" placeholder="" type="text"></el-input>
-          <div v-if="errorMessage.tag" class="fonts fonts-12px red">
+          <div v-if="errorMessage.tag" class="fonts-12px red">
             {{ errorMessage.tag }}
           </div>
         </div>
       </AppCardCollapse>
     </div>
     <div
-      class="card bg-white box-shadow margin margin-top-20px margin-bottom-20px"
+      class="card bg-white shadow-sm margin margin-top-20px margin-bottom-20px"
     >
       <AppCardCollapse title="Quotes">
-        <div class="padding padding-top-10px padding-bottom-10px">
-          <div class="fonts fonts-11 semibold black">Greeting</div>
+        <div class="p-4 padding-top-10px padding-bottom-10px">
+          <div class="text-[11px] font-semibold text-black">Greeting</div>
           <vue-editor
             v-model="form.greeting_quotes"
             :editorToolbar="editorConfig"
           ></vue-editor>
-          <div v-if="errorMessage.greeting_quotes" class="fonts fonts-12px red">
+          <div v-if="errorMessage.greeting_quotes" class="fonts-12px red">
             {{ errorMessage.greeting_quotes }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-10px">
-          <div class="fonts fonts-11 semibold black">Closing</div>
+        <div class="p-4 padding-top-10px padding-bottom-10px">
+          <div class="text-[11px] font-semibold text-black">Closing</div>
           <vue-editor
             v-model="form.closing_quotes"
             :editorToolbar="editorConfig"
           ></vue-editor>
-          <div v-if="errorMessage.closing_quotes" class="fonts fonts-12px red">
+          <div v-if="errorMessage.closing_quotes" class="fonts-12px red">
             {{ errorMessage.closing_quotes }}
           </div>
         </div>
@@ -220,7 +220,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import { VueEditor } from 'vue2-editor'
-import AppCardCollapse from '../../modules/AppCardCollapse'
+import AppCardCollapse from '../../../components/modules/AppCardCollapse'
 
 export default {
   name: 'App',

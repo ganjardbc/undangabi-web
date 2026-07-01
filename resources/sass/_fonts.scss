@@ -25,6 +25,14 @@
     font-family: 'GraphikSemibold', 'Segoe UI', Tahoma, Geneva, Verdana,
       sans-serif;
   }
+  &.LibreBaskerville,
+  &.LibreBaskerville *:not(i) {
+    font-family: 'LibreBaskerville', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  &.LibreBaskervilleItalic,
+  &.LibreBaskervilleItalic *:not(i) {
+    font-family: 'LibreBaskervilleItalic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
   &.ViaodaLibre,
   &.ViaodaLibre *:not(i) {
     font-family: 'ViaodaLibre', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

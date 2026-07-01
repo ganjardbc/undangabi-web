@@ -31,7 +31,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro bold"
+          class="micro font-bold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.key && formMessage.key[0] }}
@@ -50,7 +50,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro bold"
+          class="micro font-bold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.value && formMessage.value[0] }}
@@ -69,7 +69,7 @@
         />
         <div
           v-if="formMessage"
-          class="fonts micro bold"
+          class="micro font-bold"
           style="color: red; margin-top: 5px"
         >
           {{ formMessage && formMessage.type && formMessage.type[0] }}
@@ -86,7 +86,7 @@
         ></textarea>
         <div
           v-if="formMessage"
-          class="fonts micro bold"
+          class="micro font-bold"
           style="color: red; margin-top: 5px"
         >
           {{
@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import AppSideForm from '../../modules/AppSideForm'
+import AppSideForm from '../../../components/modules/AppSideForm'
 
 const payload = {
   id: '',

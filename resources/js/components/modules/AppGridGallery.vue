@@ -1,6 +1,6 @@
 <template>
   <div id="AppGridGallery">
-    <div class="display-flex wrap">
+    <div class="flex flex-wrap">
       <div
         v-for="(item, i) in dataGallery"
         :key="i"
@@ -10,7 +10,7 @@
           :class="`${!disabledMargin ? 'padding padding-5px' : ''} ${enableAnimation ? 'theme-invitation-animate' : ''}`"
         >
           <div
-            class="image image-padding box-shadow"
+            class="image image-padding shadow-sm"
             :style="`
                             cursor: pointer;
                             background-image: url(${item.thumbnail});

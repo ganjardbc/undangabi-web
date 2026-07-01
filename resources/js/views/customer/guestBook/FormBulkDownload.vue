@@ -1,22 +1,22 @@
 <template>
   <div id="BulkUpload" class="display-popup">
-    <div class="card-alert box-shadow post-middle">
+    <div class="card-alert shadow-sm post-middle">
       <div
-        class="display-flex space-between align-center margin margin-bottom-15px"
+        class="flex justify-between items-center margin mb-[15px]"
       >
-        <div class="fonts fonts-11 semibold">
+        <div class="text-[11px] font-semibold">
           {{ label ? label : 'Buku Tamu Bulk Download' }}
         </div>
         <button class="btn btn-icon btn-white" @click="onClose">
           <i class="fa fa-lg fa-times"></i>
         </button>
       </div>
-      <div class="width width-100">
-        <div v-if="invitationData" class="padding padding-bottom-15px">
-          <div class="fonts fonts-11 semibold black">Invitation</div>
-          <div class="fonts micro black">{{ invitationData.title }}</div>
+      <div class="width w-full">
+        <div v-if="invitationData" class="p-4 pb-[15px]">
+          <div class="text-[11px] font-semibold text-black">Invitation</div>
+          <div class="micro text-black">{{ invitationData.title }}</div>
         </div>
-        <div class="display-flex justify-content">
+        <div class="flex justify-content">
           <button
             :disabled="!invitationData.invitation_id"
             class="btn btn-main btn-full margin margin-right-5-px"
@@ -39,7 +39,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import AppAlert from '../../modules/AppAlert'
+import AppAlert from '../../../components/modules/AppAlert'
 
 export default {
   data() {

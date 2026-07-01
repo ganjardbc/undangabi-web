@@ -1,128 +1,68 @@
 <template>
-  <div id="TryItForFree" class="bg-main">
-    <div class="main-screen padding padding-top-30px padding-bottom-30px">
-      <div class="padding padding-15px">
-        <div
-          class="display-flex row-reverse space-between align-center display-mobile"
-        >
-          <div class="width width-50 width-mobile">
-            <h1 class="fonts fonts-32px fonts-mobile-22px black semibold">
-              Diskon Hingga
-              <span class="fonts fonts-32px fonts-mobile-22px red semibold">{{
-                discountPercent
-              }}</span>
-              !!!
-            </h1>
-            <p class="fonts fonts-16px fonts-mobile-13px grey">
-              Buat undangan hari ini dapatkan diskon hingga
-              <span class="fonts semibold fonts-16px fonts-mobile-13px">{{
-                discountPercent
-              }}</span>
-              dan uji coba gratis selama
-              <span class="fonts semibold">7 hari</span>.
-            </p>
+  <div class="bg-surface-dark border-y" style="border-color: rgba(230, 223, 216, 0.1);">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-14">
+        <!-- Text details -->
+        <div class="flex-1 text-center lg:text-left">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-semibold tracking-wider uppercase mb-6" style="background-color: rgba(204, 120, 92, 0.1); border: 1px solid rgba(204, 120, 92, 0.25); color: #cc785c; font-size: 11px;">
+            Penawaran Spesial
           </div>
-          <div
-            class="width width-40 width-mobile padding padding-top-30px padding-bottom-30px"
-          >
-            <VueCountdown
-              :time="selectedTime"
-              v-slot="{ days, hours, minutes, seconds }"
-              class="display-flex align-center space-between"
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-on-dark leading-tight -tracking-wide">
+            Diskon Hingga<br />
+            <span class="text-primary">{{ discountPercent }}</span>
+          </h2>
+          <p class="mt-5 text-on-dark-soft leading-relaxed text-sm md:text-base max-w-md mx-auto lg:mx-0 font-sans">
+            Buat undangan hari ini, dapatkan diskon hingga
+            <span class="font-semibold text-on-dark">{{ discountPercent }}</span> dan uji coba gratis selama
+            <span class="font-semibold text-on-dark">7 hari</span>.
+          </p>
+          <div v-if="!disableButton" class="mt-8">
+            <button
+              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+              @click="onScrollTo('web-pricing')"
             >
-              <div class="card bg-red box-shadow" style="padding: 0">
-                <div class="padding padding-15px">
-                  <div
-                    class="fonts fonts-22px fonts-mobile-18px white semibold align-center"
-                  >
-                    {{ days }}
-                  </div>
-                  <div
-                    class="fonts fonts-13px fonts-mobile-11px white align-center"
-                  >
-                    Hari
-                  </div>
-                </div>
-              </div>
-              <div class="padding padding-10px">
-                <div class="fonts fonts-32px fonts-mobile-28px grey">:</div>
-              </div>
-              <div class="card bg-red box-shadow" style="padding: 0">
-                <div class="padding padding-15px">
-                  <div
-                    class="fonts fonts-22px fonts-mobile-18px white semibold align-center"
-                  >
-                    {{ hours }}
-                  </div>
-                  <div
-                    class="fonts fonts-13px fonts-mobile-11px white align-center"
-                  >
-                    Jam
-                  </div>
-                </div>
-              </div>
-              <div class="padding padding-10px">
-                <div class="fonts fonts-32px fonts-mobile-28px grey">:</div>
-              </div>
-              <div class="card bg-red box-shadow" style="padding: 0">
-                <div class="padding padding-15px">
-                  <div
-                    class="fonts fonts-22px fonts-mobile-18px white semibold align-center"
-                  >
-                    {{ minutes }}
-                  </div>
-                  <div
-                    class="fonts fonts-13px fonts-mobile-11px white align-center"
-                  >
-                    Menit
-                  </div>
-                </div>
-              </div>
-              <div class="padding padding-10px">
-                <div class="fonts fonts-32px fonts-mobile-28px grey">:</div>
-              </div>
-              <div class="card bg-red box-shadow" style="padding: 0">
-                <div class="padding padding-15px">
-                  <div
-                    class="fonts fonts-22px fonts-mobile-18px white semibold align-center"
-                  >
-                    {{ seconds }}
-                  </div>
-                  <div
-                    class="fonts fonts-13px fonts-mobile-11px white align-center"
-                  >
-                    Detik
-                  </div>
-                </div>
-              </div>
-            </VueCountdown>
+              Lihat Penawaran
+              <Icon icon="lucide:arrow-right" class="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
-        <div class="display-flex row-reverse space-between display-mobile">
-          <div class="width width-50 width-mobile">
-            <div
-              v-if="!disableButton"
-              class="width width-300px width-mobile padding padding-mobile-bottom-15px"
-            >
-              <button
-                class="btn btn-red btn-div"
-                style="margin-left: 0"
-                @click="onScrollTo('web-pricing')"
-              >
-                Lihat Penawaran
-              </button>
+
+        <!-- Countdown timer -->
+        <div class="w-full flex flex-col items-center">
+          <VueCountdown
+            :time="selectedTime"
+            v-slot="{ days, hours, minutes, seconds }"
+            class="flex items-center justify-center gap-2 md:gap-3 w-full"
+          >
+            <div class="flex flex-col items-center justify-center bg-surface-dark-elevated border rounded-lg w-20 h-20 md:w-24 md:h-24" style="border-color: rgba(230, 223, 216, 0.1);">
+              <span class="text-2xl md:text-3xl font-normal text-on-dark font-display">{{ days }}</span>
+              <span class="text-on-dark-soft font-medium uppercase tracking-widest mt-1 md:text-xs" style="font-size: 9px;">Hari</span>
             </div>
-          </div>
-          <div class="width width-40 width-mobile">
-            <div class="fonts fonts-13px fonts-mobile-11px grey">
-              * Berakhir pada {{ nextDate | moment('Do MMMM YYYY') }}
+            <span class="text-xl md:text-2xl font-light text-on-dark-soft text-opacity-30">:</span>
+            <div class="flex flex-col items-center justify-center bg-surface-dark-elevated border rounded-lg w-20 h-20 md:w-24 md:h-24" style="border-color: rgba(230, 223, 216, 0.1);">
+              <span class="text-2xl md:text-3xl font-normal text-on-dark font-display">{{ hours }}</span>
+              <span class="text-on-dark-soft font-medium uppercase tracking-widest mt-1 md:text-xs" style="font-size: 9px;">Jam</span>
             </div>
+            <span class="text-xl md:text-2xl font-light text-on-dark-soft text-opacity-30">:</span>
+            <div class="flex flex-col items-center justify-center bg-surface-dark-elevated border rounded-lg w-20 h-20 md:w-24 md:h-24" style="border-color: rgba(230, 223, 216, 0.1);">
+              <span class="text-2xl md:text-3xl font-normal text-on-dark font-display">{{ minutes }}</span>
+              <span class="text-on-dark-soft font-medium uppercase tracking-widest mt-1 md:text-xs" style="font-size: 9px;">Menit</span>
+            </div>
+            <span class="text-xl md:text-2xl font-light text-on-dark-soft text-opacity-30">:</span>
+            <div class="flex flex-col items-center justify-center bg-surface-dark-elevated border rounded-lg w-20 h-20 md:w-24 md:h-24" style="border-color: rgba(230, 223, 216, 0.1);">
+              <span class="text-2xl md:text-3xl font-normal text-primary font-display">{{ seconds }}</span>
+              <span class="text-on-dark-soft font-medium uppercase tracking-widest mt-1 md:text-xs" style="font-size: 9px;">Detik</span>
+            </div>
+          </VueCountdown>
+          <div class="mt-5 text-xs text-muted-soft">
+            * Berakhir pada {{ nextDate | moment('Do MMMM YYYY') }}
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import VueCountdown from '@chenfengyuan/vue-countdown'
 import moment from 'moment'

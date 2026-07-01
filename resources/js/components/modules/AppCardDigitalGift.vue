@@ -1,19 +1,19 @@
 <template>
   <div id="App">
     <div
-      class="display-flex row center wrap"
+      class="flex flex-row center flex-wrap"
       style="text-align: center; width: 100%"
     >
       <div
         v-for="(dt, i) in data"
         :key="i"
-        class="width width-row-3 width-mobile"
+        class="width w-full md:w-[calc(33.33%-16px)] width-mobile"
       >
         <div
           :class="`padding padding-15px padding-mobile-left-0 padding-mobile-right-0 ${enableAnimation && 'theme-invitation-animate'}`"
         >
           <div
-            class="card bg-white box-shadow content-center"
+            class="card bg-white shadow-sm content-center"
             :style="`border-radius: ${customBorderRadius ? customBorderRadius : '0'}; overflow: unset; padding-top: 20px; padding-bottom: 20px;`"
           >
             <div
@@ -35,7 +35,7 @@
             >
               {{ dt.name }}
             </div>
-            <div class="display-flex column center">
+            <div class="flex flex-col center">
               <div
                 :class="`fonts fonts-11 black semibold ${customMainFont ? customMainFont : ''} ${enableAnimation && 'theme-invitation-animate'}`"
                 :id="`target-code-${i}`"

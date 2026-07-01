@@ -1,98 +1,72 @@
 <template>
-  <div class="display-flex display-mobile left wrap">
-    <div v-for="(dt, i) in data" :key="i" class="width width-row-3">
-      <div style="margin: 15px">
-        <div class="card bg-white box-shadow">
-          <div class="display-flex space-between align-center">
-            <div class="width width-50px">
+  <div class="flex flex-wrap -mx-4">
+    <div v-for="(dt, i) in data" :key="i" class="w-full md:w-1/2 lg:w-1/3 px-4 mb-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200/80 p-5 hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full">
+        <div>
+          <!-- Header (Profile Image + Status Badge) -->
+          <div class="flex justify-between items-center mb-4">
+            <div class="h-12 w-12 rounded-lg overflow-hidden bg-gray-50 border border-gray-150 flex-shrink-0 flex items-center justify-center">
               <div
-                class="image image-padding"
-                :style="`background-image: url(${dt.invitation ? invitationImageThumbnailUrl + dt.invitation.profile : ''});`"
-              >
-                <i
-                  v-if="!dt.invitation.profile"
-                  class="post-middle-absolute fa fa-lg fa-image"
-                ></i>
-              </div>
+                v-if="dt.invitation && dt.invitation.profile"
+                class="w-full h-full bg-cover bg-center"
+                :style="`background-image: url(${invitationImageThumbnailUrl + dt.invitation.profile});`"
+              ></div>
+              <i
+                v-else
+                class="far fa-image text-gray-400 text-lg"
+              ></i>
             </div>
             <div
-              :class="`card-capsule ${dt.invitation.status === 'active' ? 'active' : ''}`"
-              style="text-transform: capitalize; display: inline-block"
+              :class="[ 'px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider', dt.invitation.status === 'active' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' : 'bg-amber-50 text-amber-700 border-amber-100' ]"
             >
               {{ dt.invitation.status }}
             </div>
           </div>
-          <div
-            class="width width-100 padding padding-top-15px padding-bottom-15px"
-          >
+
+          <!-- Title and Info List -->
+          <div class="mb-4">
             <h2
-              class="fonts fonts-12 semibold black margin margin-bottom-5px"
+              class="text-base font-semibold text-gray-900 mb-3 line-clamp-1"
               v-html="dt.invitation.title"
             />
-            <div class="display-flex">
-              <div class="width width-30">
-                <div class="fonts fonts-10 black">Tema</div>
+            
+            <div class="space-y-2">
+              <div class="flex text-sm">
+                <span class="w-28 text-gray-500 font-medium">Tema</span>
+                <span class="text-gray-900 font-normal">: {{ dt.theme && dt.theme.name }}</span>
               </div>
-              <div class="width width-70">
-                <div class="fonts fonts-10 black">
-                  : {{ dt.theme && dt.theme.name }}
-                </div>
+              <div class="flex text-sm">
+                <span class="w-28 text-gray-500 font-medium">Paket</span>
+                <span class="text-gray-900 capitalize">: {{ dt.invitation.type === 'diamond' ? 'Gold' : dt.invitation.type }}</span>
               </div>
-            </div>
-            <div class="display-flex">
-              <div class="width width-30">
-                <div class="fonts fonts-10 black">Paket</div>
+              <div class="flex text-sm">
+                <span class="w-28 text-gray-500 font-medium">Pembayaran</span>
+                <span 
+                  :class="[ 'font-medium', dt.invitation.payment_status ? 'text-emerald-600' : 'text-rose-600' ]"
+                >
+                  : {{ dt.invitation.payment_status ? 'Sudah Bayar' : 'Belum Bayar' }}
+                </span>
               </div>
-              <div class="width width-70">
-                <div class="fonts fonts-10 black capitalize">
-                  :
-                  {{
-                    dt.invitation.type === 'diamond'
-                      ? 'Gold'
-                      : dt.invitation.type
-                  }}
-                </div>
-              </div>
-            </div>
-            <div class="display-flex">
-              <div class="width width-30">
-                <div class="fonts fonts-10 black">Pembayaran</div>
-              </div>
-              <div class="width width-70">
-                <div class="fonts fonts-10 black capitalize">
-                  :
-                  {{
-                    dt.invitation.payment_status ? 'Sudah Bayar' : 'Belum Bayar'
-                  }}
-                </div>
-              </div>
-            </div>
-            <div class="display-flex">
-              <div class="width width-30">
-                <div class="fonts fonts-10 black">Privasi</div>
-              </div>
-              <div class="width width-70">
-                <div class="fonts fonts-10 black capitalize">
-                  :
-                  {{
-                    dt.invitation.privacy === 'public' ? 'Public' : 'Private'
-                  }}
-                </div>
+              <div class="flex text-sm">
+                <span class="w-28 text-gray-500 font-medium">Privasi</span>
+                <span class="text-gray-900 capitalize">: {{ dt.invitation.privacy === 'public' ? 'Public' : 'Private' }}</span>
               </div>
             </div>
           </div>
-          <div
-            v-if="!dt.invitation.payment_status"
-            class="width width-100 padding padding-bottom-15px"
-          >
+        </div>
+
+        <!-- Alerts & Action Buttons -->
+        <div class="mt-4 space-y-3">
+          <div v-if="!dt.invitation.payment_status" class="w-full">
             <el-alert
               title="Segera lakukan pembayaran untuk undangan ini."
               type="error"
               :closable="false"
-            >
-            </el-alert>
+              class="rounded-lg text-xs"
+            />
           </div>
-          <div class="width width-100 display-flex space-between">
+
+          <div class="flex items-center space-x-2.5">
             <router-link
               :to="{
                 name: 'invitation-home',
@@ -100,10 +74,11 @@
                   id: dt.invitation.invitation_id,
                 },
               }"
-              class="btn btn-sekunder btn-div"
-              :style="`width: ${dt.invitation.status === 'active' ? 'calc(100% - 55px)' : '100%'};`"
+              class="flex-1"
             >
-              Kelola Undangan
+              <el-button type="primary" class="w-full">
+                Kelola Undangan
+              </el-button>
             </router-link>
             <router-link
               v-if="dt.invitation.status === 'active'"
@@ -114,10 +89,8 @@
                 },
               }"
               target="_blank"
-              class="btn btn-sekunder btn-icon"
-              style="padding: 0"
             >
-              <i class="far fa-lw fa-envelope-open"></i>
+              <el-button icon="el-icon-message-solid" plain></el-button>
             </router-link>
           </div>
         </div>

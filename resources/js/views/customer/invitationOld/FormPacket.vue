@@ -1,11 +1,11 @@
 <template>
   <div id="App">
     <div class="bg-white">
-      <div v-loading="visibleLoading" class="width width-100">
-        <div class="display-flex space-between align-center">
+      <div v-loading="visibleLoading" class="width w-full">
+        <div class="flex justify-between items-center">
           <div>
-            <div class="fonts fonts-14 semibold black">Daftar Paket</div>
-            <div class="fonts fonts-11 normal black">
+            <div class="fonts-14 font-semibold text-black">Daftar Paket</div>
+            <div class="text-[11px] normal text-black">
               Perubahan paket hanya dapat dilakukan oleh admin dan akan merubah
               harga dan fitur dari undangan
             </div>
@@ -14,10 +14,10 @@
         <div
           v-for="(dt, i) in data"
           :key="i"
-          class="card bg-white box-shadow margin margin-top-15px margin-bottom-15px"
+          class="card bg-white shadow-sm margin margin-top-15px mb-[15px]"
         >
           <div
-            class="display-flex space-between align-center margin margin-bottom-15px"
+            class="flex justify-between items-center margin mb-[15px]"
           >
             <div class="width width-55px">
               <div
@@ -30,7 +30,7 @@
                 ></i>
               </div>
             </div>
-            <div class="display-flex flex-end">
+            <div class="flex justify-end">
               <button
                 v-if="form.type === dt.value"
                 class="btn btn-main btn-icon"
@@ -47,14 +47,14 @@
               </button>
             </div>
           </div>
-          <div class="width width-100">
-            <div class="fonts fonts-11 semibold black">{{ dt.title }}</div>
-            <div class="fonts fonts-10 normal grey">{{ dt.price }}</div>
+          <div class="width w-full">
+            <div class="text-[11px] font-semibold text-black">{{ dt.title }}</div>
+            <div class="text-[10px] normal text-gray-500">{{ dt.price }}</div>
           </div>
         </div>
       </div>
-      <div class="width width-100 display-flex flex-end align-center">
-        <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+      <div class="width w-full flex justify-end items-center">
+        <div class="text-[10px] normal text-black">Total {{ totalRecord }}</div>
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -71,7 +71,7 @@
 </template>
 <script>
 import { mapState, mapGetters } from 'vuex'
-import AppLoader from '../../modules/AppLoader'
+import AppLoader from '../../../components/modules/AppLoader'
 
 export default {
   name: 'App',

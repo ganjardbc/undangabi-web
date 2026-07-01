@@ -1,7 +1,7 @@
 <template>
   <div
     id="AppQtyField"
-    class="display-flex border-full"
+    class="flex border-full"
     style="border-radius: 5px"
   >
     <button

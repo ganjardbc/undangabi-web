@@ -1,26 +1,26 @@
 <template>
-  <div id="App">
+  <div id="App" class="bg-canvas">
     <div id="web-banner">
       <AppBanner />
+    </div>
+
+    <div id="web-counter">
+      <AppCounter />
     </div>
 
     <div id="web-try-it-for-free">
       <AppTryItForFree />
     </div>
 
-    <div id="web-counter" style="padding-top: 40px">
-      <AppCounter />
-    </div>
-
-    <div id="web-category" style="padding-top: 40px">
+    <div id="web-category">
       <AppCategory />
     </div>
 
-    <div id="web-article" style="padding-top: 40px">
+    <div id="web-article">
       <AppCatalogs />
     </div>
 
-    <div id="web-pricing" style="padding-top: 40px">
+    <div id="web-pricing">
       <AppPricing />
     </div>
   </div>
@@ -58,10 +58,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.self-padding {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-</style>

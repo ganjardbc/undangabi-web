@@ -9,7 +9,7 @@
     </button>
     <div
       v-if="visiblePopup"
-      class="card border-full box-shadow"
+      class="card border-full shadow-sm"
       style="
         position: absolute;
         top: 45px;

@@ -1,11 +1,11 @@
 <template>
-  <div id="App" class="display-flex center wrap">
+  <div id="App" class="flex center flex-wrap">
     <div v-for="(dt, i) in data" :key="i" :class="defaultColumn">
       <div
         :class="`padding padding-15px padding-mobile-left-0 padding-mobile-right-0 ${enableAnimation && 'theme-invitation-animate'}`"
       >
         <div
-          class="card box-shadow border-radius"
+          class="card shadow-sm border-radius"
           :style="`overflow: unset; padding-top: 80px; padding-bottom: 60px; margin-top: 40px; background-color: ${customBackgroundColor}; border-radius: ${customBorderRadius};`"
         >
           <div
@@ -18,7 +18,7 @@
             "
           >
             <div
-              class="image image-80px image-center image-circle box-shadow"
+              class="image image-80px image-center image-circle shadow-sm"
               :style="`background-color: ${customIconBgColor};`"
             >
               <i

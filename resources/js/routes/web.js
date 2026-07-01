@@ -1,10 +1,10 @@
-import Web from '../components/layouts/Web.vue';
-import Login from '../components/auth/Login.vue';
-import Register from '../components/auth/Register.vue';
-import Home from '../components/web/Index.vue';
-import NotFoundWeb from '../components/web/404.vue';
-import HowToOrders from '../components/web/infos/HowToOrders.vue';
-import AboutUs from '../components/web/infos/AboutUs.vue';
+import Web from '../layouts/Web.vue';
+import Login from '../views/auth/Login.vue';
+import Register from '../views/auth/Register.vue';
+import Home from '../views/web/Index.vue';
+import NotFoundWeb from '../views/web/404.vue';
+import HowToOrders from '../views/web/infos/HowToOrders.vue';
+import AboutUs from '../views/web/infos/AboutUs.vue';
 
 const routes = {
     path: '/',

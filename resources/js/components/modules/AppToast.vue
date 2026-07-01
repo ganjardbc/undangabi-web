@@ -1,6 +1,6 @@
 <template>
   <div id="AppToast" :class="'card-toast ' + (visibleToast ? 'show' : 'hide')">
-    <div class="display-flex card-toast-content">
+    <div class="flex card-toast-content">
       <div class="left">
         <div v-if="titleToast" class="ttl">{{ titleToast }}</div>
         <div v-if="subtitleToast" class="subttl" style="margin-top: 5px">

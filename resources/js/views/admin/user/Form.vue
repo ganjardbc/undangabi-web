@@ -47,7 +47,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.role_id && formMessage.role_id[0] }}
@@ -66,7 +66,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.name && formMessage.name[0] }}
@@ -85,7 +85,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -104,7 +104,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.username && formMessage.username[0] }}
@@ -123,7 +123,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.password && formMessage.password[0] }}
@@ -142,7 +142,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -165,7 +165,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.provider && formMessage.provider[0] }}
@@ -173,8 +173,8 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">ENABLED</div>
-          <div class="display-flex space-between">
-            <div class="fonts micro black">Is this user enable ?</div>
+          <div class="flex justify-between">
+            <div class="micro text-black">Is this user enable ?</div>
             <label class="switch green">
               <input
                 type="checkbox"
@@ -188,7 +188,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.enabled && formMessage.enabled[0] }}
@@ -196,7 +196,7 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">STATUS</div>
-          <div class="display-flex">
+          <div class="flex">
             <label class="radio">
               <input
                 type="radio"
@@ -207,7 +207,7 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
 
             <label class="radio">
@@ -220,12 +220,12 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.status && formMessage.status[0] }}
@@ -247,7 +247,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -266,7 +266,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -285,7 +285,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -307,7 +307,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -326,7 +326,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -345,7 +345,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -364,7 +364,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.email && formMessage.email[0] }}
@@ -376,8 +376,8 @@
 </template>
 
 <script>
-import AppSideForm from '../../modules/AppSideForm'
-import AppTabs from '../../modules/AppTabs'
+import AppSideForm from '../../../components/modules/AppSideForm'
+import AppTabs from '../../../components/modules/AppTabs'
 
 const tabs = [
   { id: 1, label: 'Detail', status: 'active' },

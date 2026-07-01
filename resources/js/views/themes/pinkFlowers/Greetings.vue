@@ -80,12 +80,12 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import AppCardProKes from '../../modules/AppCardProKes'
-import AppImageBorder from '../../modules/AppImageBorder'
-import AppImageBanner from '../../modules/AppImageBanner'
-import AppBorderTop from '../../modules/AppBorderTop'
-import AppBorderCircle from '../../modules/AppBorderCircle'
-import AppParticlesBackground from '../../modules/AppParticlesBackground'
+import AppCardProKes from '../../../components/modules/AppCardProKes'
+import AppImageBorder from '../../../components/modules/AppImageBorder'
+import AppImageBanner from '../../../components/modules/AppImageBanner'
+import AppBorderTop from '../../../components/modules/AppBorderTop'
+import AppBorderCircle from '../../../components/modules/AppBorderCircle'
+import AppParticlesBackground from '../../../components/modules/AppParticlesBackground'
 import backgroundImage from './assets/background-pink.png'
 import bottomImage from './assets/bottom-pink.png'
 import topRightImage from './assets/top-right-pink.png'

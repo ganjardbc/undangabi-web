@@ -28,7 +28,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.image && formMessage.image[0] }}
@@ -59,7 +59,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -86,7 +86,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.type && formMessage.type[0] }}
@@ -103,7 +103,7 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -126,7 +126,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.tag && formMessage.tag[0] }}
@@ -134,7 +134,7 @@
         </div>
         <div class="field-group margin margin-bottom-25-px">
           <div class="field-label">STATUS</div>
-          <div class="display-flex">
+          <div class="flex">
             <label class="radio">
               <input
                 type="radio"
@@ -145,7 +145,7 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
 
             <label class="radio">
@@ -158,12 +158,12 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.status && formMessage.status[0] }}
@@ -171,8 +171,8 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">AVAILABLE</div>
-          <div class="display-flex space-between">
-            <div class="fonts micro black">
+          <div class="flex justify-between">
+            <div class="micro text-black">
               Is this gallery still available ?
             </div>
             <label class="switch green">
@@ -188,7 +188,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -231,7 +231,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -253,11 +253,11 @@
 
 <script>
 import axios from 'axios'
-import AppTabs from '../../modules/AppTabs'
-import AppSideForm from '../../modules/AppSideForm'
-import AppImage from '../../modules/AppImage'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppTabs from '../../../components/modules/AppTabs'
+import AppSideForm from '../../../components/modules/AppSideForm'
+import AppImage from '../../../components/modules/AppImage'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 import FormInvitation from '../invitations/FormInvitation'
 
 const tabs = [

@@ -12,7 +12,7 @@
           :class="`ceremony-icon ${enableAnimation && 'theme-invitation-animate'}`"
         >
           <div
-            class="icn image image-80px image-center image-circle box-shadow bg-white"
+            class="icn image image-80px image-center image-circle shadow-sm bg-white"
           >
             <i
               :class="`post-middle-absolute ${customIcon ? customIcon : 'fa fa-lg fa-heart'}`"
@@ -41,7 +41,7 @@
             style="padding-top: 30px; padding-bottom: 30px"
           >
             <div class="width width-70 width-center width-mobile">
-              <div class="fonts fonts-12 black">{{ dt.address }}</div>
+              <div class="text-[12px] text-black">{{ dt.address }}</div>
             </div>
           </div>
           <div class="ceremony-address">
@@ -65,7 +65,7 @@
               v-if="dt.time_zone"
               :class="`${enableAnimation && 'theme-invitation-animate'}`"
             >
-              <div class="fonts fonts-12 black align-center">
+              <div class="text-[12px] text-black items-center">
                 {{ dt.time_zone }}
               </div>
             </div>

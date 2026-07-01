@@ -3,7 +3,7 @@
     <div
       v-for="(dt, index) in datas"
       :key="index"
-      class="display-flex border-bottom"
+      class="flex border-bottom"
       style="padding-top: 20px; padding-bottom: 15px"
     >
       <div style="margin-right: 20px">
@@ -13,7 +13,7 @@
         />
       </div>
       <div style="width: calc(100% - 45px)">
-        <div class="display-flex">
+        <div class="flex">
           <div style="width: 70px; margin-right: 20px">
             <router-link :to="{ name: 'product', params: { id: dt.prod_id } }">
               <div class="image image-padding" style="background-color: #000">
@@ -27,36 +27,36 @@
             </router-link>
           </div>
           <div style="width: calc(100% - 200px)">
-            <div class="width width-100">
+            <div class="width w-full">
               <router-link
                 :to="{ name: 'product', params: { id: dt.prod_id } }"
-                class="fonts fonts-12 semibold black"
+                class="text-[12px] font-semibold text-black"
                 style="margin-bottom: 5px"
               >
                 {{ dt.product_name }}
               </router-link>
-              <div class="display-flex">
-                <div style="width: 100px" class="fonts fonts-11 grey">
+              <div class="flex">
+                <div style="width: 100px" class="text-[11px] text-gray-500">
                   Detail
                 </div>
                 <div>
-                  <div class="fonts fonts-11 black">
+                  <div class="text-[11px] text-black">
                     : {{ dt.product_detail }} (Rp. {{ dt.price }})
                   </div>
                 </div>
               </div>
-              <div v-if="dt.toping_id" class="display-flex">
-                <div style="width: 100px" class="fonts fonts-11 grey">
+              <div v-if="dt.toping_id" class="flex">
+                <div style="width: 100px" class="text-[11px] text-gray-500">
                   Toping
                 </div>
                 <div>
-                  <div class="fonts fonts-11 black">
+                  <div class="text-[11px] text-black">
                     : {{ dt.product_toping }} (Rp. {{ dt.toping_price }})
                   </div>
                 </div>
               </div>
               <div
-                class="fonts fonts-12 semibold black"
+                class="text-[12px] font-semibold text-black"
                 style="margin-top: 10px"
               >
                 Rp. {{ dt.subtotal }}
@@ -78,11 +78,11 @@
             </div>
           </div>
         </div>
-        <div class="display-flex space-between margin margin-top-15-px">
+        <div class="flex justify-between margin margin-top-15-px">
           <div style="padding-top: 10px">
-            <!-- <div class="fonts fonts-11 main cursor-pointer">Create a note for this product</div> -->
+            <!-- <div class="text-[11px] main cursor-pointer">Create a note for this product</div> -->
           </div>
-          <div class="display-flex">
+          <div class="flex">
             <!-- <AppLikeButton :productID.sync="dt.product_id" :isBigButton="true" /> -->
             <button
               :class="

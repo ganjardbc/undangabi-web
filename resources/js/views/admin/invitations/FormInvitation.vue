@@ -146,8 +146,8 @@
 
 <script>
 import axios from 'axios'
-import AppPopupForm from '../../modules/AppPopupForm'
-import AppAlert from '../../modules/AppAlert'
+import AppPopupForm from '../../../components/modules/AppPopupForm'
+import AppAlert from '../../../components/modules/AppAlert'
 
 const payload = {
   id: '',

@@ -2,33 +2,33 @@
   <div id="App">
     <AppBreadCrumb title="Google-Map" />
 
-    <div class="width width-100">
+    <div class="width w-full">
       <div
         v-if="!isBronzeInvitation"
-        class="card bg-white box-shadow margin margin-bottom-20px margin-top-20px"
+        class="card bg-white shadow-sm margin margin-bottom-20px margin-top-20px"
       >
-        <div class="fonts fonts-14 semibold black">Google-Map</div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Latitude</div>
+        <div class="fonts-14 font-semibold text-black">Google-Map</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Latitude</div>
           <el-input v-model="form.latitude" placeholder=""></el-input>
-          <div v-if="errorMessage.latitude" class="fonts fonts-12px red">
+          <div v-if="errorMessage.latitude" class="fonts-12px red">
             {{ errorMessage.latitude }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">Longitude</div>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">Longitude</div>
           <el-input v-model="form.longitude" placeholder=""></el-input>
-          <div v-if="errorMessage.longitude" class="fonts fonts-12px red">
+          <div v-if="errorMessage.longitude" class="fonts-12px red">
             {{ errorMessage.longitude }}
           </div>
         </div>
       </div>
       <div
         v-if="!isBronzeInvitation && visibleMap"
-        class="card bg-white box-shadow"
+        class="card bg-white shadow-sm"
       >
-        <div class="fonts fonts-14 semibold black">Pin-point di Google-map</div>
-        <div class="width width-100 padding padding-top-15px">
+        <div class="fonts-14 font-semibold text-black">Pin-point di Google-map</div>
+        <div class="width w-full p-4 pt-[15px]">
           <GmapMap
             ref="mapRef"
             :center="{
@@ -64,7 +64,7 @@
 
     <div class="invitation-main-footer">
       <div
-        class="invitation-main-footer-container bg-white box-shadow display-flex align-center flex-end"
+        class="invitation-main-footer-container bg-white shadow-sm flex items-center justify-end"
       >
         <button class="btn btn-main btn-full" @click="submitData">
           <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Simpan Data
@@ -93,11 +93,11 @@
 <script>
 import { gmapApi } from 'vue2-google-maps'
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppEmpty from '../../modules/AppEmpty'
-import AppBreadCrumb from '../../modules/AppBreadCrumb'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppEmpty from '../../../components/modules/AppEmpty'
+import AppBreadCrumb from '../../../components/modules/AppBreadCrumb'
 
 export default {
   name: 'App',

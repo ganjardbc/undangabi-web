@@ -1,12 +1,12 @@
 <template>
-  <div class="display-flex align-center">
+  <div class="flex items-center">
     <button
       class="btn btn-white btn-icon margin margin-right-10px"
       @click="$router.back()"
     >
       <i class="fa fa-lg fa-arrow-left"></i>
     </button>
-    <div class="fonts fonts-16 semibold black">{{ title }}</div>
+    <div class="fonts-16 font-semibold text-black">{{ title }}</div>
   </div>
 </template>
 <script>

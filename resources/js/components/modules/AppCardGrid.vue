@@ -1,7 +1,7 @@
 <template>
   <div
     id="AppCardGrid"
-    class="display-flex nowrap space-bettween"
+    class="flex nowrap space-bettween"
     style="width: 100%; background-color: #fff"
   >
     <div
@@ -34,12 +34,12 @@
         </div>
         <div style="width: 100%">
           <div
-            class="fonts fonts-14px semibold black"
+            class="fonts-14px font-semibold text-black"
             style="margin-bottom: 5px"
           >
             {{ dt.title }}
           </div>
-          <div class="fonts fonts-13px grey">{{ dt.description }}</div>
+          <div class="fonts-13px text-gray-500">{{ dt.description }}</div>
         </div>
       </div>
     </div>

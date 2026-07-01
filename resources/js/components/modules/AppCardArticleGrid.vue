@@ -1,7 +1,7 @@
 <template>
-  <div id="AppCardGrid" class="display-flex display-mobile wrap">
-    <div v-for="(dt, index) in datas" :key="index" class="width width-row-3">
-      <div class="card box-shadow" style="padding: 0; margin: 20px 20px">
+  <div id="AppCardGrid" class="flex display-mobile flex-wrap">
+    <div v-for="(dt, index) in datas" :key="index" class="width w-full md:w-[calc(33.33%-16px)]">
+      <div class="card shadow-sm" style="padding: 0; margin: 20px 20px">
         <div style="margin-bottom: 20px">
           <router-link :to="{ name: 'article', params: { id: dt.article_id } }">
             <div
@@ -24,15 +24,15 @@
         <div style="padding: 0 20px; width: calc(100% - 40px)">
           <router-link
             :to="{ name: 'article', params: { id: dt.article_id } }"
-            class="fonts semibold black"
+            class="font-semibold text-black"
             style="margin-top: 0"
           >
             {{ dt.title }}
           </router-link>
-          <div class="fonts fonts-13px grey" style="margin-top: 5px">
+          <div class="fonts-13px text-gray-500" style="margin-top: 5px">
             {{ dt.description.substring(0, 150) }} ...
           </div>
-          <div class="display-flex space-between" style="margin-top: 10px">
+          <div class="flex justify-between" style="margin-top: 10px">
             <router-link
               :to="{ name: 'article', params: { id: dt.article_id } }"
               class="btn btn-main-reverse"

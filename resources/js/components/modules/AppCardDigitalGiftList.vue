@@ -1,14 +1,14 @@
 <template>
   <div id="App">
-    <div v-for="(dt, i) in data" :key="i" class="width width-100">
+    <div v-for="(dt, i) in data" :key="i" class="width w-full">
       <div
         :class="`padding padding-15-px ${enableAnimation && 'theme-invitation-animate'}`"
       >
         <div
-          class="card bg-white box-shadow"
+          class="card bg-white shadow-sm"
           :style="`border-radius: ${customBorderRadius ? customBorderRadius : '0'}; overflow: unset; padding-top: 20px; padding-bottom: 20px;`"
         >
-          <div class="display-flex">
+          <div class="flex">
             <div style="width: 60px; margin-right: 15px">
               <div
                 class="image image-half-padding"
@@ -16,9 +16,9 @@
               ></div>
             </div>
             <div style="width: calc(100% - 75px)">
-              <div class="fonts fonts-11 black">{{ dt.name }}</div>
+              <div class="text-[11px] text-black">{{ dt.name }}</div>
               <div
-                class="fonts fonts-12 black semibold"
+                class="text-[12px] text-black font-semibold"
                 :id="`target-code-${i}`"
                 style="margin-bottom: 10px; word-wrap: break-word"
               >
@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-          <div class="display-flex column center">
+          <div class="flex flex-col center">
             <button
               class="btn btn-sekunder"
               @click="copyDigitalCode(`target-code-${i}`)"

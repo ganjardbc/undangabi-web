@@ -1,15 +1,15 @@
-import Admin from '../components/layouts/Admin.vue';
-import NotFoundWeb from '../components/web/404.vue';
-import Dashboard from '../components/admin/Index.vue';
-import Profile from '../components/admin/profile/Index.vue';
-import Bizpar from '../components/admin/bizpar/Index.vue';
-import Category from '../components/admin/category/Index.vue';
-import Role from '../components/admin/role/Index.vue';
-import UserList from '../components/admin/user/Index.vue';
-import Permission from '../components/admin/permission/Index.vue';
-import Themes from '../components/admin/themes/Index.vue';
-import Songs from '../components/admin/songs/Index.vue';
-import Invitations from '../components/admin/invitations/Index.vue';
+import Admin from '../layouts/Admin.vue';
+import NotFoundWeb from '../views/web/404.vue';
+import Dashboard from '../views/admin/Index.vue';
+import Profile from '../views/admin/profile/Index.vue';
+import Bizpar from '../views/admin/bizpar/Index.vue';
+import Category from '../views/admin/category/Index.vue';
+import Role from '../views/admin/role/Index.vue';
+import UserList from '../views/admin/user/Index.vue';
+import Permission from '../views/admin/permission/Index.vue';
+import Themes from '../views/admin/themes/Index.vue';
+import Songs from '../views/admin/songs/Index.vue';
+import Invitations from '../views/admin/invitations/Index.vue';
 
 const routes = {
     path: '/admin',

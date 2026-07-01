@@ -46,7 +46,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -67,7 +67,7 @@
           />
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.name && formMessage.name[0] }}
@@ -92,7 +92,7 @@
           </select>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -113,7 +113,7 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -125,7 +125,7 @@
         </div>
         <div class="field-group margin margin-bottom-20-px">
           <div class="field-label">STATUS</div>
-          <div class="display-flex">
+          <div class="flex">
             <label class="radio">
               <input
                 type="radio"
@@ -136,7 +136,7 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Active </span>
+              <span class="micro"> Active </span>
             </label>
 
             <label class="radio">
@@ -149,12 +149,12 @@
                 :readonly="this.title === 'VIEW' ? true : false"
               />
               <span class="checkmark" />
-              <span class="fonts micro"> Inactive </span>
+              <span class="micro"> Inactive </span>
             </label>
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.status && formMessage.status[0] }}
@@ -162,8 +162,8 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">AVAILABLE</div>
-          <div class="display-flex space-between">
-            <div class="fonts micro black">
+          <div class="flex justify-between">
+            <div class="micro text-black">
               Is this product still available ?
             </div>
             <label class="switch green">
@@ -179,7 +179,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -191,8 +191,8 @@
         </div>
         <div class="field-group margin margin-bottom-15-px">
           <div class="field-label">PINNED</div>
-          <div class="display-flex space-between">
-            <div class="fonts micro black">Set this product to banner ?</div>
+          <div class="flex justify-between">
+            <div class="micro text-black">Set this product to banner ?</div>
             <label class="switch green">
               <input
                 type="checkbox"
@@ -206,7 +206,7 @@
           </div>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{
@@ -225,7 +225,7 @@
           ></textarea>
           <div
             v-if="formMessage"
-            class="fonts micro bold"
+            class="micro font-bold"
             style="color: red; margin-top: 5px"
           >
             {{ formMessage && formMessage.note && formMessage.note[0] }}
@@ -264,8 +264,8 @@
 </template>
 
 <script>
-import AppSideForm from '../../modules/AppSideForm'
-import AppTabs from '../../modules/AppTabs'
+import AppSideForm from '../../../components/modules/AppSideForm'
+import AppTabs from '../../../components/modules/AppTabs'
 import FormDetail from './FormDetail'
 import FormImage from './FormImage'
 import FormToping from './FormToping'

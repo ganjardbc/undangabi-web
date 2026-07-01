@@ -3,12 +3,12 @@
     <div
       v-for="(dt, index) in datas"
       :key="index"
-      class="display-flex"
+      class="flex"
       style="padding-top: 10px; padding-bottom: 10px"
     >
       <div style="width: 90px">
         <div
-          class="box-shadow"
+          class="shadow-sm"
           style="
             width: 60px;
             height: 60px;

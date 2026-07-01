@@ -1,13 +1,10 @@
 <template>
-  <div
-    id="App"
-    class="main-screen padding padding-top-15px padding-bottom-15px"
-  >
-    <div class="padding padding-left-15px padding-right-15px">
-      <div class="display-flex space-between align-center">
-        <div class="fonts fonts-22 semibold black">Daftar Undangan</div>
+  <div id="App" class="w-full space-y-6">
+    <div class="bg-white rounded-xl border border-gray-200/80 p-5 shadow-sm space-y-4">
+      <div class="flex justify-between items-center">
+        <div class="text-xl font-bold text-gray-900">Daftar Undangan</div>
       </div>
-      <div class="width width-100 padding padding-top-15px padding-bottom-15px">
+      <div class="w-full">
         <el-input
           placeholder="Cari undangan"
           v-model="formFilter.search"
@@ -23,13 +20,13 @@
         </el-input>
       </div>
     </div>
+
     <div v-loading="visibleLoading">
       <Card :data.sync="data" />
     </div>
-    <div
-      class="width width-100 display-flex flex-end align-center padding padding-top-15px"
-    >
-      <div class="fonts fonts-10 normal black">Total {{ totalRecord }}</div>
+
+    <div class="w-full flex justify-between items-center pt-4 border-t border-gray-150">
+      <div class="text-xs text-gray-500 font-medium">Total {{ totalRecord }}</div>
       <el-pagination
         background
         @current-change="handleCurrentChange"
@@ -41,17 +38,18 @@
       >
       </el-pagination>
     </div>
-    <div class="app-main-footer">
-      <div class="app-main-footer-center">
+
+    <div class="relative w-full h-[70px]">
+      <div class="fixed max-w-7xl w-[calc(100%-32px)] bottom-4 left-1/2 -translate-x-1/2 z-40">
         <div
-          class="app-main-footer-container bg-white box-shadow display-flex align-center"
+          class="bg-white/95 backdrop-blur-md border border-gray-200/80 shadow-md rounded-xl flex items-center p-3"
         >
-          <!-- <Create class="width width-100" /> -->
+          <!-- <Create class="width w-full" /> -->
           <router-link
             :to="{ name: 'customer-create-invitation' }"
-            class="btn btn-main btn-div"
+            class="w-full inline-flex items-center justify-center bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold py-2.5 px-6 rounded-full shadow-sm transition duration-150 no-underline"
           >
-            <i class="icn icn-left fa fa-lg fa-plus-circle"></i> Buat Undangan
+            <i class="fa fa-lg fa-plus-circle mr-2"></i> Buat Undangan
           </router-link>
         </div>
       </div>
@@ -60,7 +58,7 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
-import AppLoader from '../modules/AppLoader'
+import AppLoader from '../../components/modules/AppLoader'
 import Card from './Card'
 import Create from './Create'
 

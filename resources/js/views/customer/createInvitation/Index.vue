@@ -1,19 +1,19 @@
 <template>
   <div id="App">
-    <div class="main-screen padding padding-top-15px padding-bottom-15px">
-      <h2 class="fonts fonts-22 semibold black align-center">Buat Undangan</h2>
-      <p class="fonts fonts-10 normal black align-center">
+    <div class="main-screen p-4 pt-[15px] pb-[15px]">
+      <h2 class="text-[22px] font-semibold text-black items-center">Buat Undangan</h2>
+      <p class="text-[10px] normal text-black items-center">
         Isi informasi berikut untuk membuat undangan.
       </p>
-      <p class="fonts fonts-10 normal black align-center">
+      <p class="text-[10px] normal text-black items-center">
         Setelah undangan dibuat masuk ke menu "Kelola Undangan" untuk mengisi
         data pengantin, acara dll.
       </p>
       <div
-        class="width width-60 width-mobile width-center padding padding-bottom-65px"
+        class="width width-60 width-mobile width-center p-4 padding-bottom-65px"
       >
         <div
-          class="width width-100 width-center padding padding-top-30px padding-bottom-30px"
+          class="width w-full width-center p-4 padding-top-30px padding-bottom-30px"
         >
           <el-steps :active="activeIndex" finish-status="success" align-center>
             <el-step>
@@ -31,7 +31,7 @@
           </el-steps>
         </div>
 
-        <div class="padding padding-left-15px padding-right-15px">
+        <div class="p-4 pl-[15px] pr-[15px]">
           <FormInformation v-if="activeIndex === 0" />
           <FormPacket v-if="activeIndex === 1" />
           <FormTheme v-if="activeIndex === 2" />
@@ -43,12 +43,12 @@
 
     <div id="floating-footer">
       <div class="main-screen">
-        <div class="padding padding-left-15px padding-right-15px">
+        <div class="p-4 pl-[15px] pr-[15px]">
           <div
-            class="width width-60 width-mobile width-center bg-white box-shadow border-radius"
+            class="width width-60 width-mobile width-center bg-white shadow-sm border-radius"
           >
             <div
-              class="display-flex flex-end align-center padding padding-15px"
+              class="flex justify-end items-center p-4 p-[15px]"
             >
               <button class="btn btn-white" @click="goBack">
                 {{ activeIndex === 0 ? 'Batalkan' : 'Kembali' }}
@@ -87,9 +87,9 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
 import FormInformation from './FormInformation'
 import FormPacket from './FormPacket'
 import FormTheme from './FormTheme'

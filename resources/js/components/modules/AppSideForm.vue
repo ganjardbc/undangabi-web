@@ -1,10 +1,10 @@
 <template>
   <div id="AppSideForm" :class="isZoomed ? 'form-side zoomed' : 'form-side'">
-    <div class="fs-header display-flex justify-content">
+    <div class="fs-header flex justify-content">
       <div style="width: calc(100% - 90px); margin-top: 8px; margin-left: 10px">
-        <div class="fonts normal semibold">{{ title }}</div>
+        <div class="normal font-semibold">{{ title }}</div>
       </div>
-      <div class="display-flex align-right" style="width: 150px">
+      <div class="flex align-right" style="width: 150px">
         <button
           v-if="enableCreateButton"
           class="btn btn-icon btn-white"

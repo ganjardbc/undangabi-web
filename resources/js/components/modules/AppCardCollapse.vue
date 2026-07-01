@@ -6,7 +6,7 @@
       @click="openVisible"
     >
       <div style="margin-top: 5px">
-        <div class="fonts fonts-10 black semibold">
+        <div class="text-[10px] text-black font-semibold">
           {{ title ? title : 'Show Hide' }}
         </div>
       </div>

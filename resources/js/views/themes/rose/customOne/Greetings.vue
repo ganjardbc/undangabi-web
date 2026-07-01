@@ -80,10 +80,10 @@
 <script>
 import { gsap, ScrollTrigger } from 'gsap/all'
 import logo from '../../../../../img/logo.png'
-import AppCardProKes from '../../../modules/AppCardProKes'
-import AppImageBorder from '../../../modules/AppImageBorder'
-import AppBorderTop from '../../../modules/AppBorderTop'
-import AppBorderCircle from '../../../modules/AppBorderCircle'
+import AppCardProKes from '../../../../components/modules/AppCardProKes'
+import AppImageBorder from '../../../../components/modules/AppImageBorder'
+import AppBorderTop from '../../../../components/modules/AppBorderTop'
+import AppBorderCircle from '../../../../components/modules/AppBorderCircle'
 
 export default {
   name: 'App',

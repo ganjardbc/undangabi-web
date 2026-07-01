@@ -1,5 +1,5 @@
 <template>
-  <div id="App" class="display-flex">
+  <div id="App" class="flex">
     <div class="card-free-trial">
       {{ title ? title : 'FREE TRIAL' }}
     </div>

@@ -1,16 +1,16 @@
 <template>
   <div id="App">
     <div
-      class="display-flex row center wrap"
+      class="flex flex-row center flex-wrap"
       style="text-align: center; width: 100%"
     >
       <div
         v-for="(dt, i) in data"
         :key="i"
-        class="width width-row-3 width-mobile"
+        class="width w-full md:w-[calc(33.33%-16px)] width-mobile"
       >
         <div
-          class="padding padding-15px padding-mobile-left-0 padding-mobile-right-0"
+          class="p-4 p-[15px] padding-mobile-left-0 padding-mobile-right-0"
         >
           <div
             :class="`card bg-white box-shadow content-center ${enableAnimation && 'theme-invitation-animate'}`"

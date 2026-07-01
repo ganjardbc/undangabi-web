@@ -4,26 +4,26 @@
       <div class="self-padding" style="padding-bottom: 0">
         <div class="space space-center">
           <h2
-            class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height theme-feature-animate"
+            class="fonts fonts-32px fonts-mobile-22px font-semibold text-black no-line-height theme-feature-animate"
           >
             Our Partner
           </h2>
-          <div class="display-flex center">
+          <div class="flex center">
             <div
               class="bottom-line theme-feature-animate"
               style="margin-top: 15px; margin-bottom: 15px"
             ></div>
           </div>
-          <div class="padding padding-left-15px padding-right-15px">
+          <div class="p-4 pl-[15px] pr-[15px]">
             <p
-              class="fonts fonts-16px fonts-mobile-13px grey theme-feature-animate"
+              class="fonts fonts-16px fonts-mobile-13px text-gray-500 theme-feature-animate"
             >
               Berikut Partner yang telah bergabung dengan UndangAbi.
             </p>
           </div>
         </div>
       </div>
-      <div class="display-flex wrap center">
+      <div class="flex flex-wrap center">
         <div
           v-for="(dt, i) in datas"
           :key="i"

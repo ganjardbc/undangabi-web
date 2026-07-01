@@ -1,16 +1,16 @@
 <template>
   <div id="AppAlert" class="display-popup">
-    <div class="card-alert box-shadow post-middle">
-      <div v-if="!isLoader" class="display-flex justify-content align-center">
+    <div class="card-alert shadow-sm post-middle">
+      <div v-if="!isLoader" class="flex justify-content items-center">
         <div style="width: 100%">
-          <div class="fonts micro semibold">{{ label ? label : 'Alert' }}</div>
+          <div class="micro font-semibold">{{ label ? label : 'Alert' }}</div>
         </div>
         <button class="btn btn-small-icon btn-white" @click="onClose">
           <i class="fa fa-lg fa-times"></i>
         </button>
       </div>
       <div class="content-center">
-        <div class="padding padding-top-30-px padding-bottom-30-px">
+        <div class="p-4 padding-top-30-px padding-bottom-30-px">
           <i
             :class="
               isLoader
@@ -21,7 +21,7 @@
           ></i>
         </div>
         <div
-          class="fonts micro semibold width width-90 width-center margin margin-bottom-30-px"
+          class="micro font-semibold width width-90 width-center margin margin-bottom-30-px"
         >
           {{
             isLoader
@@ -33,7 +33,7 @@
                 : 'This action will take permanently to datas, are you sure ?'
           }}
         </div>
-        <div v-if="!isLoader" class="display-flex justify-content center">
+        <div v-if="!isLoader" class="flex justify-content center">
           <button
             class="btn btn-main btn-full margin margin-right-5-px"
             @click="onSave"

@@ -1,7 +1,7 @@
 <template>
   <div id="App">
     <div
-      class="display-flex row display-mobile"
+      class="flex flex-row display-mobile"
       style="text-align: center; width: 100%"
     >
       <div v-for="(dt, i) in prokes" :key="i" class="width width-row-4">
@@ -9,7 +9,7 @@
           :class="`margin margin-15px ${enableAnimation && 'theme-invitation-animate'}`"
         >
           <div
-            class="card bg-white box-shadow content-center"
+            class="card bg-white shadow-sm content-center"
             :style="`border-radius: ${customBorderRadius ? customBorderRadius : '0'}; overflow: unset; padding-top: 20px; padding-bottom: 20px;`"
           >
             <div

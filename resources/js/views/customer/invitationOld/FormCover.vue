@@ -1,8 +1,8 @@
 <template>
   <div id="App">
-    <div class="card bg-white box-shadow">
-      <div class="width width-100">
-        <div class="width width-100">
+    <div class="card bg-white shadow-sm">
+      <div class="width w-full">
+        <div class="width w-full">
           <div
             class="image image-padding"
             :style="`
@@ -12,7 +12,7 @@
           >
             <i
               v-if="invitationData && !invitationData.cover"
-              class="post-middle-absolute fonts fonts-48 light-grey fa fa-lg fa-image"
+              class="post-middle-absolute fonts-48 light-grey fa fa-lg fa-image"
             />
           </div>
         </div>
@@ -40,13 +40,13 @@
           </div>
         </div>
       </div>
-      <div class="width width-100 padding padding-top-15px padding-bottom-15px">
-        <div class="display-flex">
+      <div class="width w-full p-4 pt-[15px] pb-[15px]">
+        <div class="flex">
           <div class="width width-40">
-            <div class="fonts fonts-10 black">Paket</div>
+            <div class="text-[10px] text-black">Paket</div>
           </div>
           <div class="width width-60">
-            <div class="fonts fonts-10 black capitalize">
+            <div class="text-[10px] text-black capitalize">
               :
               {{
                 invitationData.type === 'diamond' ? 'Gold' : invitationData.type
@@ -54,22 +54,22 @@
             </div>
           </div>
         </div>
-        <div class="display-flex">
+        <div class="flex">
           <div class="width width-40">
-            <div class="fonts fonts-10 black">Status</div>
+            <div class="text-[10px] text-black">Status</div>
           </div>
           <div class="width width-60">
-            <div class="fonts fonts-10 black capitalize">
+            <div class="text-[10px] text-black capitalize">
               : {{ invitationData.status }}
             </div>
           </div>
         </div>
-        <div class="display-flex">
+        <div class="flex">
           <div class="width width-40">
-            <div class="fonts fonts-10 black">Pembayaran</div>
+            <div class="text-[10px] text-black">Pembayaran</div>
           </div>
           <div class="width width-60">
-            <div class="fonts fonts-10 black capitalize">
+            <div class="text-[10px] text-black capitalize">
               :
               {{
                 invitationData.payment_status ? 'Sudah Bayar' : 'Belum Bayar'
@@ -77,9 +77,9 @@
             </div>
           </div>
         </div>
-        <div v-if="invitationData.is_free_trial" class="display-flex">
+        <div v-if="invitationData.is_free_trial" class="flex">
           <div class="width width-40">
-            <div class="fonts fonts-10 black">Free Trial</div>
+            <div class="text-[10px] text-black">Free Trial</div>
           </div>
           <div class="width width-60">
             <div v-if="invitationData.exp_free_trial_date > 0">
@@ -87,10 +87,10 @@
                 :time="invitationData.exp_free_trial_date"
                 v-slot="{ days }"
               >
-                <div class="fonts fonts-10 black">: {{ days }} Hari</div>
+                <div class="text-[10px] text-black">: {{ days }} Hari</div>
               </VueCountdown>
             </div>
-            <div v-else class="fonts fonts-10 black">: 0 Hari</div>
+            <div v-else class="text-[10px] text-black">: 0 Hari</div>
           </div>
         </div>
       </div>
@@ -133,11 +133,11 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import VueCountdown from '@chenfengyuan/vue-countdown'
-import AppPopupConfirmed from '../../modules/AppPopupConfirmed'
-import AppPopupAlert from '../../modules/AppPopupAlert'
-import AppPopupLoader from '../../modules/AppPopupLoader'
-import AppFileUpload from '../../modules/AppFileUpload'
-import AppPopupQrCodeSmall from '../../modules/AppPopupQrCodeSmall'
+import AppPopupConfirmed from '../../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../../components/modules/AppPopupLoader'
+import AppFileUpload from '../../../components/modules/AppFileUpload'
+import AppPopupQrCodeSmall from '../../../components/modules/AppPopupQrCodeSmall'
 
 export default {
   name: 'App',

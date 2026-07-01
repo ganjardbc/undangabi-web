@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import AppTabLinks from '../../modules/AppTabLinks'
+import AppTabLinks from '../../../components/modules/AppTabLinks'
 import Lists from './lists/Index'
 import Schedules from './schedules/Index'
 

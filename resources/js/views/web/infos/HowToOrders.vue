@@ -5,18 +5,18 @@
         <div class="self-padding" style="padding-bottom: 0">
           <div class="space space-center">
             <h2
-              class="fonts fonts-32px fonts-mobile-22px semibold black no-line-height"
+              class="fonts fonts-32px fonts-mobile-22px font-semibold text-black no-line-height"
             >
               Buat undangan ?
             </h2>
-            <div class="display-flex center">
+            <div class="flex center">
               <div
                 class="bottom-line"
                 style="margin-top: 15px; margin-bottom: 15px"
               ></div>
             </div>
-            <div class="padding padding-left-15px padding-right-15px">
-              <div class="fonts fonts-16px fonts-mobile-13px grey">
+            <div class="p-4 pl-[15px] pr-[15px]">
+              <div class="fonts fonts-16px fonts-mobile-13px text-gray-500">
                 Buat undangan disini mudah banget loh kamu bisa register, login
                 lalu buat undangan kamu sendiri. <br />
                 Atau bisa juga langsung hubungi kita via WhatsApp di sini <br />
@@ -35,24 +35,24 @@
           style="padding-bottom: 40px"
         >
           <div
-            class="card no-margin no-hover no-radius box-shadow"
+            class="card no-margin no-hover no-radius shadow-sm"
             style="padding-top: 40px; padding-bottom: 20px"
           >
             <div class="content-center">
               <div
-                class="fonts fonts-16px fonts-mobile-13px semibold black no-line-height"
+                class="fonts fonts-16px fonts-mobile-13px font-semibold text-black no-line-height"
               >
                 Buat yang gak mau ribet
               </div>
-              <div class="display-flex center">
+              <div class="flex center">
                 <div
                   class="bottom-line"
                   style="margin-top: 15px; margin-bottom: 15px"
                 ></div>
               </div>
-              <div class="display-flex center">
+              <div class="flex center">
                 <div class="card-value">
-                  <i class="fa fa-lw fa-star" />
+                  <Icon icon="lucide:star" class="w-3.5 h-3.5" />
                   <span class="fonts fonts-14px fonts-mobile-11px white"
                     >Direkomendasikan</span
                   >
@@ -73,12 +73,12 @@
               <div class="info">
                 <div style="padding: 5px 15px">
                   <div
-                    class="fonts fonts-13px fonts-mobile-11px black semibold"
+                    class="fonts fonts-13px fonts-mobile-11px text-black font-semibold"
                     style="margin-bottom: 5px"
                   >
                     {{ dt.title }}
                   </div>
-                  <div class="fonts fonts-13px fonts-mobile-11px grey">
+                  <div class="fonts fonts-13px fonts-mobile-11px text-gray-500">
                     <span v-html="dt.description"></span>
                   </div>
                 </div>
@@ -92,16 +92,16 @@
           style="padding-bottom: 40px"
         >
           <div
-            class="card no-margin no-hover no-radius box-shadow"
+            class="card no-margin no-hover no-radius shadow-sm"
             style="padding-top: 40px; padding-bottom: 20px"
           >
             <div class="content-center">
               <div
-                class="fonts fonts-16px fonts-mobile-13px semibold black no-line-height"
+                class="fonts fonts-16px fonts-mobile-13px font-semibold text-black no-line-height"
               >
                 Buat kamu yang mandiri
               </div>
-              <div class="display-flex center">
+              <div class="flex center">
                 <div
                   class="bottom-line"
                   style="margin-top: 15px; margin-bottom: 15px"
@@ -122,12 +122,12 @@
               <div class="info">
                 <div style="padding: 5px 15px">
                   <div
-                    class="fonts fonts-13px fonts-mobile-11px black semibold"
+                    class="fonts fonts-13px fonts-mobile-11px text-black font-semibold"
                     style="margin-bottom: 5px"
                   >
                     {{ dt.title }}
                   </div>
-                  <div class="fonts fonts-13px fonts-mobile-11px grey">
+                  <div class="fonts fonts-13px fonts-mobile-11px text-gray-500">
                     <span v-html="dt.description"></span>
                   </div>
                 </div>

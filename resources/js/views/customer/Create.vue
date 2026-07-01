@@ -11,7 +11,7 @@
       :onClose="onCloseCreateInvitation"
     >
       <div
-        class="width width-100 width-center padding padding-top-30px padding-bottom-30px"
+        class="width w-full width-center p-4 padding-top-30px padding-bottom-30px"
       >
         <el-steps :active="activeIndex" finish-status="success" align-center>
           <el-step>
@@ -29,10 +29,10 @@
       <!-- STEP 1 -->
       <div
         v-if="activeIndex === 0"
-        class="display-flex column center padding padding-top-50px padding-bottom-50px"
+        class="flex flex-col center p-4 padding-top-50px padding-bottom-50px"
       >
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="display-flex center padding padding-top-10px">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="flex center p-4 padding-top-10px">
             <div
               v-for="(item, i) in categories"
               :key="i"
@@ -50,12 +50,12 @@
                                     ${form.category_id === item.id ? 'custom-selection active' : 'custom-selection'}`"
                 @click="onChangeCategory(item.id)"
               >
-                <div class="display-flex column align-center">
+                <div class="flex flex-col items-center">
                   <div class="image image-50px image-circle">
                     <i class="post-middle-absolute fa fa-lw fa-flag"></i>
                   </div>
-                  <div class="padding padding-top-15px">
-                    <div class="fonts fonts-11 semibold black align-center">
+                  <div class="p-4 pt-[15px]">
+                    <div class="text-[11px] font-semibold text-black items-center">
                       {{ item.name }}
                     </div>
                   </div>
@@ -69,10 +69,10 @@
       <!-- STEP 2 -->
       <div
         v-if="activeIndex === 1"
-        class="display-flex column center padding padding-top-50px padding-bottom-50px"
+        class="flex flex-col center p-4 padding-top-50px padding-bottom-50px"
       >
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="display-flex center padding padding-top-10px">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="flex center p-4 padding-top-10px">
             <div
               v-for="(item, i) in packages"
               :key="i"
@@ -90,15 +90,15 @@
                                     ${form.type === item.value ? 'custom-selection active' : 'custom-selection'}`"
                 @click="onChangePackages(item.value)"
               >
-                <div class="display-flex column align-center">
+                <div class="flex flex-col items-center">
                   <div class="image image-50px image-circle">
                     <i class="post-middle-absolute fa fa-lw fa-flag"></i>
                   </div>
-                  <div class="padding padding-top-15px">
-                    <div class="fonts fonts-11 semibold black align-center">
+                  <div class="p-4 pt-[15px]">
+                    <div class="text-[11px] font-semibold text-black items-center">
                       {{ item.title }}
                     </div>
-                    <div class="fonts fonts-11 normal black align-center">
+                    <div class="text-[11px] normal text-black items-center">
                       {{ item.price }}
                     </div>
                   </div>
@@ -110,34 +110,34 @@
       </div>
 
       <!-- STEP 3 -->
-      <div v-if="activeIndex === 2" class="width width-100">
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Judul Undangan <span class="fonts red">*</span>
+      <div v-if="activeIndex === 2" class="width w-full">
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Judul Undangan <span class="red">*</span>
           </div>
-          <div class="fonts fonts-10 normal black">Contoh: Sinta & Rio</div>
+          <div class="text-[10px] normal text-black">Contoh: Sinta & Rio</div>
           <el-input v-model="form.title" placeholder=""></el-input>
-          <div v-if="errorMessage.title" class="fonts fonts-12px red">
+          <div v-if="errorMessage.title" class="fonts-12px red">
             {{ errorMessage.title[0] }}
           </div>
         </div>
-        <div class="padding padding-top-10px padding-bottom-5px">
-          <div class="fonts fonts-11 semibold black">
-            Short Link <span class="fonts red">*</span>
+        <div class="p-4 padding-top-10px padding-bottom-5px">
+          <div class="text-[11px] font-semibold text-black">
+            Short Link <span class="red">*</span>
           </div>
-          <div class="fonts fonts-10 normal black">Contoh: sinta-rio</div>
+          <div class="text-[10px] normal text-black">Contoh: sinta-rio</div>
           <el-input
             v-model="form.short_link"
             @input="formShortLink"
             placeholder=""
           ></el-input>
-          <div v-if="errorMessage.short_link" class="fonts fonts-12px red">
+          <div v-if="errorMessage.short_link" class="fonts-12px red">
             {{ errorMessage.short_link[0] }}
           </div>
         </div>
       </div>
 
-      <div class="display-flex flex-end align-center padding padding-15px">
+      <div class="flex justify-end items-center p-4 p-[15px]">
         <button class="btn btn-white" @click="goBack">
           {{ activeIndex === 0 ? 'Batalkan' : 'Kembali' }}
         </button>
@@ -150,70 +150,70 @@
         </button>
       </div>
 
-      <!-- <div class="width width-100 margin margin-bottom-20px">
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">ID Undangan <span class="fonts red">*</span></div>
+      <!-- <div class="width w-full margin margin-bottom-20px">
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">ID Undangan <span class="red">*</span></div>
                     <el-input 
                         v-model="form.invitation_id" 
                         placeholder=""
                         :disabled="true"></el-input>
                     <div 
                         v-if="errorMessage.invitation_id" 
-                        class="fonts fonts-12px red">{{ errorMessage.invitation_id[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.invitation_id[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Paket <span class="fonts red">*</span></div>
-                    <div class="display-flex padding padding-top-10px">
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Paket <span class="red">*</span></div>
+                    <div class="flex p-4 padding-top-10px">
                         <div v-for="(item, i) in packages" :key="i" class="margin margin-right-10px">
-                            <div class="card bg-white border-full display-flex">
+                            <div class="card bg-white border-full flex">
                                 <div style="width: 40px;">
                                     <i class="fa fa-lw fa-flag"></i>
                                 </div>
                                 <div style="width: calc(100% - 40px);">
-                                    <div class="fonts fonts-11 semibold black">{{ item.title }}</div>
+                                    <div class="text-[11px] font-semibold text-black">{{ item.title }}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Kategori <span class="fonts red">*</span></div>
-                    <div class="display-flex padding padding-top-10px">
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Kategori <span class="red">*</span></div>
+                    <div class="flex p-4 padding-top-10px">
                         <div v-for="(item, i) in categories" :key="i" class="margin margin-right-10px">
-                            <div class="card bg-white border-full display-flex">
+                            <div class="card bg-white border-full flex">
                                 <div style="width: 40px;">
                                     <i class="fa fa-lw fa-flag"></i>
                                 </div>
                                 <div style="width: calc(100% - 40px);">
-                                    <div class="fonts fonts-11 semibold black">{{ item.name }}</div>
+                                    <div class="text-[11px] font-semibold text-black">{{ item.name }}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Judul <span class="fonts red">*</span></div>
-                    <div class="fonts fonts-10 normal black">Contoh: Sinta & Rio</div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Judul <span class="red">*</span></div>
+                    <div class="text-[10px] normal text-black">Contoh: Sinta & Rio</div>
                     <el-input 
                         v-model="form.title" 
                         placeholder=""></el-input>
                     <div 
                         v-if="errorMessage.title" 
-                        class="fonts fonts-12px red">{{ errorMessage.title[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.title[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Short Link <span class="fonts red">*</span></div>
-                    <div class="fonts fonts-10 normal black">Contoh: sinta-rio</div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Short Link <span class="red">*</span></div>
+                    <div class="text-[10px] normal text-black">Contoh: sinta-rio</div>
                     <el-input 
                         v-model="form.short_link" 
                         @input="formShortLink"
                         placeholder=""></el-input>
                     <div 
                         v-if="errorMessage.short_link" 
-                        class="fonts fonts-12px red">{{ errorMessage.short_link[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.short_link[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-10px">
-                    <div class="fonts fonts-11 semibold black">Kategori <span class="fonts red">*</span></div>
+                <div class="p-4 padding-top-10px padding-bottom-10px">
+                    <div class="text-[11px] font-semibold text-black">Kategori <span class="red">*</span></div>
                     <el-select 
                         v-model="form.category_id" 
                         slot="prepend" 
@@ -227,10 +227,10 @@
                     </el-select>
                     <div 
                         v-if="errorMessage.category_id" 
-                        class="fonts fonts-12px red">{{ errorMessage.category_id[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.category_id[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-10px">
-                    <div class="fonts fonts-11 semibold black">Paket <span class="fonts red">*</span></div>
+                <div class="p-4 padding-top-10px padding-bottom-10px">
+                    <div class="text-[11px] font-semibold text-black">Paket <span class="red">*</span></div>
                     <el-select 
                         v-model="form.type" 
                         slot="prepend" 
@@ -244,13 +244,13 @@
                     </el-select>
                     <div 
                         v-if="errorMessage.type" 
-                        class="fonts fonts-12px red">{{ errorMessage.type[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.type[0] }}</div>
                 </div>
             </div> -->
-      <!-- <div class="width width-100 margin margin-bottom-20px">
-                <div class="fonts fonts-14 semibold black">Jadwal Acara</div>
-                <div class="padding padding-top-10px padding-bottom-10px">
-                    <div class="fonts fonts-11 semibold black">Hari <span class="fonts red">*</span></div>
+      <!-- <div class="width w-full margin margin-bottom-20px">
+                <div class="fonts-14 font-semibold text-black">Jadwal Acara</div>
+                <div class="p-4 padding-top-10px padding-bottom-10px">
+                    <div class="text-[11px] font-semibold text-black">Hari <span class="red">*</span></div>
                     <el-select 
                         v-model="form.day" 
                         slot="prepend" 
@@ -264,31 +264,31 @@
                     </el-select>
                     <div 
                         v-if="errorMessage.day" 
-                        class="fonts fonts-12px red">{{ errorMessage.day[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.day[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Tanggal <span class="fonts red">*</span></div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Tanggal <span class="red">*</span></div>
                     <el-input 
                         v-model="form.date" 
                         placeholder=""
                         type="date"></el-input>
                     <div 
                         v-if="errorMessage.date" 
-                        class="fonts fonts-12px red">{{ errorMessage.date[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.date[0] }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Jam</div>
-                    <div class="fonts fonts-10 normal grey">Isi dengan jam mulai - jam akhir (09.00 - 17.00)</div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Jam</div>
+                    <div class="text-[10px] normal text-gray-500">Isi dengan jam mulai - jam akhir (09.00 - 17.00)</div>
                     <el-input 
                         v-model="form.time" 
                         placeholder=""></el-input>
                     <div 
                         v-if="errorMessage.time" 
-                        class="fonts fonts-12px red">{{ errorMessage.time }}</div>
+                        class="fonts-12px red">{{ errorMessage.time }}</div>
                 </div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Zona Waktu</div>
-                    <div class="fonts fonts-10 normal grey">Pilih WIB/WIT/WITA</div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Zona Waktu</div>
+                    <div class="text-[10px] normal text-gray-500">Pilih WIB/WIT/WITA</div>
                     <el-select 
                         v-model="form.time_zone" 
                         slot="prepend" 
@@ -302,14 +302,14 @@
                     </el-select>
                     <div 
                         v-if="errorMessage.time_zone" 
-                        class="fonts fonts-12px red">{{ errorMessage.time_zone }}</div>
+                        class="fonts-12px red">{{ errorMessage.time_zone }}</div>
                 </div>
             </div>
 
-            <div class="width width-100 margin margin-bottom-20px">
-                <div class="fonts fonts-14 semibold black">Lokasi Acara</div>
-                <div class="padding padding-top-10px padding-bottom-5px">
-                    <div class="fonts fonts-11 semibold black">Alamat / Deskripsi <span class="fonts red">*</span></div>
+            <div class="width w-full margin margin-bottom-20px">
+                <div class="fonts-14 font-semibold text-black">Lokasi Acara</div>
+                <div class="p-4 padding-top-10px padding-bottom-5px">
+                    <div class="text-[11px] font-semibold text-black">Alamat / Deskripsi <span class="red">*</span></div>
                     <el-input 
                         v-model="form.description" 
                         placeholder=""
@@ -317,10 +317,10 @@
                         :autosize="{ minRows: 4, maxRows: 8}"></el-input>
                     <div 
                         v-if="errorMessage.description" 
-                        class="fonts fonts-12px red">{{ errorMessage.description[0] }}</div>
+                        class="fonts-12px red">{{ errorMessage.description[0] }}</div>
                 </div>
             </div> -->
-      <!-- <div class="padding padding-top-15px">
+      <!-- <div class="p-4 pt-[15px]">
                 <button class="btn btn-main btn-full" @click="onSubmitInvitation">Buat Undangan</button>
             </div> -->
     </AppPopupForm>
@@ -344,10 +344,10 @@
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import AppPopupForm from '../modules/AppPopupForm'
-import AppPopupConfirmed from '../modules/AppPopupConfirmed'
-import AppPopupAlert from '../modules/AppPopupAlert'
-import AppPopupLoader from '../modules/AppPopupLoader'
+import AppPopupForm from '../../components/modules/AppPopupForm'
+import AppPopupConfirmed from '../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../components/modules/AppPopupLoader'
 
 export default {
   name: 'App',

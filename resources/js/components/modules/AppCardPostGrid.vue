@@ -28,23 +28,23 @@
           <div style="position: relative; width: 100%; margin-bottom: 15px">
             <router-link
               :to="{ name: 'product', params: { id: dt.product_id } }"
-              class="fonts fonts-16px semibold black"
+              class="fonts-16px font-semibold text-black"
               style="margin-top: 0"
             >
               {{ dt.title }}
             </router-link>
-            <div class="fonts fonts-13px grey" style="margin-top: 5px">
+            <div class="fonts-13px text-gray-500" style="margin-top: 5px">
               {{ dt.category }}
             </div>
             <div
-              class="fonts fonts-16px semibold black"
+              class="fonts-16px font-semibold text-black"
               style="margin-top: 5px"
             >
               Rp {{ dt.price }}
             </div>
           </div>
-          <div class="display-flex space-between">
-            <div class="display-flex">
+          <div class="flex justify-between">
+            <div class="flex">
               <div
                 :class="
                   dt.is_available ? 'card-capsule active' : 'card-capsule'

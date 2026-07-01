@@ -302,14 +302,14 @@
 <script>
 import axios from 'axios'
 import logo from '../../../img/logo.png'
-import AppEmpty from '../modules/AppEmpty'
-import AppLoader from '../modules/AppLoader'
-import AppCardCollapse from '../modules/AppCardCollapse'
-import AppTextInvitation from '../modules/AppTextInvitation'
-import AppPopupConfirmed from '../modules/AppPopupConfirmed'
-import AppPopupAlert from '../modules/AppPopupAlert'
-import AppPopupLoader from '../modules/AppPopupLoader'
-import SearchField from '../modules/SearchField'
+import AppEmpty from '../../components/modules/AppEmpty'
+import AppLoader from '../../components/modules/AppLoader'
+import AppCardCollapse from '../../components/modules/AppCardCollapse'
+import AppTextInvitation from '../../components/modules/AppTextInvitation'
+import AppPopupConfirmed from '../../components/modules/AppPopupConfirmed'
+import AppPopupAlert from '../../components/modules/AppPopupAlert'
+import AppPopupLoader from '../../components/modules/AppPopupLoader'
+import SearchField from '../../components/modules/SearchField'
 import FooterSecond from './FooterSecond'
 
 const payload = {

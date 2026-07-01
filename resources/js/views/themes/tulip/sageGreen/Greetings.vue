@@ -67,11 +67,11 @@
 import { mapState } from 'vuex'
 import axios from 'axios'
 import logo from '../../../../../img/logo.png'
-import AppCardProKes from '../../../modules/AppCardProKes'
-import AppImageBorder from '../../../modules/AppImageBorder'
-import AppBorderTop from '../../../modules/AppBorderTop'
-import AppBorderCircle from '../../../modules/AppBorderCircle'
-import AppCardVideo from '../../../modules/AppCardVideo'
+import AppCardProKes from '../../../../components/modules/AppCardProKes'
+import AppImageBorder from '../../../../components/modules/AppImageBorder'
+import AppBorderTop from '../../../../components/modules/AppBorderTop'
+import AppBorderCircle from '../../../../components/modules/AppBorderCircle'
+import AppCardVideo from '../../../../components/modules/AppCardVideo'
 
 export default {
   name: 'App',
