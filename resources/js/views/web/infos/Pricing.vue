@@ -6,15 +6,7 @@
       <h2 class="font-display text-4xl md:text-5xl font-bold text-ink tracking-tight">
         Harga Undangan
       </h2>
-      <!-- 4-spoke radial asterisk divider -->
-      <div class="flex items-center justify-center gap-3 my-5">
-        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-hairline"></div>
-        <svg class="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"/>
-        </svg>
-        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-hairline"></div>
-      </div>
-      <p class="text-sm md:text-base text-body leading-relaxed font-sans">
+      <p class="text-sm md:text-base text-body leading-relaxed font-sans mt-4">
         Harga yang kami berikan bersahabat dan terjangkau di semua kalangan.
       </p>
     </div>

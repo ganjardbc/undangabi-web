@@ -43,10 +43,12 @@
                   {{ theme.type }}
                 </span>
               </div>
-              <router-link :to="theme.link" target="_blank" class="flex-shrink-0 mt-1">
-                <button class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-hairline text-muted hover:text-white hover:bg-primary hover:border-primary transition-all duration-300">
+              <router-link :to="theme.link" target="_blank" class="flex-shrink-0 mt-1 no-underline">
+                <el-button
+                  class="!w-8 !h-8 !p-0 !inline-flex !items-center !justify-center"
+                >
                   <Icon icon="lucide:external-link" class="w-3.5 h-3.5" />
-                </button>
+                </el-button>
               </router-link>
             </div>
           </div>

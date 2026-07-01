@@ -16,17 +16,8 @@
         Buat Moment yang Tak Terlupakan
       </h1>
 
-      <!-- 4-spoke radial asterisk divider -->
-      <div class="flex items-center justify-center gap-4 my-8">
-        <div class="h-[1px] w-16 bg-gradient-to-r from-transparent to-hairline"></div>
-        <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"/>
-        </svg>
-        <div class="h-[1px] w-16 bg-gradient-to-l from-transparent to-hairline"></div>
-      </div>
-
       <!-- Subtitle -->
-      <p class="text-base md:text-lg text-body max-w-xl mx-auto leading-relaxed font-sans">
+      <p class="text-base md:text-lg text-body max-w-xl mx-auto leading-relaxed font-sans mt-8">
         Dikemas dalam website yang elegan — dibuat dan dibagikan dalam hitungan menit untuk momen terindah Anda.
       </p>
 
@@ -34,17 +25,22 @@
       <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
         <router-link
           :to="{ name: 'how-to-orders' }"
-          class="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active shadow-sm transition-all duration-300 transform hover:-translate-y-0.5 min-w-[220px]"
+          class="no-underline min-w-[220px]"
         >
-          Buat Undangan Sekarang
-          <Icon icon="lucide:arrow-right" class="w-3.5 h-3.5" />
+          <el-button
+            type="primary"
+            class="w-full !inline-flex !items-center !justify-center !gap-2"
+          >
+            Buat Undangan Sekarang
+            <i class="el-icon-arrow-right el-icon-right"></i>
+          </el-button>
         </router-link>
-        <button
+        <el-button
           @click="onScrollTo('web-article')"
-          class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold rounded-md text-ink bg-canvas border border-hairline hover:border-muted hover:bg-surface-soft transition-all duration-300 min-w-[180px]"
+          class="min-w-[180px]"
         >
           Lihat Katalog
-        </button>
+        </el-button>
       </div>
     </div>
   </div>

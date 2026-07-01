@@ -15,8 +15,6 @@ import VueEasyLightbox from 'vue-easy-lightbox/dist/external-css/vue-easy-lightb
 import 'vue-easy-lightbox/dist/external-css/vue-easy-lightbox.css'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
-import 'element-ui/lib/theme-chalk/index.css'
-import 'element-ui/lib/theme-chalk/base.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import VueCarousel from 'vue-carousel'
 import VueHtmlToPaper from 'vue-html-to-paper'

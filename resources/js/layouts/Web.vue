@@ -35,113 +35,32 @@
         </nav>
 
         <!-- Desktop Auth CTAs -->
-        <div class="hidden md:flex items-center gap-3">
+        <div class="flex items-center gap-3">
           <div v-if="user">
-            <button
-              class="inline-flex items-center justify-center px-5 py-2 text-xs font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm"
+            <el-button
+              type="primary"
+              size="small"
+              class="!py-2 !px-5"
               @click="toDashboard"
             >
               Dashboard
-            </button>
+            </el-button>
           </div>
           <div v-else class="flex items-center gap-3">
-            <router-link :to="{ name: 'login' }">
-              <button class="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold text-muted hover:text-ink transition-colors">
+            <router-link :to="{ name: 'login' }" class="hidden md:flex">
+              <el-button type="text" class="!text-muted hover:!text-ink">
                 Masuk
-              </button>
+              </el-button>
             </router-link>
             <router-link :to="{ name: 'register' }">
-              <button class="inline-flex items-center justify-center px-5 py-2 text-xs font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm">
+              <el-button type="primary" size="small" class="!py-2 !px-5">
                 Daftar Gratis
-              </button>
+              </el-button>
             </router-link>
           </div>
-        </div>
-
-        <!-- Mobile Toggler -->
-        <div class="flex md:hidden">
-          <button
-            class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-hairline text-muted hover:bg-surface-card transition-colors"
-            @click="openMenu"
-          >
-            <i class="fa fa-bars text-sm"></i>
-          </button>
         </div>
       </div>
     </header>
-
-    <!-- Mobile Drawer Back-Overlay -->
-    <div
-      v-if="visibleMenu"
-      class="fixed inset-0 z-50 bg-gray-900 bg-opacity-40 backdrop-blur-sm transition-opacity duration-300 md:hidden"
-      @click="closeMenu"
-    ></div>
-
-    <!-- Mobile Drawer Menu -->
-    <div
-      :class="`fixed inset-y-0 right-0 z-50 w-72 bg-canvas p-6 shadow-2xl border-l border-hairline flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
-        visibleMenu ? 'translate-x-0' : 'translate-x-full'
-      }`"
-    >
-      <!-- Drawer Header -->
-      <div class="flex justify-between items-center pb-5 border-b border-hairline">
-        <img :src="logo" alt="undang-abi" class="w-24" />
-        <button
-          class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-hairline text-muted hover:text-ink hover:bg-surface-card transition-colors"
-          @click="closeMenu"
-        >
-          <i class="fa fa-times text-sm"></i>
-        </button>
-      </div>
-
-      <!-- Nav Links -->
-      <nav class="py-6 flex-1">
-        <ul v-if="isInHomePage" class="space-y-1">
-          <li v-for="(dt, index) in navbar" :key="index" @click="closeMenu">
-            <a
-              @click="onScrollTo(dt.link)"
-              class="flex items-center px-3 py-2.5 rounded-md text-sm font-medium text-muted hover:text-ink hover:bg-surface-card cursor-pointer transition-colors"
-            >
-              {{ dt.label }}
-            </a>
-          </li>
-        </ul>
-        <ul v-else class="space-y-1" @click="closeMenu">
-          <li>
-            <router-link
-              :to="{ name: 'home' }"
-              class="flex items-center px-3 py-2.5 rounded-md text-sm font-medium text-muted hover:text-ink hover:bg-surface-card"
-            >
-              ← Kembali ke Home
-            </router-link>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Auth CTAs -->
-      <div class="border-t border-hairline pt-5 space-y-2">
-        <div v-if="user">
-          <button
-            class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all"
-            @click="toDashboard(); closeMenu();"
-          >
-            Dashboard
-          </button>
-        </div>
-        <div v-else class="flex flex-col gap-2">
-          <router-link :to="{ name: 'login' }" class="w-full" @click.native="closeMenu">
-            <button class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-ink border border-hairline hover:bg-surface-card rounded-md transition-all">
-              Masuk
-            </button>
-          </router-link>
-          <router-link :to="{ name: 'register' }" class="w-full" @click.native="closeMenu">
-            <button class="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary-active rounded-md transition-all">
-              Daftar Gratis
-            </button>
-          </router-link>
-        </div>
-      </div>
-    </div>
 
     <!-- Main Content Body -->
     <main id="body" class="flex-1">
@@ -150,7 +69,7 @@
 
     <!-- Footer -->
     <footer class="bg-surface-dark text-on-dark-soft pt-16 pb-10 border-t border-gray-800">
-      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+      <div class="max-w-6xl mx-auto px-0 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-8">
         <!-- Brand & Copyright -->
         <div class="col-span-12 md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
           <img :src="logo2" alt="undang-abi" class="w-10 mb-5 brightness-0 invert opacity-80" />

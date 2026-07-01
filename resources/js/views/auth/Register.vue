@@ -1,6 +1,6 @@
 <template>
-  <div id="register" class="min-h-screen bg-canvas flex items-center justify-center p-4 font-sans">
-    <div class="w-full max-w-sm">
+  <div id="register" class="bg-canvas flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-lg">
       <div class="bg-white rounded-lg shadow-sm border border-hairline p-8">
         <form action="#" @submit.prevent="submit" class="w-full">
           <div class="flex justify-center mb-6">
@@ -86,13 +86,14 @@
           </div>
 
           <div class="mb-3">
-            <button
-              class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              type="submit"
+            <el-button
+              type="primary"
+              class="w-full"
+              native-type="submit"
               :disabled="visibleButton"
             >
               Daftar Sekarang
-            </button>
+            </el-button>
           </div>
 
           <div class="mb-2">

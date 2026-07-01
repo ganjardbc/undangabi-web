@@ -17,13 +17,14 @@
             <span class="font-semibold text-on-dark">7 hari</span>.
           </p>
           <div v-if="!disableButton" class="mt-8">
-            <button
-              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+            <el-button
+              type="primary"
+              class="!inline-flex !items-center !justify-center !gap-2 !py-4.5 !px-7"
               @click="onScrollTo('web-pricing')"
             >
               Lihat Penawaran
-              <Icon icon="lucide:arrow-right" class="w-3.5 h-3.5" />
-            </button>
+              <i class="el-icon-arrow-right el-icon-right"></i>
+            </el-button>
           </div>
         </div>
 

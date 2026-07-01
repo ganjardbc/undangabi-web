@@ -1,3 +1,4 @@
+@import 'element-variables';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -142,9 +143,6 @@ a {
     font-size: 30px;
     color: $main-color;
     line-height: 1.5;
-  }
-  #body {
-    margin-top: 60px;
   }
   #floating-footer {
     position: fixed;

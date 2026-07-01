@@ -88,12 +88,16 @@
                   :href="`https://wa.me/6289699181669?text=Hallo admin saya mau pesan undangan digital tema ${theme.title}`"
                   target="_blank"
                 >
-                  <button class="btn btn-main btn-icon">
+                  <el-button
+                    type="primary"
+                    circle
+                    class="!p-2.5"
+                  >
                     <Icon icon="lucide:shopping-cart" class="w-4 h-4" />
-                  </button>
+                  </el-button>
                 </a>
-                <router-link :to="theme.link" target="_blank">
-                  <button class="btn btn-sekunder">Live Preview</button>
+                <router-link :to="theme.link" target="_blank" class="no-underline">
+                  <el-button>Live Preview</el-button>
                 </router-link>
               </div>
             </div>

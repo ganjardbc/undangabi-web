@@ -1,5 +1,5 @@
 <template>
-  <div id="Login" class="min-h-screen bg-canvas flex items-center justify-center p-4 font-sans">
+  <div id="Login" class="bg-canvas flex items-center justify-center p-4 font-sans">
     <div class="w-full max-w-sm">
       <div class="bg-white rounded-lg shadow-sm border border-hairline p-8">
         <form action="#" @submit.prevent="submit" class="w-full">
@@ -56,21 +56,24 @@
           </div>
 
           <div class="mb-3">
-            <button
-              class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-md text-white bg-primary hover:bg-primary-active transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              type="submit"
-              :disabled="visibleButton"
+            <el-button
+              type="primary"
+              class="w-full"
+              native-type="submit"
+              :loading="visibleButton"
             >
               Cek Akun
-            </button>
+            </el-button>
           </div>
 
           <div class="mb-2">
             <router-link
               :to="{ name: 'register' }"
-              class="w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-semibold rounded-md text-muted hover:text-ink bg-canvas border border-hairline hover:bg-surface-soft transition-all duration-300 text-center no-underline"
+              class="w-full inline-flex justify-center items-center text-center no-underline"
             >
-              Register
+              <el-button class="w-full">
+                Register
+              </el-button>
             </router-link>
           </div>
         </form>
