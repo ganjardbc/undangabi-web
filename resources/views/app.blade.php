@@ -82,7 +82,7 @@
 </head>
 <body>
     <div id="app" />
-    <script src="{{ mix('js/app.js') }}?v=1.0.14" type="text/javascript"></script>
+    <script src="{{ mix('js/app.js') }}?v=1.1.0" type="text/javascript"></script>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWTN22G" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 </html>
