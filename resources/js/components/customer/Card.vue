@@ -86,7 +86,7 @@
             class="width width-100 padding padding-bottom-15px"
           >
             <el-alert
-              title="Segera lakukan pembayaran untuk undangan ini."
+              title="Undangan belum dibayar."
               type="error"
               :closable="false"
             >
