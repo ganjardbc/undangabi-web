@@ -602,17 +602,6 @@
         </div>
       </div>
 
-      <div v-if="visibleClosingQuotes" class="theme-background-white">
-        <div class="theme-body theme-container">
-          <div class="theme-padding theme-container-small">
-            <div
-              class="fonts fonts-14 fonts-mobile-12 black Lora align-center theme-invitation-animate"
-              v-html="selectedData.invitation.closing_quotes"
-            ></div>
-          </div>
-        </div>
-      </div>
-
       <div class="theme-background-white">
         <div class="theme-body theme-container">
           <div class="theme-padding theme-container">
@@ -651,11 +640,17 @@
           <div class="theme-padding theme-container" style="padding-bottom: 0">
             <div class="width width-500px width-center width-mobile">
               <div
+                v-if="visibleClosingQuotes"
+                class="fonts fonts-14 fonts-mobile-12 grey Lora align-center theme-invitation-animate"
+                v-html="selectedData.invitation.closing_quotes"
+              />
+              <div
+                v-else
                 class="fonts fonts-14 fonts-mobile-12 grey Lora align-center theme-invitation-animate"
               >
                 Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
                 Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do' a restu
-                kepada kedua mempelai.
+                kepada kami.
               </div>
             </div>
           </div>
