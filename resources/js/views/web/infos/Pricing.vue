@@ -16,7 +16,7 @@
       <div v-for="(dt, i) in pricing" :key="i" class="w-full">
         <!-- Pricing Card -->
         <div
-          :class="`border rounded-lg p-8 flex flex-col justify-between relative hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full min-h-[500px] ${
+          :class="`border rounded-lg p-8 flex flex-col justify-between relative shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full min-h-[500px] ${
             dt.isRecomended 
               ? 'bg-surface-dark border-primary border-opacity-45 text-on-dark' 
               : 'bg-canvas border-hairline text-ink'

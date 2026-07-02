@@ -1,25 +1,29 @@
 <template>
   <div id="App">
-    <div style="position: relative" class="width w-full">
-      <div class="width w-full">
+    <div style="position: relative" class="w-[100px] h-[100px]">
+      <div class="w-full h-full">
         <div
-          class="image image-padding image-circle bg-white shadow-sm"
+          class="image image-padding image-circle bg-canvas shadow-sm border-4 border-canvas overflow-hidden flex items-center justify-center"
           :style="`
                         background-image: url(${invitationCover});
                         text-align: center;
-                        border: 2px #fff solid;
+                        width: 100px;
+                        height: 100px;
                     `"
         >
           <i
             v-if="invitationData && !invitationData.profile"
-            class="post-middle-absolute fonts-48 light-grey fa fa-lg fa-image"
+            class="el-icon-picture text-muted text-3xl"
           />
         </div>
       </div>
       <div style="position: absolute; bottom: 0; right: 0">
-        <button class="btn btn-sekunder btn-icon" @click="onCloseUpdateCover">
-          <i class="icn fa fa-lg fa-camera"></i>
-        </button>
+        <el-button
+          icon="el-icon-camera"
+          size="small"
+          class="bg-canvas hover:bg-surface-card border border-hairline text-ink rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-300"
+          @click="onCloseUpdateCover"
+        ></el-button>
       </div>
     </div>
 

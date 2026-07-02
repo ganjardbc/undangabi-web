@@ -11,8 +11,8 @@
         </div>
 
         <!-- Desktop Menu -->
-        <nav class="hidden md:flex items-center gap-8">
-          <ul v-if="isInHomePage" class="flex items-center gap-8">
+        <nav v-if="isInHomePage" class="hidden md:flex items-center gap-8">
+          <ul class="flex items-center gap-8">
             <li v-for="(dt, index) in navbar" :key="index">
               <a
                 @click="onScrollTo(dt.link)"
@@ -20,16 +20,6 @@
               >
                 {{ dt.label }}
               </a>
-            </li>
-          </ul>
-          <ul v-else class="flex items-center">
-            <li>
-              <router-link
-                :to="{ name: 'home' }"
-                class="text-sm font-medium text-muted hover:text-ink transition-colors duration-200"
-              >
-                ← Kembali
-              </router-link>
             </li>
           </ul>
         </nav>
@@ -40,20 +30,20 @@
             <el-button
               type="primary"
               size="small"
-              class="!py-2 !px-5"
+              icon="el-icon-set-up"
               @click="toDashboard"
             >
               Dashboard
             </el-button>
           </div>
-          <div v-else class="flex items-center gap-3">
+          <div v-else class="flex items-center gap-4">
             <router-link :to="{ name: 'login' }" class="hidden md:flex">
-              <el-button type="text" class="!text-muted hover:!text-ink">
+              <el-button type="text">
                 Masuk
               </el-button>
             </router-link>
             <router-link :to="{ name: 'register' }">
-              <el-button type="primary" size="small" class="!py-2 !px-5">
+              <el-button type="primary" size="small">
                 Daftar Gratis
               </el-button>
             </router-link>

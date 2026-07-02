@@ -1,200 +1,158 @@
 <template>
-  <div id="InvitationMain">
-    <div class="custom-invitation-cover">
+  <div id="InvitationMain" class="space-y-6">
+    <div class="custom-invitation-cover rounded-xl overflow-hidden border border-hairline shadow-sm">
       <FormCover />
     </div>
-    <div class="custom-invitation">
-      <div class="ci-profile">
-        <div class="ci-profile-image">
-          <FormProfile />
+    <div class="custom-invitation bg-surface-card rounded-xl p-6 border border-hairline flex flex-col md:flex-row items-center md:items-end justify-between space-y-4 md:space-y-0">
+      <div class="flex flex-col md:flex-row items-center md:items-end space-y-4 md:space-y-0 md:space-x-6 w-full md:w-auto">
+        <div class="ci-profile relative w-[130px] h-[70px] flex justify-center">
+          <div class="ci-profile-image absolute -top-16">
+            <FormProfile />
+          </div>
         </div>
-      </div>
-      <div class="ci-information">
-        <div class="p-4 padding-mobile-bottom-15px">
-          <div
-            class="flex items-center justify-center-mobile display-mobile-column p-4 padding-mobile-bottom-15px"
-          >
-            <div
-              class="big text-black font-semibold margin margin-right-10px"
-              v-html="invitationData.title"
-            />
-            <div
-              :class="`card-capsule ${invitationData.status === 'active' ? 'active' : ''}`"
-              style="text-transform: capitalize; display: inline-block"
+        <div class="ci-information flex-1 text-center md:text-left">
+          <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-3 mb-2 justify-center md:justify-start">
+            <h2 class="text-xl font-semibold text-ink font-display" v-html="invitationData.title"></h2>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border bg-canvas text-ink border-hairline uppercase tracking-wider"
             >
+              <span
+                class="w-1.5 h-1.5 mr-1.5 rounded-full"
+                :class="invitationData.status === 'active' ? 'bg-success' : 'bg-warning'"
+              ></span>
               {{ invitationData.status }}
-            </div>
+            </span>
           </div>
-          <div class="flex justify-center-mobile">
-            <div
-              class="text-[11px] normal text-gray-500 overflow-ellipsis margin margin-right-15px"
-            >
-              <i
-                class="fa fa-lw fa-link text-[10px] main"
-                style="width: 20px"
-              ></i>
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-muted">
+            <span class="flex items-center">
+              <i class="el-icon-link mr-1 text-primary"></i>
               {{ invitationData.short_link }}
-            </div>
-            <div
-              class="text-[11px] normal text-gray-500 overflow-ellipsis capitalize margin margin-right-15px"
-            >
-              <i
-                class="fa fa-lw fa-list-ol text-[10px] main"
-                style="width: 20px"
-              ></i>
+            </span>
+            <span class="flex items-center">
+              <i class="el-icon-collection-tag mr-1 text-primary"></i>
               {{ invitationCategory }}
-            </div>
-            <div
-              class="text-[11px] normal text-gray-500 overflow-ellipsis capitalize"
-            >
-              <i
-                class="fa fa-lw fa-flag text-[10px] main"
-                style="width: 20px"
-              ></i>
-              {{
-                invitationData.type === 'diamond' ? 'Gold' : invitationData.type
-              }}
-            </div>
+            </span>
+            <span class="flex items-center uppercase font-semibold">
+              <i class="el-icon-star-on mr-1 text-primary"></i>
+              {{ invitationData.type === 'diamond' ? 'Gold' : invitationData.type }}
+            </span>
           </div>
-        </div>
-        <div class="ci-button">
-          <div class="ci-button-edit">
-            <button
-              @click="
-                onRoute({
-                  name: 'invitation-informations',
-                  params: { id: invitationId },
-                })
-              "
-              class="btn btn-sekunder"
-            >
-              <i class="icn icn-left far fa-lg fa-edit"></i> Ubah Informasi
-            </button>
-          </div>
-          <el-popover placement="bottom-end" width="220" trigger="click">
-            <div class="width w-full">
-              <router-link
-                :to="{
-                  name: 'generate-only',
-                  params: {
-                    id: invitationData && invitationData.short_link,
-                  },
-                }"
-                target="_blank"
-                class="width w-full"
-              >
-                <button class="btn btn-full btn-white btn-align-left">
-                  <i class="icn icn-left far fa-lg fa-envelope-open"></i> Lihat
-                  Undangan
-                </button>
-              </router-link>
-              <router-link
-                :to="{
-                  name: 'generate-invitation',
-                  params: {
-                    id: invitationData && invitationData.short_link,
-                  },
-                }"
-                target="_blank"
-                class="width w-full"
-              >
-                <button class="btn btn-full btn-white btn-align-left">
-                  <i class="icn icn-left fa fa-lg fa-lock-open"></i> Public
-                  Generator
-                </button>
-              </router-link>
-              <router-link
-                :to="{
-                  name: 'generate-invitation-private',
-                  params: {
-                    id: invitationData && invitationData.short_link,
-                  },
-                }"
-                target="_blank"
-                class="width w-full"
-              >
-                <button class="btn btn-full btn-white btn-align-left">
-                  <i class="icn icn-left fa fa-lg fa-lock"></i> Private
-                  Generator
-                </button>
-              </router-link>
-              <AppPopupQrCodeSmall
-                :code="`${initUrl}/${invitationData.short_link}`"
-                :fileName="`qr-code-${invitationData.short_link}`"
-                label="Undangan Digital"
-                buttonLabel="QR Undangan"
-                buttonStyle="btn-white btn-align-left"
-              />
-            </div>
-            <button
-              slot="reference"
-              class="btn btn-sekunder btn-icon margin margin-left-10px"
-            >
-              <i class="fa fa-lw fa-ellipsis-h"></i>
-            </button>
-          </el-popover>
         </div>
       </div>
+      <div class="ci-button flex flex-wrap items-center gap-2 justify-center md:justify-end w-full md:w-auto">
+        <el-button
+          type="primary"
+          icon="el-icon-edit"
+          class="bg-primary hover:bg-primary-active border-none text-white font-semibold rounded-md h-10 px-5 transition-colors duration-300"
+          @click="
+            onRoute({
+              name: 'invitation-informations',
+              params: { id: invitationId },
+            })
+          "
+        >
+          Ubah Informasi
+        </el-button>
+        <el-popover placement="bottom-end" width="220" trigger="click" popper-class="bg-surface-card border-hairline">
+          <div class="flex flex-col space-y-2 p-1">
+            <router-link
+              :to="{
+                name: 'generate-only',
+                params: {
+                  id: invitationData && invitationData.short_link,
+                },
+              }"
+              target="_blank"
+              class="w-full"
+            >
+              <el-button size="small" icon="el-icon-view" class="w-full text-left bg-canvas hover:bg-surface-card border border-hairline text-ink font-semibold rounded-md transition-colors duration-300">
+                Lihat Undangan
+              </el-button>
+            </router-link>
+            <router-link
+              :to="{
+                name: 'generate-invitation',
+                params: {
+                  id: invitationData && invitationData.short_link,
+                },
+              }"
+              target="_blank"
+              class="w-full"
+            >
+              <el-button size="small" icon="el-icon-share" class="w-full text-left bg-canvas hover:bg-surface-card border border-hairline text-ink font-semibold rounded-md transition-colors duration-300">
+                Public Generator
+              </el-button>
+            </router-link>
+            <router-link
+              :to="{
+                name: 'generate-invitation-private',
+                params: {
+                  id: invitationData && invitationData.short_link,
+                },
+              }"
+              target="_blank"
+              class="w-full"
+            >
+              <el-button size="small" icon="el-icon-lock" class="w-full text-left bg-canvas hover:bg-surface-card border border-hairline text-ink font-semibold rounded-md transition-colors duration-300">
+                Private Generator
+              </el-button>
+            </router-link>
+            <AppPopupQrCodeSmall
+              :code="`${initUrl}/${invitationData.short_link}`"
+              :fileName="`qr-code-${invitationData.short_link}`"
+              label="Undangan Digital"
+              buttonLabel="QR Undangan"
+              buttonStyle="el-button el-button--small w-full text-left bg-canvas hover:bg-surface-card border border-hairline text-ink font-semibold rounded-md transition-colors duration-300"
+            />
+          </div>
+          <el-button
+            slot="reference"
+            icon="el-icon-more"
+            class="bg-canvas hover:bg-surface-card border border-hairline text-ink rounded-full w-9 h-9 flex items-center justify-center transition-colors duration-300"
+          ></el-button>
+        </el-popover>
+      </div>
     </div>
-    <div
-      class="width w-full flex items-center justify-between p-4 padding-top-25px"
-    >
-      <div class="text-[11px] font-semibold text-black">Kelola Undangan</div>
-      <div class="flex">
-        <button
-          :class="`btn btn-icon ${gridType === 'grid' ? 'btn-main' : 'btn-white'}`"
+
+    <div class="flex items-center justify-between border-b border-hairline pb-4 mt-8">
+      <h3 class="text-lg font-semibold text-ink font-display">Kelola Undangan</h3>
+      <el-button-group>
+        <el-button
+          size="small"
+          icon="el-icon-menu"
+          :class="gridType === 'grid' ? 'bg-primary border-primary text-white font-semibold' : 'bg-canvas hover:bg-surface-card border border-hairline text-ink transition-colors duration-300'"
           @click="onChangeGrid('grid')"
-        >
-          <i class="icn fa fa-lg fa-th-large"></i>
-        </button>
-        <button
-          :class="`btn btn-icon ${gridType === 'list' ? 'btn-main' : 'btn-white'}`"
+        ></el-button>
+        <el-button
+          size="small"
+          icon="el-icon-s-grid"
+          :class="gridType === 'list' ? 'bg-primary border-primary text-white font-semibold' : 'bg-canvas hover:bg-surface-card border border-hairline text-ink transition-colors duration-300'"
           @click="onChangeGrid('list')"
-        >
-          <i class="icn fa fa-lg fa-th-list"></i>
-        </button>
-      </div>
+        ></el-button>
+      </el-button-group>
     </div>
+
     <div
-      :class="`${gridType === 'grid' ? 'display-flex wrap' : 'display-list'} margin margin-top-15px`"
+      :class="`${gridType === 'grid' ? 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4' : 'flex flex-col space-y-3'}`"
     >
       <div
         v-for="(item, i) in menus"
         :key="i"
-        :class="`${gridType === 'grid' ? 'width width-row-4 width-row-mobile-2' : 'width width-full'}`"
+        class="group"
       >
         <div
-          :class="`${gridType === 'grid' ? 'margin margin-10px' : 'margin margin-top-15px margin-bottom-15px'}`"
+          class="bg-surface-card hover:bg-canvas border border-hairline hover:border-primary transition-all duration-300 rounded-xl p-4 cursor-pointer shadow-sm hover:shadow-md flex items-center h-full"
+          :class="`${gridType === 'grid' ? 'flex-col justify-center text-center py-6 space-y-3' : 'space-x-4'}`"
+          @click="onRoute(item.link)"
         >
           <div
-            :class="`
-                            ${gridType === 'grid' ? 'image image-padding' : 'padding padding-15px border-radius'} 
-                            bg-white box-shadow cursor-pointer custom-selection 
-                            ${gridType === 'grid' ? 'display-flex column center' : 'display-list'}`"
-            @click="onRoute(item.link)"
+            class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300"
           >
-            <div
-              v-if="gridType === 'grid'"
-              class="post-middle-absolute flex flex-col center items-center"
-            >
-              <div class="image image-60px image-circle">
-                <i :class="`post-middle-absolute ${item.icon}`"></i>
-              </div>
-              <div class="p-4 pt-[15px]">
-                <div class="text-[11px] font-semibold text-black items-center">
-                  {{ item.label }}
-                </div>
-              </div>
-            </div>
-            <div v-else class="flex items-center">
-              <div
-                class="image image-50px image-circle margin margin-right-15px"
-              >
-                <i :class="`post-middle-absolute ${item.icon}`"></i>
-              </div>
-              <div class="text-[11px] font-semibold text-black items-center">
-                {{ item.label }}
-              </div>
+            <i :class="`${item.icon} text-lg`"></i>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-ink group-hover:text-primary transition-colors duration-300">
+              {{ item.label }}
             </div>
           </div>
         </div>

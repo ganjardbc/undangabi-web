@@ -40,6 +40,9 @@ module.exports = {
           DEFAULT: '#e6dfd8',
           soft: '#ebe6df',
         },
+        success: '#5db872',
+        warning: '#d4a017',
+        error: '#c64545',
       },
       fontFamily: {
         playfair: ["'Playfair Display'", 'Georgia', 'serif'],

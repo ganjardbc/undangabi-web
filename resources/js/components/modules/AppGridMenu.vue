@@ -1,35 +1,24 @@
 <template>
-  <div id="AppGridMenu">
-    <ul :class="`content-scroll menu-grid hover with-list-icon`">
-      <li
-        v-for="(dt, index) in dataSideBar"
-        :key="index"
-        :class="'ml-grid'"
-        @click="onClickMenu"
+  <div id="AppGridMenu" class="space-y-1">
+    <router-link
+      v-for="(dt, index) in dataSideBar"
+      :key="index"
+      :to="dt.link"
+      class="group flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-medium text-body hover:bg-canvas hover:text-ink transition-colors duration-200"
+      active-class="bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary"
+      @click.native="onClickMenu"
+    >
+      <span class="flex items-center space-x-3">
+        <i :class="`${dt.icon} w-4 text-center`" />
+        <span>{{ dt.label }}</span>
+      </span>
+      <span
+        v-if="dt.value > 0"
+        class="bg-primary text-white text-xs leading-none rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1"
       >
-        <el-tooltip
-          class="item"
-          effect="dark"
-          :content="dt.label"
-          :disabled="true"
-          placement="right"
-        >
-          <router-link :to="dt.link" class="ml-link">
-            <div class="ml-icon">
-              <i :class="dt.icon" />
-            </div>
-            <div class="ml-label">
-              {{ dt.label }}
-            </div>
-            <div class="val-container">
-              <div v-if="dt.value > 0" class="ml-value">
-                <div class="post-center">{{ dt.value }}</div>
-              </div>
-            </div>
-          </router-link>
-        </el-tooltip>
-      </li>
-    </ul>
+        {{ dt.value }}
+      </span>
+    </router-link>
   </div>
 </template>
 <script>

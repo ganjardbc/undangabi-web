@@ -1,9 +1,9 @@
 <template>
   <div id="App">
-    <div style="position: relative" class="width w-full">
-      <div class="width w-full">
+    <div style="position: relative" class="w-full">
+      <div class="w-full">
         <div
-          class="image image-half-padding bg-white shadow-sm ci-image-cover"
+          class="image image-half-padding bg-surface-card ci-image-cover flex items-center justify-center border-b border-hairline"
           :style="`
                         background-image: url(${invitationCover});
                         text-align: center;
@@ -11,14 +11,19 @@
         >
           <i
             v-if="invitationData && !invitationData.cover"
-            class="post-middle-absolute fonts-48 light-grey fa fa-lg fa-image"
+            class="el-icon-picture text-muted text-5xl"
           />
         </div>
       </div>
       <div style="position: absolute; top: 15px; right: 15px">
-        <button class="btn btn-sekunder" @click="onCloseUpdateCover">
-          <i class="icn icn-left fa fa-lg fa-camera"></i> Update Cover
-        </button>
+        <el-button
+          icon="el-icon-camera"
+          size="small"
+          class="bg-canvas hover:bg-surface-card border border-hairline text-ink font-semibold rounded-md transition-colors duration-300"
+          @click="onCloseUpdateCover"
+        >
+          Update Cover
+        </el-button>
       </div>
     </div>
 
